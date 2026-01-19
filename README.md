@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dino Cookies 🦕🍪
 
-## Getting Started
+Una aplicación web moderna y minimalista para la gestión de pedidos de galletas caseras (anteriormente "Galletas Online").
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Diseño Premium Minimalista**: Estilo visual limpio inspirado en "H&O" (Tonos blanco, fucsia y gris).
+- **Formulario de Pedidos**: Validación en tiempo real, separación de nombre/apellido, y campo de email.
+- **Panel de Administración**: Dashboard protegido (`/admin`) para visualizar pedidos en una tabla.
+- **Integraciones Backend**:
+  - **Webhook n8n**: Envío automático de datos de pedidos a un flujo de trabajo externo.
+  - **Persistencia Local**: Almacenamiento de pedidos en `data/orders.json` para el dashboard.
+- **Internacionalización**: Todo el contenido está nativamente en Español.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías Utilizadas
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**: [Next.js](https://nextjs.org/) (App Router), React.
+- **Estilos**: CSS Modules (Vanilla CSS) con variables globales para theming fácil.
+- **Backend**: Next.js API Routes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Instalación y Uso
 
-## Learn More
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://pantrux.duckdns.org/gitea/jandrade/dino-cookies.git
+    cd dino-cookies
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Instalar dependencias**:
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  **Correr el servidor de desarrollo**:
+    ```bash
+    npm run dev
+    ```
+    Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estructura del Proyecto
 
-## Deploy on Vercel
+- `/app`: Rutas y páginas (Home, Admin).
+- `/components`: Componentes reutilizables (Hero, OrderForm, ProductCard, etc.).
+- `/lib`: Lógica de utilidades y base de datos simulada.
+- `/public`: Activos estáticos e imágenes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Licencia
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Dino Cookies. Todos los derechos reservados.
