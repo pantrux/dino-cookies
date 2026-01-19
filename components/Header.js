@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -7,7 +8,9 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <Link href="/">Dino<br />Cookies</Link>
+                    <Link href="/">
+                        <Image src="/logo.png" alt="Dino Cookies Logo" width={80} height={80} priority />
+                    </Link>
                 </div>
                 <nav className={styles.nav}>
                     <Link href="/" className={styles.link}>Inicio</Link>
