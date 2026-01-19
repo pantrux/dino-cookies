@@ -1,0 +1,102 @@
+.hero {
+    background-image: url('/hero-bg.png');
+    /* Using existing image for now */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 6rem 1.5rem;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    /* Removing border radius from previous design */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    /* Darken bg slightly */
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    flex: 1;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #eee;
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+    color: var(--primary-red);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.cardText {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.contact {
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.phone {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.note {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+.highlight {
+    color: var(--primary-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
