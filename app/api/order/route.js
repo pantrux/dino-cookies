@@ -16,7 +16,7 @@ export async function POST(request) {
 
         // 2. Send to Webhook (n8n)
         try {
-            const webhookUrl = 'https://pantrux.duckdns.org/n8n/webhook-test/0bcd36c4-8b0e-495b-8adc-9a1234adc726';
+            const webhookUrl = 'https://pantrux.duckdns.org/n8n/webhook/0bcd36c4-8b0e-495b-8adc-9a1234adc726';
             await fetch(webhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
