@@ -1,8 +1,9 @@
 .header {
     background-color: white;
     padding: 1.5rem 0;
-    position: sticky;
-    top: 0;
+    position: relative;
+    /* Changed from sticky to relative */
+    /* top: 0; removed */
     z-index: 100;
     box-shadow: none;
     /* Removing shadow for cleaner look */
