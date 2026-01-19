@@ -9,7 +9,7 @@ export default function Header() {
             <div className={styles.container}>
                 <div className={styles.logo}>
                     <Link href="/">
-                        <Image src="/logo.png" alt="Dino Cookies Logo" width={120} height={120} priority />
+                        <Image src="/logo.png" alt="Dino Cookies Logo" width={240} height={240} priority />
                     </Link>
                 </div>
                 <nav className={styles.nav}>
