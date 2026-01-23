@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "dev:wrangler": "wrangler pages dev .next --compatibility-date=2024-01-01 --binding DB=galletas-db",
-    "build": "npx @cloudflare/next-on-pages",
+    "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "eslint",
     "preview": "wrangler pages dev .vercel/output/static",
-    "deploy": "npm run build && wrangler pages deploy .vercel/output/static"
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "googleapis": "^170.1.0",
