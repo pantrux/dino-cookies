@@ -6,7 +6,7 @@ pages_build_output_dir = ".vercel/output/static"
 [[d1_databases]]
 binding = "DB"
 database_name = "galletas-db"
-database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+database_id = "18a3b2f3-6e95-47e6-8d00-c7b68ff0a13c"
 
 # For local development, Wrangler will create a local D1 database
 # You can override this in .dev.vars for local testing
