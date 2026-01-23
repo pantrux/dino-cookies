@@ -1,0 +1,12 @@
+name = "galletas-online"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = ".vercel/output/static"
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "galletas-db"
+database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+
+# For local development, Wrangler will create a local D1 database
+# You can override this in .dev.vars for local testing

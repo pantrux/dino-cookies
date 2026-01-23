@@ -1,0 +1,5 @@
+# Local Development Environment Variables
+# Copy this file to .dev.vars and fill in your values
+
+# Add any environment variables you need for local development here
+# These will be available in your application during local development with Wrangler

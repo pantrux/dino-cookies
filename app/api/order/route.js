@@ -1,20 +1,30 @@
 import { NextResponse } from 'next/server';
 import { saveOrder } from '@/lib/db';
 
+export const runtime = 'edge';
+
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { firstName, lastName, email, phone, quantity, address } = body;
+        const { firstName, lastName, email, phone, quantity, type, address } = body;
 
         if (!firstName || !lastName || !email || !phone || !quantity || !address) {
             return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
         }
 
-        // 1. Save to Local JSON (Kept for Admin Dashboard)
-        const newOrder = saveOrder(body);
-        console.log("Order saved locally:", newOrder);
+        // Get D1 database binding from the request context
+        const db = process.env.DB;
 
-        // 2. Send to Webhook (n8n)
+        if (!db) {
+            console.error('D1 database binding not found');
+            return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+        }
+
+        // Save to D1 Database
+        const newOrder = await saveOrder(db, body);
+        console.log("Order saved to D1:", newOrder);
+
+        // Send to Webhook (n8n)
         try {
             const webhookUrl = 'https://pantrux.duckdns.org/n8n/webhook/0bcd36c4-8b0e-495b-8adc-9a1234adc726';
             await fetch(webhookUrl, {
@@ -26,7 +36,6 @@ export async function POST(request) {
         } catch (webhookError) {
             console.error("Webhook error:", webhookError);
             // We don't fail the request to the user if webhook fails, but we log it.
-            // Alternatively, we could throw if strict consistency is needed.
         }
 
         return NextResponse.json({ success: true, message: 'Pedido recibido', order: newOrder });
@@ -35,3 +44,4 @@ export async function POST(request) {
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
+

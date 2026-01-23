@@ -132,5 +132,29 @@
     "address": "1 Aeropost Way\nSCL-59347",
     "date": "2026-01-19T01:22:46.253Z",
     "status": "Pending"
+  },
+  {
+    "id": "1768788028018",
+    "firstName": "Emilia",
+    "lastName": "Andrade",
+    "email": "emilia.andrade.varas@gmail.com",
+    "phone": "+56981390099",
+    "quantity": "10",
+    "type": "Chispas de Chocolate",
+    "address": "Ignacio Carrea Pinto 515",
+    "date": "2026-01-19T02:00:28.018Z",
+    "status": "Pending"
+  },
+  {
+    "id": "1769039258426",
+    "firstName": "Axel",
+    "lastName": "Villaseca",
+    "email": "axelito201217@gmail.com",
+    "phone": "+56989825447",
+    "quantity": "12",
+    "type": "Chispas de Chocolate",
+    "address": "Presidente Ibañez 399, interrior.",
+    "date": "2026-01-21T23:47:38.426Z",
+    "status": "Pending"
   }
 ]
