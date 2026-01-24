@@ -10,7 +10,11 @@
     "start": "next start",
     "lint": "eslint",
     "preview": "wrangler pages dev .vercel/output/static",
-    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
+    "wrangler": "node scripts/wrangler-wrapper.js"
+  },
+  "bin": {
+    "wrangler": "./scripts/wrangler-wrapper.js"
   },
   "dependencies": {
     "googleapis": "^170.1.0",
