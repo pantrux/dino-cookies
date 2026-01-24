@@ -1,44 +1,40 @@
 import { NextResponse } from 'next/server';
 import { saveOrder } from '@/lib/db';
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
-
 export const runtime = 'edge';
 
-export async function POST(request) {
+export async function POST(request, { env }) {
     try {
         const body = await request.json();
         const { firstName, lastName, email, phone, quantity, type, address } = body;
 
         if (!firstName || !lastName || !email || !phone || !quantity || !address) {
-            return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
+            return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        // Get D1 database binding from the request context
-        let env, db;
-        try {
-            const context = getRequestContext();
-            env = context.env;
-            db = env.DB;
-        } catch (ctxError) {
-            console.error('Failed to get request context:', ctxError);
-            return NextResponse.json({
-                error: 'Runtime context error: ' + ctxError.message
-            }, { status: 500 });
-        }
+        // Get D1 database binding from env parameter
+        const db = env?.DB || process.env.DB;
 
         if (!db) {
-            console.error('D1 binding not found. Env keys:', Object.keys(env || {}));
+            console.error('D1 binding not found. Env available:', !!env, 'Process.env.DB:', !!process.env.DB);
             return NextResponse.json({
-                error: 'Database binding "DB" not found'
+                error: 'Database binding "DB" not configured'
             }, { status: 500 });
         }
 
         // Save to D1 Database
-        const newOrder = await saveOrder(db, body);
-        console.log("Order saved to D1:", newOrder);
+        let newOrder;
+        try {
+            newOrder = await saveOrder(db, body);
+            console.log("Order saved to D1:", newOrder);
+        } catch (dbError) {
+            console.error("Database save error:", dbError);
+            return NextResponse.json({
+                error: 'Database error: ' + dbError.message
+            }, { status: 500 });
+        }
 
-        // Send to Webhook (n8n)
+        // Send to Webhook (n8n) - non-blocking
         try {
             const webhookUrl = 'https://pantrux.duckdns.org/n8n/webhook/0bcd36c4-8b0e-495b-8adc-9a1234adc726';
             await fetch(webhookUrl, {
@@ -49,10 +45,14 @@ export async function POST(request) {
             console.log("Sent to Webhook successfully");
         } catch (webhookError) {
             console.error("Webhook error:", webhookError);
-            // We don't fail the request to the user if webhook fails, but we log it.
+            // Don't fail the request if webhook fails
         }
 
-        return NextResponse.json({ success: true, message: 'Pedido recibido', order: newOrder });
+        return NextResponse.json({
+            success: true,
+            message: 'Pedido recibido exitosamente',
+            order: newOrder
+        });
     } catch (error) {
         console.error('Unexpected error in POST /api/order:', error);
         return NextResponse.json({
@@ -60,4 +60,3 @@ export async function POST(request) {
         }, { status: 500 });
     }
 }
-
