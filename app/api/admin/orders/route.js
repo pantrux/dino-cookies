@@ -5,13 +5,13 @@ export const runtime = 'edge';
 
 export async function GET(request) {
     try {
-        const db = globalThis.DB;
+        const db = globalThis.DB || process.env.DB;
 
         if (!db) {
-            console.error('D1 binding not found in globalThis.DB');
+            console.error('D1 binding not found in globalThis.DB or process.env.DB');
             return NextResponse.json({
                 error: 'Database not configured',
-                details: 'D1 binding not found in globalThis.DB'
+                details: 'D1 binding not found in globalThis.DB or process.env.DB'
             }, { status: 500 });
         }
 
