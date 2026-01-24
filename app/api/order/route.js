@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { saveOrder } from '@/lib/db';
 
+import { getRequestContext } from '@cloudflare/next-on-pages';
+
 export const runtime = 'edge';
 
 export async function POST(request) {
@@ -13,7 +15,8 @@ export async function POST(request) {
         }
 
         // Get D1 database binding from the request context
-        const db = process.env.DB;
+        const { env } = getRequestContext();
+        const db = env.DB;
 
         if (!db) {
             console.error('D1 database binding not found');
