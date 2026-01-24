@@ -12,21 +12,21 @@ export async function POST(request) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        // Try multiple ways to access the DB binding
-        // Cloudflare Pages can expose it in different ways depending on configuration
-        const db = globalThis.DB ||
-            process.env.DB ||
-            (typeof DB !== 'undefined' ? DB : null);
+        // Access D1 binding via globalThis (standard for @cloudflare/next-on-pages v1)
+        const db = globalThis.DB;
 
         if (!db) {
-            console.error('D1 binding not found');
-            console.error('globalThis.DB:', typeof globalThis.DB);
-            console.error('process.env.DB:', typeof process.env.DB);
-            console.error('global DB:', typeof (typeof DB !== 'undefined' ? DB : undefined));
+            console.error('D1 binding not found in globalThis.DB');
+            console.error('Available in globalThis:', 'DB' in globalThis);
+            console.error('Type of globalThis.DB:', typeof globalThis.DB);
 
             return NextResponse.json({
-                error: 'Database binding not available. Check Cloudflare Pages D1 binding configuration.'
-            }, { status: 500 });
+                error: 'Database not configured',
+                details: 'D1 binding not found. Ensure DB binding is configured in Cloudflare Pages settings.'
+            }, {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
         }
 
         // Save to D1 Database
@@ -37,8 +37,12 @@ export async function POST(request) {
         } catch (dbError) {
             console.error("Database error:", dbError);
             return NextResponse.json({
-                error: 'Database error: ' + dbError.message
-            }, { status: 500 });
+                error: 'Database error',
+                details: dbError.message
+            }, {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
         }
 
         // Send to Webhook (non-blocking)
@@ -57,11 +61,17 @@ export async function POST(request) {
             success: true,
             message: 'Pedido recibido exitosamente',
             order: newOrder
+        }, {
+            headers: { 'Content-Type': 'application/json' }
         });
     } catch (error) {
         console.error('API error:', error);
         return NextResponse.json({
-            error: 'Server error: ' + (error.message || 'Unknown')
-        }, { status: 500 });
+            error: 'Server error',
+            details: error.message || 'Unknown error'
+        }, {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 }
