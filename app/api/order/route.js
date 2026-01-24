@@ -3,7 +3,9 @@ import { saveOrder } from '@/lib/db';
 
 export const runtime = 'edge';
 
-export async function POST(request, { env }) {
+// This function will be called by Cloudflare Pages
+// The DB binding should be available via the global context
+export async function POST(request) {
     try {
         const body = await request.json();
         const { firstName, lastName, email, phone, quantity, type, address } = body;
@@ -12,13 +14,16 @@ export async function POST(request, { env }) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        // Get D1 database binding from env parameter
-        const db = env?.DB || process.env.DB;
+        // Access DB binding from the Cloudflare Workers environment
+        // @cloudflare/next-on-pages makes this available globally
+        const db = globalThis.DB || process.env.DB;
 
         if (!db) {
-            console.error('D1 binding not found. Env available:', !!env, 'Process.env.DB:', !!process.env.DB);
+            console.error('D1 binding not found');
+            console.error('globalThis.DB:', typeof globalThis.DB);
+            console.error('process.env.DB:', typeof process.env.DB);
             return NextResponse.json({
-                error: 'Database binding "DB" not configured'
+                error: 'Database binding "DB" not configured. Please check Cloudflare Pages settings.'
             }, { status: 500 });
         }
 
@@ -26,15 +31,15 @@ export async function POST(request, { env }) {
         let newOrder;
         try {
             newOrder = await saveOrder(db, body);
-            console.log("Order saved to D1:", newOrder);
+            console.log("Order saved successfully:", newOrder.id);
         } catch (dbError) {
             console.error("Database save error:", dbError);
             return NextResponse.json({
-                error: 'Database error: ' + dbError.message
+                error: 'Failed to save order: ' + dbError.message
             }, { status: 500 });
         }
 
-        // Send to Webhook (n8n) - non-blocking
+        // Send to Webhook (n8n) - non-blocking, don't fail if this errors
         try {
             const webhookUrl = 'https://pantrux.duckdns.org/n8n/webhook/0bcd36c4-8b0e-495b-8adc-9a1234adc726';
             await fetch(webhookUrl, {
@@ -42,10 +47,9 @@ export async function POST(request, { env }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newOrder)
             });
-            console.log("Sent to Webhook successfully");
+            console.log("Webhook notification sent");
         } catch (webhookError) {
-            console.error("Webhook error:", webhookError);
-            // Don't fail the request if webhook fails
+            console.error("Webhook error (non-critical):", webhookError.message);
         }
 
         return NextResponse.json({
