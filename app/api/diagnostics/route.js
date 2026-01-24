@@ -8,7 +8,8 @@ export async function GET() {
             status: 'online',
             time: new Date().toISOString(),
             db_type: typeof globalThis.DB,
-            env_db_type: typeof process.env.DB
+            env_db_type: typeof process.env.DB,
+            env_keys: Object.keys(process.env || {}).filter(k => k.includes('DB'))
         };
 
         return new Response(JSON.stringify(info), {

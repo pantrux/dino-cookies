@@ -12,17 +12,15 @@ export async function POST(request) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        // Access D1 binding via globalThis (standard for @cloudflare/next-on-pages v1)
-        const db = globalThis.DB;
+        // Try to access D1 binding via globalThis or process.env
+        // Diagnostics confirmed it is available in process.env.DB in this environment
+        const db = globalThis.DB || process.env.DB;
 
         if (!db) {
-            console.error('D1 binding not found in globalThis.DB');
-            console.error('Available in globalThis:', 'DB' in globalThis);
-            console.error('Type of globalThis.DB:', typeof globalThis.DB);
-
+            console.error('D1 binding not found in globalThis.DB or process.env.DB');
             return NextResponse.json({
                 error: 'Database not configured',
-                details: 'D1 binding not found. Ensure DB binding is configured in Cloudflare Pages settings.'
+                details: 'D1 binding not found. Please ensure the "DB" binding is configured in Cloudflare Pages settings.'
             }, {
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
