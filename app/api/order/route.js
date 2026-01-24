@@ -19,8 +19,10 @@ export async function POST(request) {
         const db = env.DB;
 
         if (!db) {
-            console.error('D1 database binding not found');
-            return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+            console.error('D1 binding not found. Env keys:', Object.keys(env));
+            return NextResponse.json({
+                error: 'Database connection failed (Binding "DB" is missing in context)'
+            }, { status: 500 });
         }
 
         // Save to D1 Database

@@ -35,10 +35,12 @@ export default function OrderForm() {
                 setSuccess(true);
                 e.target.reset();
             } else {
-                throw new Error('Error al enviar el pedido');
+                const errorData = await res.json();
+                throw new Error(errorData.error || 'Error al enviar el pedido');
             }
         } catch (err) {
-            setError('Algo salió mal. Por favor intenta de nuevo o contáctanos directamente.');
+            console.error(err);
+            setError(err.message || 'Algo salió mal. Por favor intenta de nuevo.');
         } finally {
             setLoading(false);
         }
