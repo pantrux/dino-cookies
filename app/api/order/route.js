@@ -15,13 +15,22 @@ export async function POST(request) {
         }
 
         // Get D1 database binding from the request context
-        const { env } = getRequestContext();
-        const db = env.DB;
+        let env, db;
+        try {
+            const context = getRequestContext();
+            env = context.env;
+            db = env.DB;
+        } catch (ctxError) {
+            console.error('Failed to get request context:', ctxError);
+            return NextResponse.json({
+                error: 'Runtime context error: ' + ctxError.message
+            }, { status: 500 });
+        }
 
         if (!db) {
-            console.error('D1 binding not found. Env keys:', Object.keys(env));
+            console.error('D1 binding not found. Env keys:', Object.keys(env || {}));
             return NextResponse.json({
-                error: 'Database connection failed (Binding "DB" is missing in context)'
+                error: 'Database binding "DB" not found'
             }, { status: 500 });
         }
 
