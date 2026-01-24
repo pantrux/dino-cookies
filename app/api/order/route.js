@@ -45,8 +45,10 @@ export async function POST(request) {
 
         return NextResponse.json({ success: true, message: 'Pedido recibido', order: newOrder });
     } catch (error) {
-        console.error('Order error:', error);
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+        console.error('Unexpected error in POST /api/order:', error);
+        return NextResponse.json({
+            error: 'Server error: ' + (error.message || 'Unknown error')
+        }, { status: 500 });
     }
 }
 
