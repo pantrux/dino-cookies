@@ -1,13 +1,14 @@
 .header {
-    background-color: white;
-    padding: 1.5rem 0;
-    position: relative;
-    /* Changed from sticky to relative */
-    /* top: 0; removed */
-    z-index: 100;
-    box-shadow: none;
-    /* Removing shadow for cleaner look */
-    border-bottom: 1px solid #eee;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 0;
+    position: sticky;
+    top: 1rem;
+    z-index: 1000;
+    margin: 0 1.5rem;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-3d);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .container {
@@ -15,48 +16,54 @@
     margin: 0 auto;
     padding: 0 1.5rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
 }
 
-.logo a {
+.logo {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
+}
+
+.brandName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-pink);
+    letter-spacing: -0.5px;
 }
 
 .nav {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .link {
-    font-weight: 400;
-    color: #555;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.2s;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .link:hover {
-    color: var(--primary-red);
+    color: var(--primary-pink);
+    transform: scale(1.1);
 }
 
 .cta {
-    background-color: transparent;
-    color: #555;
-    padding: 0;
-    font-weight: 400;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--primary-pink), var(--primary-fuchsia));
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    transition: all 0.3s ease;
 }
 
 .cta:hover {
-    color: var(--primary-red);
-    background-color: transparent;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+    color: white;
 }

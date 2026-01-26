@@ -1,18 +1,17 @@
 :root {
-  --primary-red: #E91E63;
-  /* Pink/Fuchsia matching the new reference */
-  --primary-red-hover: #C2185B;
-  --bg-cream: #FFFFFF;
-  /* White background instead of cream */
-  --text-brown: #333333;
-  /* Dark grey instead of brown */
+  --primary-pink: #E91E63;
+  --primary-fuchsia: #FF2E7E;
+  --secondary-blue: #4FC3F7;
   --accent-gold: #FFC107;
+  --bg-soft: #FDFDFD;
+  --text-dark: #2D3436;
   --card-bg: #FFFFFF;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
-  --radius-lg: 4px;
-  /* Less rounded, more sleek */
-  --radius-xl: 8px;
+
+  /* Pixar Style: Soft bubble-like shadows and rounds */
+  --shadow-3d: 0 10px 40px rgba(233, 30, 99, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 50px rgba(233, 30, 99, 0.2), 0 8px 20px rgba(0, 0, 0, 0.1);
+  --radius-bubble: 24px;
+  --radius-pill: 50px;
 }
 
 * {
@@ -22,10 +21,11 @@
 }
 
 body {
-  background-color: var(--bg-cream);
-  color: var(--text-brown);
+  background-color: var(--bg-soft);
+  color: var(--text-dark);
   font-family: inherit;
-  line-height: 1.5;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {

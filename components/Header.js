@@ -7,13 +7,14 @@ export default function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.container}>
-                <div className={styles.logo}>
-                    <Image src="/logo-v3.png" alt="Dino Cookies Logo" width={220} height={180} priority />
-                </div>
+                <Link href="/" className={styles.logo}>
+                    <Image src="/logo-pixar.png" alt="Dino Cookies Logo" width={100} height={100} priority />
+                    <span className={styles.brandName}>Dino Cookies</span>
+                </Link>
                 <nav className={styles.nav}>
                     <Link href="/" className={styles.link}>Inicio</Link>
                     <Link href="#menu" className={styles.link}>Menú</Link>
-                    <Link href="#order" className={styles.cta}>Pedir Ahora</Link>
+                    <Link href="#order" className={styles.cta}>Pedir Galletas</Link>
                 </nav>
             </div>
         </header>
