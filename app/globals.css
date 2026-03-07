@@ -65,6 +65,7 @@
 
   --border-subtle: var(--color-neutral-200);
   --border-default: var(--color-neutral-300);
+  --border-control: var(--color-neutral-500); /* WCAG 1.4.11 for control boundaries on white */
 
   --overlay-dark: rgba(0, 0, 0, 0.3);
 
@@ -77,6 +78,8 @@
   --interactive-danger-hover: var(--color-error-700);
   --interactive-danger-active: var(--color-error-800);
   --interactive-error: var(--interactive-danger); /* alias */
+  --interactive-error-hover: var(--interactive-danger-hover); /* alias */
+  --interactive-error-active: var(--interactive-danger-active); /* alias */
 
   --interactive-success: var(--color-success-700);
   --interactive-success-hover: var(--color-success-800);
