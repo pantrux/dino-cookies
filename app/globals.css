@@ -1,13 +1,16 @@
 :root {
   /* =====================
-   * Color tokens
+   * Color tokens (primitives)
    * ===================== */
   --color-white: #ffffff;
   --color-black: #000000;
 
+  /* Brand */
   --color-brand-500: #e91e63;
   --color-brand-600: #c2185b;
+  --color-brand-700: #ad1457;
 
+  /* Neutrals */
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f5f5f5;
   --color-neutral-200: #eeeeee;
@@ -18,32 +21,59 @@
   --color-neutral-800: #333333;
   --color-neutral-900: #212121;
 
-  --color-error-600: #b91c1c;
+  /* Status */
   --color-error-50: #fef2f2;
+  --color-error-600: #b91c1c;
+  --color-success-50: #f0fdf4;
+  --color-success-600: #16a34a;
+  --color-warning-50: #fffbeb;
+  --color-warning-600: #d97706;
 
-  /* Semantic roles */
+  /* Accent (used sparingly) */
+  --color-accent-500: #ffc107;
+
+  /* =====================
+   * Color tokens (semantic roles)
+   * ===================== */
   --surface-page: var(--color-white);
   --surface-elevated: var(--color-white);
+  --surface-subtle: var(--color-neutral-50);
+  --surface-muted: var(--color-neutral-100);
+
   --surface-error: var(--color-error-50);
+  --surface-success: var(--color-success-50);
+  --surface-warning: var(--color-warning-50);
 
   --text-primary: var(--color-neutral-800);
+  --text-secondary: var(--color-neutral-700);
   --text-muted: var(--color-neutral-600);
   --text-inverse: var(--color-white);
+
   --text-danger: var(--color-error-600);
+  --text-success: var(--color-success-600);
+  --text-warning: var(--color-warning-600);
 
   --border-subtle: var(--color-neutral-200);
+  --border-default: var(--color-neutral-300);
+
   --overlay-dark: rgba(0, 0, 0, 0.3);
 
+  /* Interactions */
   --interactive-primary: var(--color-brand-500);
   --interactive-primary-hover: var(--color-brand-600);
+  --interactive-primary-active: var(--color-brand-700);
 
-  /* Back-compat tokens (used in existing components) */
-  --primary-red: var(--interactive-primary);
-  --primary-red-hover: var(--interactive-primary-hover);
-  --bg-cream: var(--surface-page);
-  --text-brown: var(--text-primary);
-  --accent-gold: #ffc107;
-  --card-bg: var(--surface-elevated);
+  --interactive-danger: var(--color-error-600);
+  --interactive-success: var(--color-success-600);
+  --interactive-warning: var(--color-warning-600);
+
+  /* Focus ring (visible) */
+  --focus-ring: rgba(233, 30, 99, 0.45);
+
+  /* Disabled */
+  --interactive-disabled-bg: var(--color-neutral-200);
+  --interactive-disabled-text: var(--color-neutral-600);
+  --interactive-disabled-border: var(--color-neutral-300);
 
   /* =====================
    * Spacing scale
@@ -73,9 +103,21 @@
   --font-size-2xl: 24px;
   --font-size-3xl: 32px;
   --font-size-4xl: 40px;
+  --font-size-5xl: 48px;
 
+  /* Line heights */
   --line-height-tight: 1.15;
+  --line-height-heading: 1.2;
+  --line-height-snug: 1.25;
   --line-height-body: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-small: 1.4;
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* =====================
    * Radius / shadow
@@ -86,6 +128,26 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  /* =====================
+   * Component tokens
+   * ===================== */
+  --control-height: 44px;
+  --control-padding-x: var(--space-4);
+  --control-padding-y: var(--space-3);
+
+  --button-height: var(--control-height);
+  --input-height: var(--control-height);
+
+  /* =====================
+   * Back-compat tokens (used in existing components)
+   * ===================== */
+  --primary-red: var(--interactive-primary);
+  --primary-red-hover: var(--interactive-primary-hover);
+  --bg-cream: var(--surface-page);
+  --text-brown: var(--text-primary);
+  --accent-gold: var(--color-accent-500);
+  --card-bg: var(--surface-elevated);
 
   /* Back-compat radius */
   --radius-lg: var(--radius-sm);
@@ -116,7 +178,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
 
@@ -136,7 +198,7 @@ button {
     textarea,
     [tabindex]:not([tabindex='-1'])
   ):focus-visible {
-  outline: 3px solid var(--interactive-primary);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
