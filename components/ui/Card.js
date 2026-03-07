@@ -14,12 +14,19 @@ export default function Card({
   children,
   surface = 'elevated',
   padding = 'md',
+  radius = 'md',
   className,
   ...props
 }) {
   return (
     <Component
-      className={cx(styles.base, styles[`surface_${surface}`], styles[`pad_${padding}`], className)}
+      className={cx(
+        styles.base,
+        styles[`surface_${surface}`],
+        styles[`pad_${padding}`],
+        styles[`radius_${radius}`],
+        className
+      )}
       {...props}
     >
       {children}
