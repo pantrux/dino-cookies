@@ -7,6 +7,10 @@ Este documento es el **contrato de trabajo** para el rediseño del sitio. La ide
 - Mantener implementación **compatible con Next.js App Router + CSS Modules**.
 - Evitar deuda visual: todo cambio debe quedar alineado a tokens/escala.
 
+## Plan persistente (no improvisar)
+- Roadmap hacia MVP por PR: `docs/redesign/MVP_PLAN.md`
+- Regla: cualquier cambio de alcance/orden se hace actualizando ese plan en un PR dedicado.
+
 ## Skills (obligatorias) y para qué se usan
 
 ### 1) `ui-design-review` (Auditoría visual)
