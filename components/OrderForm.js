@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import styles from './OrderForm.module.css';
 import Button from './ui/Button';
+import Field from './ui/Field';
+import { Input, Select, Textarea } from './ui/Input';
 
 const COOKIE_TYPES = [
     "Trufa de Chocolate",
@@ -58,45 +60,38 @@ export default function OrderForm() {
 
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.row}>
-                            <div className={styles.group}>
-                                <label htmlFor="firstName" className={styles.label}>Nombre</label>
-                                <input type="text" id="firstName" name="firstName" required className={styles.input} placeholder="Juan" />
-                            </div>
-                            <div className={styles.group}>
-                                <label htmlFor="lastName" className={styles.label}>Apellido</label>
-                                <input type="text" id="lastName" name="lastName" required className={styles.input} placeholder="Pérez" />
-                            </div>
+                            <Field label="Nombre" className={styles.group}>
+                                <Input type="text" id="firstName" name="firstName" required placeholder="Juan" />
+                            </Field>
+                            <Field label="Apellido" className={styles.group}>
+                                <Input type="text" id="lastName" name="lastName" required placeholder="Pérez" />
+                            </Field>
                         </div>
 
-                        <div className={styles.group}>
-                            <label htmlFor="email" className={styles.label}>Correo Electrónico</label>
-                            <input type="email" id="email" name="email" required className={styles.input} placeholder="juan.perez@ejemplo.com" />
-                        </div>
+                        <Field label="Correo Electrónico" className={styles.group}>
+                            <Input type="email" id="email" name="email" required placeholder="juan.perez@ejemplo.com" />
+                        </Field>
 
                         <div className={styles.row}>
-                            <div className={styles.group}>
-                                <label htmlFor="phone" className={styles.label}>Teléfono</label>
-                                <input type="tel" id="phone" name="phone" required className={styles.input} placeholder="+56 9 1234 5678" />
-                            </div>
-                            <div className={styles.group}>
-                                <label htmlFor="quantity" className={styles.label}>Cantidad (Docenas)</label>
-                                <input type="number" id="quantity" name="quantity" min="1" defaultValue="1" required className={styles.input} />
-                            </div>
+                            <Field label="Teléfono" className={styles.group}>
+                                <Input type="tel" id="phone" name="phone" required placeholder="+56 9 1234 5678" />
+                            </Field>
+                            <Field label="Cantidad (Docenas)" className={styles.group}>
+                                <Input type="number" id="quantity" name="quantity" min="1" defaultValue="1" required />
+                            </Field>
                         </div>
 
-                        <div className={styles.group}>
-                            <label htmlFor="type" className={styles.label}>Tipo de Galleta</label>
-                            <select id="type" name="type" className={styles.select}>
+                        <Field label="Tipo de Galleta" className={styles.group}>
+                            <Select id="type" name="type">
                                 {COOKIE_TYPES.map(type => (
                                     <option key={type} value={type}>{type}</option>
                                 ))}
-                            </select>
-                        </div>
+                            </Select>
+                        </Field>
 
-                        <div className={styles.group}>
-                            <label htmlFor="address" className={styles.label}>Dirección de Entrega</label>
-                            <textarea id="address" name="address" required className={styles.textarea} rows="3" placeholder="Calle, Número, Comuna..."></textarea>
-                        </div>
+                        <Field label="Dirección de Entrega" className={styles.group}>
+                            <Textarea id="address" name="address" required rows="3" placeholder="Calle, Número, Comuna..." />
+                        </Field>
 
                         {error && <div className={styles.error}>{error}</div>}
                         {success && <div className={styles.success}>¡Pedido realizado con éxito! Te contactaremos pronto.</div>}
