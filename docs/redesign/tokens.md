@@ -39,7 +39,7 @@
 Nota de naming (consistencia):
 - Primitives usan `error` (`--color-error-*`).
 - En semánticos preferimos `danger` (ej. `--text-danger`, `--interactive-danger`, `--surface-danger`).
-- Se mantienen aliases `*-error` por compatibilidad/búsqueda (ej. `surface-error` apunta a `surface-danger`, y `interactive-error-*` apunta a `interactive-danger-*`).
+- Se mantienen aliases `*-error` por compatibilidad/búsqueda (ej. `surface-error` apunta a `surface-danger`, `text-error` apunta a `text-danger`, y `interactive-error-*` apunta a `interactive-danger-*`).
 
 Reglas:
 - El **magenta** (brand) se usa para CTA primario y estados importantes, no como decoración masiva.
