@@ -124,3 +124,19 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
+
+/* =====================
+ * Accessibility: consistent keyboard focus ring
+ * ===================== */
+:where(
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    [tabindex]:not([tabindex='-1'])
+  ):focus-visible {
+  outline: 3px solid var(--interactive-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
