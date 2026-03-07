@@ -30,7 +30,12 @@
 - Interactions: `--interactive-primary`, `--interactive-primary-hover`, `--interactive-primary-active`
 - Focus: `--focus-ring`
 - Disabled: `--interactive-disabled-bg`, `--interactive-disabled-text`, `--interactive-disabled-border`
-- States: `--text-danger/success/warning`, `--surface-error/success/warning`
+- States: `--text-danger/success/warning`, `--surface-danger/success/warning`
+
+Nota de naming (consistencia):
+- Primitives usan `error` (`--color-error-*`).
+- En semánticos preferimos `danger` (ej. `--text-danger`, `--interactive-danger`, `--surface-danger`).
+- Se mantienen aliases `*-error` por compatibilidad/búsqueda.
 
 Reglas:
 - El **magenta** (brand) se usa para CTA primario y estados importantes, no como decoración masiva.
@@ -80,7 +85,8 @@ Declarada en `app/globals.css`:
 - `--line-height-tight: 1.15`
 - `--line-height-heading: 1.2`
 - `--line-height-snug: 1.25`
-- `--line-height-small: 1.4`
+- `--line-height-normal: 1.4` (preferido)
+- `--line-height-small: 1.4` (alias)
 - `--line-height-body: 1.5`
 - `--line-height-relaxed: 1.6`
 

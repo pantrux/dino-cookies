@@ -43,6 +43,7 @@
   --surface-muted: var(--color-neutral-100);
 
   --surface-error: var(--color-error-50);
+  --surface-danger: var(--surface-error); /* prefer 'danger' in semantic layer */
   --surface-success: var(--color-success-50);
   --surface-warning: var(--color-warning-50);
 
@@ -52,6 +53,7 @@
   --text-inverse: var(--color-white);
 
   --text-danger: var(--color-error-600);
+  --text-error: var(--text-danger); /* alias */
   --text-success: var(--color-success-700);
   --text-warning: var(--color-warning-700);
 
@@ -66,6 +68,7 @@
   --interactive-primary-active: var(--color-brand-700);
 
   --interactive-danger: var(--color-error-600);
+  --interactive-error: var(--interactive-danger); /* alias */
   --interactive-success: var(--color-success-700);
   --interactive-warning: var(--color-warning-700);
 
@@ -111,7 +114,8 @@
   --line-height-tight: 1.15;
   --line-height-heading: 1.2;
   --line-height-snug: 1.25;
-  --line-height-small: 1.4;
+  --line-height-normal: 1.4;
+  --line-height-small: var(--line-height-normal); /* alias (back-compat) */
   --line-height-body: 1.5;
   --line-height-relaxed: 1.6;
 
