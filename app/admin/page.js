@@ -52,7 +52,7 @@ export default function AdminDashboard() {
                                         </td>
                                         <td>
                                             {order.phone}<br />
-                                            <span style={{ fontSize: '0.85rem', color: '#666' }}>{order.email}</span>
+                                            <span className={styles.email}>{order.email}</span>
                                         </td>
                                         <td className={styles.address}>{order.address}</td>
                                         <td><span className={styles.status}>{order.status}</span></td>
