@@ -54,7 +54,7 @@ export default function OrderForm() {
 
     return (
         <section id="order" className={styles.section}>
-            <Container as="div" className={styles.container} size="sm">
+            <Container className={styles.container} size="sm">
                 <Card padding="lg">
                     <div className={styles.header}>
                         <h2 className={styles.title}>¿Listo para disfrutar?</h2>

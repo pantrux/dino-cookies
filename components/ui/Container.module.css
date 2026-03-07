@@ -5,11 +5,11 @@
 }
 
 .size_sm {
-  max-width: 800px;
+  max-width: var(--container-sm);
 }
 
 .size_md {
-  max-width: 1000px;
+  max-width: var(--container-md);
 }
 
 .size_lg {

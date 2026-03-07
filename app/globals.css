@@ -168,6 +168,8 @@
   --card-shadow: var(--shadow-md);
 
   /* Layout */
+  --container-sm: 800px;
+  --container-md: 1000px;
   --container-max: 1200px;
 
   /* =====================
