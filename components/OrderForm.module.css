@@ -52,34 +52,7 @@
 }
 
 .group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.label {
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
-  font-size: var(--font-size-sm);
-}
-
-.input,
-.select,
-.textarea {
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-md);
-  transition: border-color 0.2s;
-  font-family: inherit;
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-  outline: 2px solid var(--interactive-primary);
-  outline-offset: 2px;
-  border-color: var(--interactive-primary);
+  /* wrapper class: mantiene consistencia con layout de formulario */
 }
 
 .submit {

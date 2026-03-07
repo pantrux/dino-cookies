@@ -1,0 +1,51 @@
+.control {
+  width: 100%;
+  min-height: var(--input-height);
+  padding: var(--control-padding-y) var(--control-padding-x);
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-control);
+
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background: var(--surface-page);
+
+  font-family: inherit;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.control::placeholder {
+  color: var(--text-muted);
+}
+
+.control:hover {
+  border-color: var(--border-default);
+}
+
+.control:focus {
+  border-color: var(--interactive-primary);
+}
+
+.control:disabled {
+  background: var(--interactive-disabled-bg);
+  border-color: var(--interactive-disabled-border);
+  color: var(--interactive-disabled-text);
+  cursor: not-allowed;
+}
+
+.textarea {
+  min-height: calc(var(--input-height) * 2);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  resize: vertical;
+}
+
+/* Error state (opt-in via class) */
+.error {
+  border-color: var(--interactive-danger);
+}
+
+.error:focus {
+  border-color: var(--interactive-danger);
+}

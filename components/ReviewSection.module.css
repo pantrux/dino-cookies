@@ -76,11 +76,4 @@
   gap: var(--space-4);
 }
 
-.input,
-.textarea {
-  padding: var(--space-3);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  width: 100%;
-}
 
