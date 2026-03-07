@@ -1,4 +1,5 @@
 import { chromium } from 'playwright';
+import fs from 'node:fs/promises';
 
 const BASE = process.env.BASE_URL || 'https://dino-cookies.pages.dev';
 const OUT_DIR = process.env.OUT_DIR || 'docs/redesign/audits/2026-03-07-prod-admin/screenshots';
@@ -18,26 +19,32 @@ function joinUrl(base, path) {
   return base.replace(/\/$/, '') + path;
 }
 
+await fs.mkdir(OUT_DIR, { recursive: true });
+
 const browser = await chromium.launch();
-const context = await browser.newContext();
+let context;
 
-for (const pageDef of PAGES) {
-  for (const vp of VIEWPORTS) {
-    const page = await context.newPage();
-    await page.setViewportSize({ width: vp.width, height: vp.height });
+try {
+  context = await browser.newContext();
 
-    const url = joinUrl(BASE, pageDef.path);
-    const outPath = `${OUT_DIR}/${pageDef.key}-${vp.key}.png`;
+  for (const pageDef of PAGES) {
+    for (const vp of VIEWPORTS) {
+      const page = await context.newPage();
+      await page.setViewportSize({ width: vp.width, height: vp.height });
 
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
-    // buffer for layout stabilization
-    await page.waitForTimeout(750);
+      const url = joinUrl(BASE, pageDef.path);
+      const outPath = `${OUT_DIR}/${pageDef.key}-${vp.key}.png`;
 
-    await page.screenshot({ path: outPath, fullPage: true });
-    console.log(`${outPath}  <=  ${url}`);
-    await page.close();
+      await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
+      // buffer for layout stabilization
+      await page.waitForTimeout(750);
+
+      await page.screenshot({ path: outPath, fullPage: true });
+      console.log(`${outPath}  <=  ${url}`);
+      await page.close();
+    }
   }
+} finally {
+  if (context) await context.close().catch(() => {});
+  await browser.close().catch(() => {});
 }
-
-await context.close();
-await browser.close();
