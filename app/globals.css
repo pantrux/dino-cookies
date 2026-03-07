@@ -24,12 +24,16 @@
   /* Status */
   --color-error-50: #fef2f2;
   --color-error-600: #b91c1c;
+  --color-error-700: #991b1b;
+  --color-error-800: #7f1d1d;
   --color-success-50: #f0fdf4;
   --color-success-600: #16a34a;
   --color-success-700: #15803d;
+  --color-success-800: #166534;
   --color-warning-50: #fffbeb;
   --color-warning-600: #d97706;
   --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
 
   /* Accent (used sparingly) */
   --color-accent-500: #ffc107;
@@ -42,8 +46,8 @@
   --surface-subtle: var(--color-neutral-50);
   --surface-muted: var(--color-neutral-100);
 
-  --surface-error: var(--color-error-50);
-  --surface-danger: var(--surface-error); /* prefer 'danger' in semantic layer */
+  --surface-danger: var(--color-error-50);
+  --surface-error: var(--surface-danger); /* alias (back-compat) */
   --surface-success: var(--color-success-50);
   --surface-warning: var(--color-warning-50);
 
@@ -68,9 +72,17 @@
   --interactive-primary-active: var(--color-brand-700);
 
   --interactive-danger: var(--color-error-600);
+  --interactive-danger-hover: var(--color-error-700);
+  --interactive-danger-active: var(--color-error-800);
   --interactive-error: var(--interactive-danger); /* alias */
+
   --interactive-success: var(--color-success-700);
+  --interactive-success-hover: var(--color-success-800);
+  --interactive-success-active: var(--color-success-800);
+
   --interactive-warning: var(--color-warning-700);
+  --interactive-warning-hover: var(--color-warning-800);
+  --interactive-warning-active: var(--color-warning-800);
 
   /* Focus ring (visible): mantener sólido para contraste (WCAG 1.4.11) */
   --focus-ring: var(--interactive-primary);

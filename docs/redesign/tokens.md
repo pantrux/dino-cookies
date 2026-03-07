@@ -31,11 +31,15 @@
 - Focus: `--focus-ring`
 - Disabled: `--interactive-disabled-bg`, `--interactive-disabled-text`, `--interactive-disabled-border`
 - States: `--text-danger/success/warning`, `--surface-danger/success/warning`
+- Interactive (states):
+  - `--interactive-danger` + `--interactive-danger-hover/active`
+  - `--interactive-success` + `--interactive-success-hover/active`
+  - `--interactive-warning` + `--interactive-warning-hover/active`
 
 Nota de naming (consistencia):
 - Primitives usan `error` (`--color-error-*`).
 - En semánticos preferimos `danger` (ej. `--text-danger`, `--interactive-danger`, `--surface-danger`).
-- Se mantienen aliases `*-error` por compatibilidad/búsqueda.
+- Se mantienen aliases `*-error` por compatibilidad/búsqueda (ej. `surface-error` apunta a `surface-danger`).
 
 Reglas:
 - El **magenta** (brand) se usa para CTA primario y estados importantes, no como decoración masiva.
