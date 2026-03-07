@@ -67,8 +67,8 @@
   --interactive-success: var(--color-success-600);
   --interactive-warning: var(--color-warning-600);
 
-  /* Focus ring (visible) */
-  --focus-ring: rgba(233, 30, 99, 0.45);
+  /* Focus ring (visible): mantener sólido para contraste (WCAG 1.4.11) */
+  --focus-ring: var(--interactive-primary);
 
   /* Disabled */
   --interactive-disabled-bg: var(--color-neutral-200);
@@ -109,9 +109,9 @@
   --line-height-tight: 1.15;
   --line-height-heading: 1.2;
   --line-height-snug: 1.25;
+  --line-height-small: 1.4;
   --line-height-body: 1.5;
   --line-height-relaxed: 1.6;
-  --line-height-small: 1.4;
 
   /* Font weights */
   --font-weight-normal: 400;
