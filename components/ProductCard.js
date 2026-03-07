@@ -11,7 +11,6 @@ export default function ProductCard({ product }) {
                     fill
                     className={styles.image}
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    priority={false}
                 />
             </div>
             <div className={styles.info}>
