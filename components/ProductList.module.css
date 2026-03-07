@@ -1,49 +1,55 @@
 .section {
-    padding: 4rem 1.5rem;
-    background-color: white;
+  padding: var(--space-16) var(--space-6);
+  background-color: var(--surface-page);
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .title {
-    font-size: 2rem;
-    color: var(--primary-red);
-    margin-bottom: 2rem;
-    text-align: center;
+  font-size: var(--font-size-3xl);
+  color: var(--interactive-primary);
+  margin-bottom: var(--space-8);
+  text-align: center;
 }
 
 .marqueeContainer {
-    overflow: hidden;
-    width: 100%;
-    padding: 2rem 0;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  overflow: hidden;
+  width: 100%;
+  padding: var(--space-8) 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }
 
 .marqueeTrack {
-    display: flex;
-    gap: 2rem;
-    width: max-content;
-    animation: scroll 30s linear infinite;
+  display: flex;
+  gap: var(--space-8);
+  width: max-content;
+  animation: scroll 30s linear infinite;
 }
 
 .slide {
-    flex: 0 0 auto;
-    width: 280px;
+  flex: 0 0 auto;
+  width: 280px;
 }
 
 .marqueeTrack:hover {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    100% {
-        transform: translateX(-50%);
-    }
+  100% {
+    transform: translateX(-50%);
+  }
 }
