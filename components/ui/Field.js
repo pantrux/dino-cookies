@@ -26,10 +26,17 @@ export default function Field({
   try {
     const onlyChild = Children.only(children);
     if (isValidElement(onlyChild)) {
-      control = cloneElement(onlyChild, {
-        'aria-describedby': describedBy,
-        'aria-invalid': error ? 'true' : undefined,
-      });
+      const existingDescribedBy = onlyChild.props['aria-describedby'];
+      const mergedDescribedBy = [existingDescribedBy, describedBy]
+        .filter(Boolean)
+        .join(' ') || undefined;
+
+      const a11yProps = {
+        ...(mergedDescribedBy ? { 'aria-describedby': mergedDescribedBy } : {}),
+        ...(error ? { 'aria-invalid': 'true' } : {}),
+      };
+
+      control = cloneElement(onlyChild, a11yProps);
     }
   } catch {
     // If children is not a single element, leave it as-is.
