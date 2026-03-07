@@ -27,33 +27,32 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-2);
 }
 
-.link {
-  font-weight: 400;
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--control-height);
+  padding: 0 var(--space-3);
+
+  font-weight: var(--font-weight-normal);
   color: var(--text-muted);
   font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: color 0.2s;
+
+  transition: color 150ms ease, background-color 150ms ease;
+  border-radius: var(--radius-md);
 }
 
-.link:hover {
+.navLink:hover {
   color: var(--interactive-primary);
+  background: var(--surface-muted);
 }
 
 .cta {
-  background-color: transparent;
-  color: var(--text-muted);
-  padding: 0;
-  font-weight: 400;
-  font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.cta:hover {
-  color: var(--interactive-primary);
-  background-color: transparent;
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import styles from './OrderForm.module.css';
+import Button from './ui/Button';
 
 const COOKIE_TYPES = [
     "Trufa de Chocolate",
@@ -100,9 +101,9 @@ export default function OrderForm() {
                         {error && <div className={styles.error}>{error}</div>}
                         {success && <div className={styles.success}>¡Pedido realizado con éxito! Te contactaremos pronto.</div>}
 
-                        <button type="submit" className={styles.button} disabled={loading}>
+                        <Button type="submit" fullWidth disabled={loading} className={styles.submit}>
                             {loading ? 'Enviando...' : 'Realizar Pedido'}
-                        </button>
+                        </Button>
                     </form>
                 </div>
             </div>
