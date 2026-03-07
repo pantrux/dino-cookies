@@ -30,10 +30,12 @@
   --color-success-600: #16a34a;
   --color-success-700: #15803d;
   --color-success-800: #166534;
+  --color-success-900: #14532d;
   --color-warning-50: #fffbeb;
   --color-warning-600: #d97706;
   --color-warning-700: #b45309;
   --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
 
   /* Accent (used sparingly) */
   --color-accent-500: #ffc107;
@@ -78,11 +80,11 @@
 
   --interactive-success: var(--color-success-700);
   --interactive-success-hover: var(--color-success-800);
-  --interactive-success-active: var(--color-success-800);
+  --interactive-success-active: var(--color-success-900);
 
   --interactive-warning: var(--color-warning-700);
   --interactive-warning-hover: var(--color-warning-800);
-  --interactive-warning-active: var(--color-warning-800);
+  --interactive-warning-active: var(--color-warning-900);
 
   /* Focus ring (visible): mantener sólido para contraste (WCAG 1.4.11) */
   --focus-ring: var(--interactive-primary);
