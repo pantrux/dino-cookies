@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import styles from './ProductCard.module.css';
+import Card from './ui/Card';
 
 export default function ProductCard({ product }) {
     return (
-        <div className={styles.card}>
+        <Card className={styles.card} padding="none" surface="elevated" shadow="none" border="none">
             <div className={styles.imagePlaceholder}>
                 <Image
                     src={product.image}
@@ -19,6 +20,6 @@ export default function ProductCard({ product }) {
                 <div className={styles.rating}>★★★★★ 5.0</div>
                 <button className={styles.button}>Agregar</button>
             </div>
-        </div>
+        </Card>
     );
 }
