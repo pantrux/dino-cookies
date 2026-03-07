@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styles from './ReviewSection.module.css';
 import Button from './ui/Button';
+import Card from './ui/Card';
 import Field from './ui/Field';
 import { Input, Textarea } from './ui/Input';
 
@@ -32,13 +33,13 @@ export default function ReviewSection() {
                 <h2 className={styles.title}>Amor de Clientes</h2>
                 <div className={styles.grid}>
                     {reviews.map(review => (
-                        <div key={review.id} className={styles.card}>
+                        <Card key={review.id} className={styles.card} padding="sm">
                             <div className={styles.avatar}>{review.user.charAt(0)}</div>
                             <div>
                                 <h4 className={styles.username}>{review.user}</h4>
                                 <p className={styles.text}>{review.text}</p>
                             </div>
-                        </div>
+                        </Card>
                     ))}
                 </div>
 
@@ -53,7 +54,7 @@ export default function ReviewSection() {
                 </div>
 
                 {showForm && (
-                    <form className={styles.form} onSubmit={handleSubmit}>
+                    <Card as="form" className={styles.form} onSubmit={handleSubmit}>
                         <Field label="Tu Nombre" htmlFor="reviewName">
                             <Input id="reviewName" name="name" placeholder="Tu Nombre" required />
                         </Field>
@@ -65,7 +66,7 @@ export default function ReviewSection() {
                             <input type="file" accept="image/*" className={styles.fileInput} />
                         </div>
                         <Button type="submit" fullWidth>Publicar Reseña</Button>
-                    </form>
+                    </Card>
                 )}
             </div>
         </section>

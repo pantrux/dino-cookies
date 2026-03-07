@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styles from './OrderForm.module.css';
 import Button from './ui/Button';
+import Card from './ui/Card';
 import Field from './ui/Field';
 import { Input, Select, Textarea } from './ui/Input';
 
@@ -52,7 +53,7 @@ export default function OrderForm() {
     return (
         <section id="order" className={styles.section}>
             <div className={styles.container}>
-                <div className={styles.wrapper}>
+                <Card className={styles.wrapper}>
                     <div className={styles.header}>
                         <h2 className={styles.title}>¿Listo para disfrutar?</h2>
                         <p className={styles.subtitle}>Completa el formulario para realizar tu pedido.</p>
@@ -100,7 +101,7 @@ export default function OrderForm() {
                             {loading ? 'Enviando...' : 'Realizar Pedido'}
                         </Button>
                     </form>
-                </div>
+                </Card>
             </div>
         </section>
     );

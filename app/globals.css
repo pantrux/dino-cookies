@@ -162,6 +162,12 @@
   --button-height: var(--control-height);
   --input-height: var(--control-height);
 
+  /* Cards / panels */
+  --card-padding: var(--space-8);
+  --card-radius: var(--radius-md);
+  --card-border: 1px solid var(--border-subtle);
+  --card-shadow: var(--shadow-md);
+
   /* =====================
    * Back-compat tokens (used in existing components)
    * ===================== */
