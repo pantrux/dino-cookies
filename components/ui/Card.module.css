@@ -1,6 +1,21 @@
 .base {
   border: var(--card-border);
+}
+
+.shadow_none {
+  box-shadow: none;
+}
+
+.shadow_sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow_md {
   box-shadow: var(--card-shadow);
+}
+
+.shadow_lg {
+  box-shadow: var(--shadow-lg);
 }
 
 .radius_sm {
@@ -33,4 +48,8 @@
 
 .pad_md {
   padding: var(--card-padding);
+}
+
+.pad_lg {
+  padding: var(--space-12);
 }

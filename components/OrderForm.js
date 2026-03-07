@@ -53,7 +53,7 @@ export default function OrderForm() {
     return (
         <section id="order" className={styles.section}>
             <div className={styles.container}>
-                <Card className={styles.wrapper} padding="none">
+                <Card className={styles.wrapper} padding="lg">
                     <div className={styles.header}>
                         <h2 className={styles.title}>¿Listo para disfrutar?</h2>
                         <p className={styles.subtitle}>Completa el formulario para realizar tu pedido.</p>

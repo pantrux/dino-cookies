@@ -7,8 +7,9 @@ function cx(...classes) {
 /**
  * Card
  * - surface: elevated | subtle | muted
- * - padding: none | sm | md (default)
+ * - padding: none | sm | md (default) | lg
  * - radius: sm | md (default)
+ * - shadow: none | sm | md (default) | lg
  */
 export default function Card({
   as: Component = 'div',
@@ -16,6 +17,7 @@ export default function Card({
   surface = 'elevated',
   padding = 'md',
   radius = 'md',
+  shadow = 'md',
   className,
   ...props
 }) {
@@ -26,6 +28,7 @@ export default function Card({
         styles[`surface_${surface}`],
         styles[`pad_${padding}`],
         styles[`radius_${radius}`],
+        styles[`shadow_${shadow}`],
         className
       )}
       {...props}

@@ -11,7 +11,7 @@
 }
 
 .wrapper {
-  padding: var(--space-12);
+  /* Card handles padding */
 }
 
 .header {
