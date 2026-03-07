@@ -36,6 +36,14 @@ export default function Button({
         className={classes}
         aria-disabled={disabled ? 'true' : undefined}
         tabIndex={disabled ? -1 : undefined}
+        onClick={(e) => {
+          if (disabled) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+          }
+          props.onClick?.(e);
+        }}
         {...props}
       >
         {children}

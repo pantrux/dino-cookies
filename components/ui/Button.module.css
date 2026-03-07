@@ -7,7 +7,7 @@
   border-radius: var(--radius-md);
   border: 1px solid transparent;
 
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-snug);
 
@@ -19,6 +19,11 @@
     border-color 150ms ease,
     color 150ms ease,
     transform 50ms ease;
+}
+
+.base:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .fullWidth {
