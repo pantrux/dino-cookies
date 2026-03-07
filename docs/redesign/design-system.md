@@ -67,6 +67,11 @@
 - **Body:** 16 / LH 1.5–1.6
 - **Small:** 14 / LH 1.4
 
+**Regla de implementación (importante):**
+- Estos valores son la **escala objetivo**.
+- Antes de cualquier PR de implementación (Fase C), esta escala debe estar representada como **tokens tipográficos** en `docs/redesign/tokens.md` y `app/globals.css` (planificado en **PR-B1**).
+- En código: **no hardcodear px/LH**; consumir únicamente tokens (`--font-size-*`, `--line-height-*`).
+
 ### Escala recomendada (mobile)
 - **H1:** 32–36
 - **H2:** 24–28
