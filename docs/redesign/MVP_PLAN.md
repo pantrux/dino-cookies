@@ -27,7 +27,8 @@
 
 ## Cómo leer este plan
 - **PR #{TBD}**: el número se asigna al crear el PR real.
-- Cada PR declara: objetivo, scope, entregables, verificación y riesgos.
+- Cada PR declara (explícitamente): **Objetivo**, **Entregables**, **Verificación** y **Riesgos**.
+- Si una sección no aplica (p. ej. PR solo docs), se indica como **N/A**.
 
 ---
 
@@ -52,6 +53,12 @@
 **Criterio de aceptación**
 - Reporte con issues accionables (cada issue mapea a PRs del plan).
 
+**Verificación**
+- N/A (solo documentación)
+
+**Riesgos**
+- Bajo: riesgo principal es scope creep (mitigar manteniendo el top-issues priorizado y mapeado a PRs)
+
 ---
 
 ### PR #{TBD-A2}: Dirección visual y sistema base (variantes + decisiones)
@@ -70,6 +77,12 @@
 
 **Criterio de aceptación**
 - Decisiones de estilo “cerradas” para evitar churn en PRs de implementación.
+
+**Verificación**
+- N/A (solo documentación)
+
+**Riesgos**
+- Medio: decisiones demasiado vagas generan reinterpretaciones en implementación (mitigar: ejemplos + anti-patterns explícitos)
 
 ---
 
@@ -121,6 +134,14 @@
 **Criterio de aceptación**
 - Botones de Home y Admin se ven coherentes y “de producto”.
 
+**Verificación**
+- Storybook / render manual (si aplica) + verificación responsive 375/768/1024/1440
+- Navegación por teclado (tab/shift+tab) + focus visible
+- `npm run build`
+
+**Riesgos**
+- Medio: cambios de estilos pueden romper layouts existentes (mitigar: cambios acotados + validar Home/Admin)
+
 ---
 
 ### PR #{TBD-C2}: Inputs + Form (OrderForm / Admin forms)
@@ -134,7 +155,12 @@
 - Estados: default/hover/focus/error/disabled.
 
 **Verificación**
-- Responsive + navegación teclado.
+- Responsive + navegación teclado
+- Estados: default/hover/focus/error/disabled
+- `npm run build`
+
+**Riesgos**
+- Medio: inconsistencias entre formularios Home/Admin (mitigar: normalizar estilos base y tokens)
 
 ---
 
@@ -148,6 +174,14 @@
 - Ajustes de layout/spacing usando escala.
 - Mejoras de tipografía (tamaños/line-height) según design system.
 
+**Verificación**
+- Responsive 375/768/1024/1440 + check de jerarquía (H1/H2) y CTA
+- Focus visible en nav/CTA + targets >= 44x44 donde aplique
+- `npm run build`
+
+**Riesgos**
+- Medio: cambios en header pueden impactar navegación y CLS (mitigar: validar layout stable y spacing)
+
 ---
 
 ### PR #{TBD-C4}: ProductCard + ProductList (grid, densidad, consistencia)
@@ -160,6 +194,14 @@
 - Ajuste de layout grid responsivo.
 - Tokens para card (si aplica) + sombras/radius consistentes.
 
+**Verificación**
+- Grid responde bien en 375/768/1024/1440 (sin overflow)
+- Hover/focus sin layout shift
+- `npm run build`
+
+**Riesgos**
+- Bajo/Medio: riesgo de densidad/spacing inconsistente si se tocan múltiples cards (mitigar: tokens + revisión comparativa)
+
 ---
 
 ### PR #{TBD-C5}: Social proof (Reviews) + Footer (acabado y confianza)
@@ -171,6 +213,13 @@
 **Entregables**
 - Ajustes de composición + typography.
 - Footer sin ruido visual + buen contraste.
+
+**Verificación**
+- Responsive 375/768/1024/1440 + contraste AA cuando aplique
+- `npm run build`
+
+**Riesgos**
+- Bajo: riesgo principal es degradar legibilidad/contraste (mitigar: checklist a11y base)
 
 ---
 
@@ -190,6 +239,9 @@
 - `npm run build`
 - Lighthouse (opcional) o checklist manual de no-regresiones.
 
+**Riesgos**
+- Medio: cambios de imágenes pueden afectar layout/CLS o calidad visual (mitigar: validar dimensiones y breakpoints)
+
 ---
 
 ### PR #{TBD-D2}: QA visual final + checklist DoD MVP
@@ -204,6 +256,12 @@
   - checklist DoD completa
   - lista de “post-MVP nice-to-have”
 
+**Verificación**
+- N/A (solo documentación + evidencia)
+
+**Riesgos**
+- Bajo: si falta evidencia por breakpoint, se invalida el “final QA” (mitigar: checklist estricta y screenshots obligatorios)
+
 ---
 
 ## Fase E (condicional) — Producto/Copy/Journey
@@ -216,6 +274,13 @@
 
 **Entregables**
 - Documento de decisiones (en el PR) + cambios acotados.
+
+**Verificación**
+- Checklist de no-regresión en conversión (manual)
+- `npm run build`
+
+**Riesgos**
+- Medio/Alto: cambios de copy/journey pueden afectar conversión (mitigar: cambios pequeños + medir/observar si hay analytics)
 
 ---
 
