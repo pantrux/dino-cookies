@@ -3,7 +3,9 @@ import { useState } from 'react';
 import styles from './ReviewSection.module.css';
 import Button from './ui/Button';
 import Card from './ui/Card';
+import Container from './ui/Container';
 import Field from './ui/Field';
+import Stack from './ui/Stack';
 import { Input, Textarea } from './ui/Input';
 
 const MOCK_REVIEWS = [
@@ -29,7 +31,7 @@ export default function ReviewSection() {
 
     return (
         <section className={styles.section}>
-            <div className={styles.container}>
+            <Container className={styles.container} size="md">
                 <h2 className={styles.title}>Amor de Clientes</h2>
                 <div className={styles.grid}>
                     {reviews.map(review => (
@@ -55,6 +57,7 @@ export default function ReviewSection() {
 
                 {showForm && (
                     <Card as="form" className={styles.form} radius="sm" shadow="none" onSubmit={handleSubmit}>
+                        <Stack gap={4}>
                         <Field label="Tu Nombre" htmlFor="reviewName">
                             <Input id="reviewName" name="name" placeholder="Tu Nombre" required />
                         </Field>
@@ -66,9 +69,10 @@ export default function ReviewSection() {
                             <input type="file" accept="image/*" className={styles.fileInput} />
                         </div>
                         <Button type="submit" fullWidth>Publicar Reseña</Button>
+                        </Stack>
                     </Card>
                 )}
-            </div>
+            </Container>
         </section>
     );
 }

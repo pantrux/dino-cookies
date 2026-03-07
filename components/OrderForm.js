@@ -3,7 +3,9 @@ import { useState } from 'react';
 import styles from './OrderForm.module.css';
 import Button from './ui/Button';
 import Card from './ui/Card';
+import Container from './ui/Container';
 import Field from './ui/Field';
+import Stack from './ui/Stack';
 import { Input, Select, Textarea } from './ui/Input';
 
 const COOKIE_TYPES = [
@@ -52,14 +54,14 @@ export default function OrderForm() {
 
     return (
         <section id="order" className={styles.section}>
-            <div className={styles.container}>
+            <Container as="div" className={styles.container} size="sm">
                 <Card padding="lg">
                     <div className={styles.header}>
                         <h2 className={styles.title}>¿Listo para disfrutar?</h2>
                         <p className={styles.subtitle}>Completa el formulario para realizar tu pedido.</p>
                     </div>
 
-                    <form className={styles.form} onSubmit={handleSubmit}>
+                    <Stack as="form" className={styles.form} gap={6} onSubmit={handleSubmit}>
                         <div className={styles.row}>
                             <Field label="Nombre" htmlFor="firstName" className={styles.group}>
                                 <Input type="text" id="firstName" name="firstName" required placeholder="Juan" />
@@ -100,9 +102,9 @@ export default function OrderForm() {
                         <Button type="submit" fullWidth disabled={loading} className={styles.submit}>
                             {loading ? 'Enviando...' : 'Realizar Pedido'}
                         </Button>
-                    </form>
+                    </Stack>
                 </Card>
-            </div>
+            </Container>
         </section>
     );
 }

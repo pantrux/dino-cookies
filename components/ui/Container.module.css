@@ -1,0 +1,17 @@
+.base {
+  margin: 0 auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.size_sm {
+  max-width: 800px;
+}
+
+.size_md {
+  max-width: 1000px;
+}
+
+.size_lg {
+  max-width: var(--container-max);
+}
