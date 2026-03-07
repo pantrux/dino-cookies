@@ -26,8 +26,10 @@
   --color-error-600: #b91c1c;
   --color-success-50: #f0fdf4;
   --color-success-600: #16a34a;
+  --color-success-700: #15803d;
   --color-warning-50: #fffbeb;
   --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
 
   /* Accent (used sparingly) */
   --color-accent-500: #ffc107;
@@ -50,8 +52,8 @@
   --text-inverse: var(--color-white);
 
   --text-danger: var(--color-error-600);
-  --text-success: var(--color-success-600);
-  --text-warning: var(--color-warning-600);
+  --text-success: var(--color-success-700);
+  --text-warning: var(--color-warning-700);
 
   --border-subtle: var(--color-neutral-200);
   --border-default: var(--color-neutral-300);
@@ -64,8 +66,8 @@
   --interactive-primary-active: var(--color-brand-700);
 
   --interactive-danger: var(--color-error-600);
-  --interactive-success: var(--color-success-600);
-  --interactive-warning: var(--color-warning-600);
+  --interactive-success: var(--color-success-700);
+  --interactive-warning: var(--color-warning-700);
 
   /* Focus ring (visible): mantener sólido para contraste (WCAG 1.4.11) */
   --focus-ring: var(--interactive-primary);

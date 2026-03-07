@@ -20,7 +20,7 @@
 ### Primitives
 - Brand: `--color-brand-*`
 - Neutrals: `--color-neutral-*`
-- Status: `--color-error-*`, `--color-success-*`, `--color-warning-*`
+- Status: `--color-error-*`, `--color-success-*`, `--color-warning-*` (usar `700` para texto/interactive cuando aplique contraste)
 - Accent (uso acotado): `--color-accent-*`
 
 ### Semantic roles (consumir desde UI)
