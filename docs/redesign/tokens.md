@@ -90,7 +90,7 @@ Declarada en `app/globals.css`:
 - `--line-height-heading: 1.2`
 - `--line-height-snug: 1.25`
 - `--line-height-normal: 1.4` (preferido)
-- `--line-height-small: 1.4` (alias)
+- `--line-height-small` → alias de `--line-height-normal` (back-compat; no usar en código nuevo)
 - `--line-height-body: 1.5`
 - `--line-height-relaxed: 1.6`
 
