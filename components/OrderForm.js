@@ -60,28 +60,28 @@ export default function OrderForm() {
 
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.row}>
-                            <Field label="Nombre" className={styles.group}>
+                            <Field label="Nombre" htmlFor="firstName" className={styles.group}>
                                 <Input type="text" id="firstName" name="firstName" required placeholder="Juan" />
                             </Field>
-                            <Field label="Apellido" className={styles.group}>
+                            <Field label="Apellido" htmlFor="lastName" className={styles.group}>
                                 <Input type="text" id="lastName" name="lastName" required placeholder="Pérez" />
                             </Field>
                         </div>
 
-                        <Field label="Correo Electrónico" className={styles.group}>
+                        <Field label="Correo Electrónico" htmlFor="email" className={styles.group}>
                             <Input type="email" id="email" name="email" required placeholder="juan.perez@ejemplo.com" />
                         </Field>
 
                         <div className={styles.row}>
-                            <Field label="Teléfono" className={styles.group}>
+                            <Field label="Teléfono" htmlFor="phone" className={styles.group}>
                                 <Input type="tel" id="phone" name="phone" required placeholder="+56 9 1234 5678" />
                             </Field>
-                            <Field label="Cantidad (Docenas)" className={styles.group}>
+                            <Field label="Cantidad (Docenas)" htmlFor="quantity" className={styles.group}>
                                 <Input type="number" id="quantity" name="quantity" min="1" defaultValue="1" required />
                             </Field>
                         </div>
 
-                        <Field label="Tipo de Galleta" className={styles.group}>
+                        <Field label="Tipo de Galleta" htmlFor="type" className={styles.group}>
                             <Select id="type" name="type">
                                 {COOKIE_TYPES.map(type => (
                                     <option key={type} value={type}>{type}</option>
@@ -89,7 +89,7 @@ export default function OrderForm() {
                             </Select>
                         </Field>
 
-                        <Field label="Dirección de Entrega" className={styles.group}>
+                        <Field label="Dirección de Entrega" htmlFor="address" className={styles.group}>
                             <Textarea id="address" name="address" required rows="3" placeholder="Calle, Número, Comuna..." />
                         </Field>
 

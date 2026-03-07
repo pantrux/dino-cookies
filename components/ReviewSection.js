@@ -54,11 +54,11 @@ export default function ReviewSection() {
 
                 {showForm && (
                     <form className={styles.form} onSubmit={handleSubmit}>
-                        <Field label="Tu Nombre">
-                            <Input name="name" placeholder="Tu Nombre" required />
+                        <Field label="Tu Nombre" htmlFor="reviewName">
+                            <Input id="reviewName" name="name" placeholder="Tu Nombre" required />
                         </Field>
-                        <Field label="Tu Reseña">
-                            <Textarea name="text" placeholder="Cuéntanos tu experiencia..." required />
+                        <Field label="Tu Reseña" htmlFor="reviewText">
+                            <Textarea id="reviewText" name="text" placeholder="Cuéntanos tu experiencia..." required />
                         </Field>
                         <div className={styles.fileUpload}>
                             <label>Subir Foto (Opcional)</label>

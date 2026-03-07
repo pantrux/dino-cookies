@@ -8,13 +8,18 @@ export default function Field({
   label,
   hint,
   error,
+  htmlFor,
   children,
   className,
   ...props
 }) {
   return (
     <div className={cx(styles.field, className)} {...props}>
-      {label ? <div className={styles.label}>{label}</div> : null}
+      {label ? (
+        <label className={styles.label} htmlFor={htmlFor}>
+          {label}
+        </label>
+      ) : null}
       {children}
       {hint ? <div className={styles.hint}>{hint}</div> : null}
       {error ? <div className={styles.error}>{error}</div> : null}
