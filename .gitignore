@@ -48,3 +48,4 @@ wrangler.toml.local
 
 # local data (old JSON storage)
 /data/
+.venv/
