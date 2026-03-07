@@ -77,7 +77,8 @@
 .input:focus,
 .select:focus,
 .textarea:focus {
-  outline: none;
+  outline: 2px solid var(--interactive-primary);
+  outline-offset: 2px;
   border-color: var(--interactive-primary);
 }
 
@@ -103,8 +104,8 @@
 }
 
 .error {
-  color: var(--interactive-primary);
-  background-color: #fff0f0;
+  color: var(--text-danger);
+  background-color: var(--surface-error);
   padding: var(--space-3);
   border-radius: var(--radius-sm);
   text-align: center;

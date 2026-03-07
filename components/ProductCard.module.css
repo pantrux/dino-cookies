@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size: var(--font-size-4xl);
   margin-bottom: var(--space-4);
   overflow: hidden;
 }
