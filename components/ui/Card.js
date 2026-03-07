@@ -8,6 +8,7 @@ function cx(...classes) {
  * Card
  * - surface: elevated | subtle | muted
  * - padding: none | sm | md (default)
+ * - radius: sm | md (default)
  */
 export default function Card({
   as: Component = 'div',
