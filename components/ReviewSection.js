@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import styles from './ReviewSection.module.css';
+import Button from './ui/Button';
 
 const MOCK_REVIEWS = [
     { id: 1, user: "Maria G.", text: "¡Las trufas de chocolate son para morirse! 😍", image: null },
@@ -40,9 +41,13 @@ export default function ReviewSection() {
                 </div>
 
                 <div className={styles.action}>
-                    <button onClick={() => setShowForm(!showForm)} className={styles.button}>
+                    <Button
+                        onClick={() => setShowForm(!showForm)}
+                        variant="outline"
+                        className={styles.toggle}
+                    >
                         {showForm ? 'Cancelar Reseña' : 'Agrega tu Dulce Reseña'}
-                    </button>
+                    </Button>
                 </div>
 
                 {showForm && (
@@ -53,7 +58,7 @@ export default function ReviewSection() {
                             <label>Subir Foto (Opcional)</label>
                             <input type="file" accept="image/*" className={styles.fileInput} />
                         </div>
-                        <button type="submit" className={styles.submitBtn}>Publicar Reseña</button>
+                        <Button type="submit" fullWidth>Publicar Reseña</Button>
                     </form>
                 )}
             </div>
