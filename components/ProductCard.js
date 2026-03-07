@@ -4,7 +4,7 @@ import Card from './ui/Card';
 
 export default function ProductCard({ product }) {
     return (
-        <Card className={styles.card} padding="none" surface="elevated">
+        <Card className={styles.card} padding="none" surface="elevated" shadow="none">
             <div className={styles.imagePlaceholder}>
                 <Image
                     src={product.image}

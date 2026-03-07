@@ -6,6 +6,7 @@ function cx(...classes) {
 
 /**
  * Card
+ * - as: div (default) | form | section | ...
  * - surface: elevated | subtle | muted
  * - padding: none | sm | md (default) | lg
  * - radius: sm | md (default)

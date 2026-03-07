@@ -27,7 +27,7 @@
 }
 
 .info {
-  padding: var(--space-4);
+  padding: 0 var(--space-4);
 }
 
 .name {
