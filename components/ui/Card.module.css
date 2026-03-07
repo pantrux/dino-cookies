@@ -1,5 +1,13 @@
 .base {
+  /* base styles */
+}
+
+.border_default {
   border: var(--card-border);
+}
+
+.border_none {
+  border: none;
 }
 
 .shadow_none {

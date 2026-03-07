@@ -11,6 +11,7 @@ function cx(...classes) {
  * - padding: none | sm | md (default) | lg
  * - radius: sm | md (default)
  * - shadow: none | sm | md (default) | lg
+ * - border: default | none
  */
 export default function Card({
   as: Component = 'div',
@@ -19,6 +20,7 @@ export default function Card({
   padding = 'md',
   radius = 'md',
   shadow = 'md',
+  border = 'default',
   className,
   ...props
 }) {
@@ -30,6 +32,7 @@ export default function Card({
         styles[`pad_${padding}`],
         styles[`radius_${radius}`],
         styles[`shadow_${shadow}`],
+        styles[`border_${border}`],
         className
       )}
       {...props}
