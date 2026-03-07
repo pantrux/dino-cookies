@@ -157,7 +157,7 @@
    * ===================== */
   --control-height: 44px;
   --control-padding-x: var(--space-4);
-  --control-padding-y: var(--space-3);
+  --control-padding-y: var(--space-2);
 
   --button-height: var(--control-height);
   --input-height: var(--control-height);
