@@ -68,8 +68,8 @@ export default function ReviewSection() {
                             <Field label="Tu Reseña" htmlFor="reviewText">
                                 <Textarea id="reviewText" name="text" placeholder="Cuéntanos tu experiencia..." required />
                             </Field>
-                            <Field label="Subir Foto (Opcional)">
-                                <FileInput accept="image/*" />
+                            <Field label="Subir Foto (Opcional)" htmlFor="reviewPhoto">
+                                <FileInput id="reviewPhoto" accept="image/*" />
                             </Field>
                             <Button type="submit" fullWidth>Publicar Reseña</Button>
                         </Stack>
