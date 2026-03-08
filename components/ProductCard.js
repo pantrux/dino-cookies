@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
     const cart = useCart();
 
     return (
-        <Card className={styles.card} padding="none" surface="transparent" shadow="none" border="none">
+        <Card className={styles.card} padding="none" surface="elevated" shadow="sm" border="default">
             <div className={styles.imagePlaceholder}>
                 <Image
                     src={product.image}
