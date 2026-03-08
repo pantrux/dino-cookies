@@ -136,6 +136,7 @@ El sitio queda con un sistema visual más consistente, mejor jerarquía de conte
 ### 5.6 Calidad técnica
 - [x] Sin estilos inline nuevos
 - [x] Cambios alineados con tokens existentes
+- [x] Build en verde (`npm run build`) sin errores en cada PR incluido en la ronda
 
 ---
 
