@@ -16,7 +16,10 @@ export default function ProductCard({ product, index = 0 }) {
     const rating = Number(product.rating ?? 5);
 
     const tilts = ['-2.2deg', '1.8deg', '-1.2deg', '2.4deg', '-1.6deg'];
+    const offsets = ['-6px', '4px', '-2px', '8px', '0px'];
+
     const tilt = tilts[index % tilts.length];
+    const offset = offsets[index % offsets.length];
 
     return (
         <Card
@@ -25,17 +28,19 @@ export default function ProductCard({ product, index = 0 }) {
             surface="elevated"
             shadow="none"
             border="none"
-            style={{ '--polaroid-tilt': tilt }}
+            style={{ '--polaroid-tilt': tilt, '--polaroid-offset-y': offset }}
         >
             <div className={styles.inner}>
-                <div className={styles.imagePlaceholder}>
-                    <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className={styles.image}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 25vw"
-                    />
+                <div className={styles.imageFrame}>
+                    <div className={styles.photo}>
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className={styles.image}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                        />
+                    </div>
                 </div>
                 <div className={styles.info}>
                     <p className={styles.tag}>Cookie</p>
