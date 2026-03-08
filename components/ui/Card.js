@@ -4,7 +4,7 @@ import { cx } from './utils';
 /**
  * Card
  * - as: div (default) | form | section | ...
- * - surface: elevated | subtle | muted
+ * - surface: elevated | subtle | muted | transparent
  * - padding: none | sm | md (default) | lg
  * - radius: sm | md (default)
  * - shadow: none | sm | md (default) | lg
