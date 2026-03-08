@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './CartDrawer.module.css';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
@@ -16,9 +17,10 @@ function formatPriceFromUnit(price) {
 }
 
 function formatPriceFromCents(cents) {
-  const n = Number(cents) / 100;
-  if (!Number.isFinite(n)) return '$0.00';
-  return `$${n.toFixed(2)}`;
+  const n = Number(cents);
+  if (!Number.isFinite(n)) return '$0';
+  if (n % 100 === 0) return `$${n / 100}`;
+  return `$${(n / 100).toFixed(2)}`;
 }
 
 export default function CartDrawer({ open, onClose }) {
@@ -96,7 +98,7 @@ export default function CartDrawer({ open, onClose }) {
 
   if (!open) return null;
 
-  return (
+  const ui = (
     <div className={styles.overlay} onClick={() => onClose?.()}>
       <div
         className={styles.panel}
@@ -210,4 +212,7 @@ export default function CartDrawer({ open, onClose }) {
       </div>
     </div>
   );
+
+  if (typeof document === 'undefined') return null;
+  return createPortal(ui, document.body);
 }
