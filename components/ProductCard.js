@@ -11,15 +11,15 @@ function getStars(rating = 5) {
     return '★'.repeat(Math.max(1, Math.min(5, rounded)));
 }
 
+const POLAROID_TILTS = ['-2.2deg', '1.8deg', '-1.2deg', '2.4deg', '-1.6deg'];
+const POLAROID_OFFSETS_Y = ['-6px', '4px', '-2px', '8px', '0px'];
+
 export default function ProductCard({ product, index = 0 }) {
     const cart = useCart();
     const rating = Number(product.rating ?? 5);
 
-    const tilts = ['-2.2deg', '1.8deg', '-1.2deg', '2.4deg', '-1.6deg'];
-    const offsets = ['-6px', '4px', '-2px', '8px', '0px'];
-
-    const tilt = tilts[index % tilts.length];
-    const offset = offsets[index % offsets.length];
+    const tilt = POLAROID_TILTS[index % POLAROID_TILTS.length];
+    const offset = POLAROID_OFFSETS_Y[index % POLAROID_OFFSETS_Y.length];
 
     return (
         <Card
