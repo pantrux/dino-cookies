@@ -23,8 +23,10 @@
   border-color: var(--border-default);
 }
 
-.control:focus {
+.control:focus-visible {
   border-color: var(--interactive-primary);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .control:disabled {
@@ -46,6 +48,8 @@
   border-color: var(--interactive-danger);
 }
 
-.error:focus {
+.error:focus-visible {
   border-color: var(--interactive-danger);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
 }
