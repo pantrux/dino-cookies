@@ -1,5 +1,6 @@
 .base {
   width: 100%;
+  scroll-margin-top: calc(var(--space-16) + var(--space-6));
 }
 
 .surface_page {

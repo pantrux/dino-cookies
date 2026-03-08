@@ -53,8 +53,8 @@ export default function Hero() {
               <strong className={styles.metaValue}>09:00 - 20:00</strong>
             </div>
             <div>
-              <span className={styles.metaLabel}>Pedidos hoy</span>
-              <strong className={styles.metaValue}>+120</strong>
+              <span className={styles.metaLabel}>Pedidos activos</span>
+              <strong className={styles.metaValue}>Alta demanda</strong>
             </div>
           </div>
           <p className={styles.cardFootnote}>*Tiempo estimado según distancia y demanda.</p>
