@@ -66,18 +66,31 @@ export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
   const hasHydratedRef = useRef(false);
   const hadStoredCartRef = useRef(false);
+  const pendingHydrateRef = useRef(false);
 
   // hydrate once
   useEffect(() => {
     const stored = loadCartFromStorage();
     if (stored && stored.length > 0) {
       hadStoredCartRef.current = true;
+      pendingHydrateRef.current = true;
       dispatch({ type: 'HYDRATE', items: stored });
+      return;
     }
+
+    // no stored cart -> safe to persist immediately
     hasHydratedRef.current = true;
   }, []);
 
-  // persist (skip initial empty write before hydration completes)
+  // mark hydration complete only after HYDRATE has been applied
+  useEffect(() => {
+    if (!pendingHydrateRef.current) return;
+    if (state.items.length === 0) return;
+    hasHydratedRef.current = true;
+    pendingHydrateRef.current = false;
+  }, [state.items.length]);
+
+  // persist (skip any writes until hydration is complete)
   useEffect(() => {
     if (!hasHydratedRef.current) return;
 

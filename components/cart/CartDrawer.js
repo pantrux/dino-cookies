@@ -23,8 +23,13 @@ export default function CartDrawer({ open, onClose }) {
   const lastFocusedRef = useRef(null);
   const [draftQty, setDraftQty] = useState({});
 
-  // remove stale drafts when items change (remove/clear)
+  // discard drafts when closing, and remove stale drafts when items change (remove/clear)
   useEffect(() => {
+    if (!open) {
+      setDraftQty({});
+      return;
+    }
+
     setDraftQty((prev) => {
       const ids = new Set(cart.items.map((x) => x.id));
       const next = {};
@@ -33,7 +38,7 @@ export default function CartDrawer({ open, onClose }) {
       }
       return next;
     });
-  }, [cart.items]);
+  }, [open, cart.items]);
 
   useEffect(() => {
     if (!open) return;
