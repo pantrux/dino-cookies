@@ -256,3 +256,60 @@ button {
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
+
+/* =====================
+ * Accessibility: visually hidden utility
+ * ===================== */
+.srOnly {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* =====================
+ * Accessibility: skip link
+ * ===================== */
+.skipLink {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: 1000;
+
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  border: 2px solid var(--border-control);
+  box-shadow: var(--shadow-sm);
+
+  transform: translateY(-200%);
+  transition: transform 120ms ease;
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
+}
+
+/* =====================
+ * Accessibility + performance: reduced motion
+ * ===================== */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
