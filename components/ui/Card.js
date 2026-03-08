@@ -1,8 +1,5 @@
 import styles from './Card.module.css';
-
-function cx(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { cx } from './utils';
 
 /**
  * Card

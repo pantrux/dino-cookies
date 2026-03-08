@@ -1,9 +1,6 @@
 import { Children, cloneElement, isValidElement, useId } from 'react';
 import styles from './Field.module.css';
-
-function cx(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { cx } from './utils';
 
 export default function Field({
   label,

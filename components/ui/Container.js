@@ -1,8 +1,5 @@
 import styles from './Container.module.css';
-
-function cx(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { cx } from './utils';
 
 /**
  * Container
