@@ -5,6 +5,7 @@ import Button from './ui/Button';
 import Card from './ui/Card';
 import Container from './ui/Container';
 import Field from './ui/Field';
+import Section from './ui/Section';
 import Stack from './ui/Stack';
 import { Input, Select, Textarea } from './ui/Input';
 
@@ -53,7 +54,7 @@ export default function OrderForm() {
     };
 
     return (
-        <section id="order" className={styles.section}>
+        <Section id="order" className={styles.section} surface="subtle" paddingY="lg">
             <Container size="sm">
                 <Card padding="lg">
                     <div className={styles.header}>
@@ -105,6 +106,6 @@ export default function OrderForm() {
                     </Stack>
                 </Card>
             </Container>
-        </section>
+        </Section>
     );
 }

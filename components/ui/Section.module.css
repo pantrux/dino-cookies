@@ -1,0 +1,35 @@
+.base {
+  width: 100%;
+}
+
+.surface_page {
+  background-color: var(--surface-page);
+}
+
+.surface_subtle {
+  background-color: var(--surface-subtle);
+}
+
+.surface_muted {
+  background-color: var(--surface-muted);
+}
+
+.py_none {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.py_sm {
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+}
+
+.py_md {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+.py_lg {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+}

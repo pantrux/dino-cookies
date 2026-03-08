@@ -5,6 +5,7 @@ import Button from './ui/Button';
 import Card from './ui/Card';
 import Container from './ui/Container';
 import Field from './ui/Field';
+import Section from './ui/Section';
 import Stack from './ui/Stack';
 import { Input, Textarea } from './ui/Input';
 
@@ -30,7 +31,7 @@ export default function ReviewSection() {
     };
 
     return (
-        <section className={styles.section}>
+        <Section className={styles.section} surface="page" paddingY="md">
             <Container size="md">
                 <h2 className={styles.title}>Amor de Clientes</h2>
                 <div className={styles.grid}>
@@ -73,6 +74,6 @@ export default function ReviewSection() {
                     </Card>
                 )}
             </Container>
-        </section>
+        </Section>
     );
 }

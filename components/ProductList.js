@@ -1,5 +1,7 @@
 import styles from './ProductList.module.css';
 import ProductCard from './ProductCard';
+import Container from './ui/Container';
+import Section from './ui/Section';
 
 const PRODUCTS = [
     { id: 1, name: "Galletas de Chocolate Negro", price: 16, image: "/images/galletas-chocolate-negro.jpg" },
@@ -11,8 +13,8 @@ const PRODUCTS = [
 
 export default function ProductList() {
     return (
-        <section className={styles.section} id="menu">
-            <div className={styles.container}>
+        <Section id="menu" surface="page" paddingY="md">
+            <Container size="lg">
                 <h2 className={styles.title}>Favoritos del Horno</h2>
                 <div className={styles.marqueeContainer}>
                     <div className={styles.marqueeTrack}>
@@ -24,7 +26,7 @@ export default function ProductList() {
                         ))}
                     </div>
                 </div>
-            </div>
-        </section>
+            </Container>
+        </Section>
     );
 }
