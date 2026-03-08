@@ -34,9 +34,9 @@ export default function BakerySection() {
                 sizes="(max-width: 768px) 100vw, 520px"
                 className={styles.image}
               />
-              <div className={styles.doodleTop} />
-              <div className={styles.doodleBottom} />
             </div>
+            <div className={styles.doodleTop} />
+            <div className={styles.doodleBottom} />
           </div>
         </div>
       </Container>
