@@ -31,7 +31,7 @@
 
 ---
 
-## 2) Paleta (roles semánticos)
+## 3) Paleta (roles semánticos)
 
 > Nota: los valores exactos se consolidan en `docs/redesign/tokens.md` y `app/globals.css`. Aquí definimos **roles**.
 
@@ -59,7 +59,7 @@
 
 ---
 
-## 3) Tipografía
+## 4) Tipografía
 
 > Objetivo: que títulos de sección, labels y body se lean como un sistema.
 
@@ -92,7 +92,7 @@
 
 ---
 
-## 4) Layout landing (estructura recomendada)
+## 5) Layout landing (estructura recomendada)
 
 > Objetivo: narrativa clara “qué es / por qué confiar / cómo comprar”.
 
@@ -126,7 +126,7 @@ Orden recomendado:
 
 ---
 
-## 5) Reglas de componentes (mínimos)
+## 6) Reglas de componentes (mínimos)
 
 ### Botones
 - Altura >= **44px**
@@ -150,7 +150,7 @@ Orden recomendado:
 
 ---
 
-## 6) Anti-patterns (no hacer)
+## 7) Anti-patterns (no hacer)
 
 - **Overlays/modales** que tapan el hero o el CTA (especialmente en mobile).
 - **CTAs múltiples** compitiendo (misma jerarquía/estilo).

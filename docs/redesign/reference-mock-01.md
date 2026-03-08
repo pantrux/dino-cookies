@@ -108,6 +108,7 @@
 - `ink-700`: **#3A382F** (texto secundario)
 
 ### 3.2 Accentos
+- `olive-500`: **#6F7C44** (CTA alternativa si se necesita más luminosidad)
 - `olive-600`: **#5E6B3A** (CTA primaria)
 - `olive-700`: **#4F5B31** (hover)
 - `terracotta-500`: **#C56A4B** (micro-accent cálido)
@@ -123,7 +124,7 @@
 - `--action-primary-fg`: `paper-50`
 
 ### 3.4 Accesibilidad / contraste
-- CTA oliva debe mantener contraste AA con texto claro; si falla, usar texto `ink-900` sobre oliva clara (alternativa).
+- CTA oliva debe mantener contraste AA con texto claro; si falla, usar texto `ink-900` y mover el fondo a `olive-500` (alternativa).
 
 ---
 
