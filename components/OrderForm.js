@@ -119,7 +119,7 @@ export default function OrderForm() {
                                 <Input type="tel" id="phone" name="phone" required placeholder="+56 9 1234 5678" />
                             </Field>
                             <div className={styles.group}>
-                                <Text as="div" tone="muted" size="sm">Carrito</Text>
+                                <Text as="div" tone="muted" size="sm" className={styles.cartLabel}>Resumen de carrito</Text>
                                 <Card className={styles.cartSummary} padding="sm" shadow="none" radius="sm">
                                     {cartSummary.items.length === 0 ? (
                                         <Text tone="muted" size="sm">Carrito vacío</Text>
@@ -127,11 +127,11 @@ export default function OrderForm() {
                                         <Stack gap={2}>
                                             {cartSummary.items.map((it) => (
                                                 <div key={it.id} className={styles.cartRow}>
-                                                    <Text as="div" tone="primary" size="sm">
+                                                    <Text as="div" tone="primary" size="sm" className={styles.cartItemName}>
                                                         {it.qty}× {it.name}
                                                     </Text>
                                                     <Text as="div" tone="muted" size="sm">
-                                                        {formatPriceFromUnit(it.price)}
+                                                        {formatPriceFromUnit(it.price)} c/u
                                                     </Text>
                                                 </div>
                                             ))}
