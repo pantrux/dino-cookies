@@ -5,11 +5,6 @@
   background-size: 20px 20px;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 
 .header {
   text-align: center;
@@ -27,9 +22,7 @@
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+  /* Layout handled by <Stack /> */
 }
 
 .row {

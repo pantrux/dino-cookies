@@ -3,11 +3,6 @@
   background-color: var(--surface-page);
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
 .title {
   text-align: center;
   font-size: var(--font-size-3xl);

@@ -167,6 +167,11 @@
   --card-border: 1px solid var(--border-subtle);
   --card-shadow: var(--shadow-md);
 
+  /* Layout */
+  --container-sm: 800px;
+  --container-md: 1000px;
+  --container-max: 1200px;
+
   /* =====================
    * Back-compat tokens (used in existing components)
    * ===================== */
