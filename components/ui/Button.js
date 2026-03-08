@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import styles from './Button.module.css';
-
-function cx(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { cx } from './utils';
 
 /**
  * Button / LinkButton

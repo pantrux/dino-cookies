@@ -1,8 +1,5 @@
 import styles from './Input.module.css';
-
-function cx(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { cx } from './utils';
 
 export function Input({ className, error, ...props }) {
   return (

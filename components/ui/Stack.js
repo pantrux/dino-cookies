@@ -1,8 +1,5 @@
 import styles from './Stack.module.css';
-
-function cx(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+import { cx } from './utils';
 
 /**
  * Stack
