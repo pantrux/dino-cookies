@@ -2,6 +2,9 @@
   "name": "galletas-online",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "next dev",
     "dev:wrangler": "wrangler pages dev .next --compatibility-date=2024-01-01 --binding DB=galletas-db",
