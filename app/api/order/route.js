@@ -43,6 +43,24 @@ export async function POST(request) {
             });
         }
 
+        // Compute server-side subtotal from items (do not trust client-submitted subtotal)
+        const items = Array.isArray(body.items) ? body.items : [];
+        const normalizedItems = items
+            .filter((x) => x && typeof x === 'object')
+            .map((x) => {
+                const qty = Math.min(99, Math.max(1, Math.round(Number(x.qty) || 1)));
+                const unitPrice = Number(x.price);
+                const price = Number.isFinite(unitPrice) ? unitPrice : 0;
+                return {
+                    id: x.id,
+                    name: typeof x.name === 'string' ? x.name : 'Item',
+                    qty,
+                    price,
+                };
+            });
+
+        const serverSubtotalCents = normalizedItems.reduce((acc, it) => acc + Math.round(it.price * 100) * it.qty, 0);
+
         // Send to Webhook (non-blocking)
         try {
             const webhookUrl = 'https://pantrux.duckdns.org/n8n/webhook/0bcd36c4-8b0e-495b-8adc-9a1234adc726';
@@ -51,8 +69,9 @@ export async function POST(request) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...newOrder,
-                    items: body.items || [],
-                    subtotalCents: body.subtotalCents || 0,
+                    items: normalizedItems,
+                    subtotalCents: serverSubtotalCents,
+                    clientSubtotalCents: Number(body.subtotalCents) || 0,
                 })
             });
         } catch (webhookError) {

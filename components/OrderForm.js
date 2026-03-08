@@ -114,23 +114,27 @@ export default function OrderForm() {
                             <div className={styles.group}>
                                 <Text as="div" tone="muted" size="sm">Carrito</Text>
                                 <Card className={styles.cartSummary} padding="sm" shadow="none" radius="sm">
-                                    <Stack gap={2}>
-                                        {cartSummary.items.map((it) => (
-                                            <div key={it.id} className={styles.cartRow}>
-                                                <Text as="div" tone="primary" size="sm">
-                                                    {it.qty}× {it.name}
+                                    {cartSummary.items.length === 0 ? (
+                                        <Text tone="muted" size="sm">Carrito vacío</Text>
+                                    ) : (
+                                        <Stack gap={2}>
+                                            {cartSummary.items.map((it) => (
+                                                <div key={it.id} className={styles.cartRow}>
+                                                    <Text as="div" tone="primary" size="sm">
+                                                        {it.qty}× {it.name}
+                                                    </Text>
+                                                </div>
+                                            ))}
+                                            <div className={styles.cartTotal}>
+                                                <Text as="div" tone="muted" size="sm">
+                                                    Total ({cartSummary.totalQty})
+                                                </Text>
+                                                <Text as="div" tone="primary" weight="bold">
+                                                    {cartSummary.subtotal}
                                                 </Text>
                                             </div>
-                                        ))}
-                                        <div className={styles.cartTotal}>
-                                            <Text as="div" tone="muted" size="sm">
-                                                Total ({cartSummary.totalQty})
-                                            </Text>
-                                            <Text as="div" tone="primary" weight="bold">
-                                                {cartSummary.subtotal}
-                                            </Text>
-                                        </div>
-                                    </Stack>
+                                        </Stack>
+                                    )}
                                 </Card>
                             </div>
                         </div>
