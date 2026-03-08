@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import { createContext, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
 import { loadCartFromStorage, saveCartToStorage } from './cart-storage';
 
 function clampQty(n) {
@@ -64,15 +64,20 @@ function cartReducer(state, action) {
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
+  const hasHydratedRef = useRef(false);
 
   // hydrate once
   useEffect(() => {
     const stored = loadCartFromStorage();
     if (stored) dispatch({ type: 'HYDRATE', items: stored });
+    hasHydratedRef.current = true;
   }, []);
 
-  // persist
+  // persist (skip initial empty write before hydration completes)
   useEffect(() => {
+    if (!hasHydratedRef.current) return;
+    // if nothing stored and cart empty, avoid unnecessary write
+    if (state.items.length === 0 && !loadCartFromStorage()) return;
     saveCartToStorage(state.items);
   }, [state.items]);
 

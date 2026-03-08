@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from 'react';
 import styles from './CartDrawer.module.css';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
@@ -18,11 +19,26 @@ function formatMoneyCLPFromCents(cents) {
 export default function CartDrawer({ open, onClose }) {
   const cart = useCart();
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') onClose?.();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Carrito">
-      <div className={styles.panel}>
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Carrito"
+      onClick={() => onClose?.()}
+    >
+      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
         <Card className={styles.card}>
           <Stack direction="row" justify="between" align="center" className={styles.header}>
             <Heading level={3} size="2xl">Carrito</Heading>
