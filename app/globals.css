@@ -276,7 +276,7 @@ button {
  * Accessibility: skip link
  * ===================== */
 .skipLink {
-  position: absolute;
+  position: fixed;
   left: var(--space-4);
   top: var(--space-4);
   z-index: 1000;

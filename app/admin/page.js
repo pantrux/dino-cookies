@@ -24,7 +24,7 @@ export default function AdminDashboard() {
             </header>
 
             {loading ? (
-                <div className={styles.loading} role="status" aria-live="polite">
+                <div className={styles.loading} role="status">
                     Cargando pedidos...
                 </div>
             ) : (
