@@ -43,10 +43,10 @@
 }
 
 .cloudB {
-  top: 44px;
-  right: -22px;
-  width: 190px;
-  height: 120px;
+  top: 38px;
+  right: -30px;
+  width: 210px;
+  height: 132px;
   background-image: url('/doodles/cloud-01.svg');
   opacity: 0.45;
   transform: scaleX(-1) rotate(8deg);
@@ -99,10 +99,10 @@
   margin-top: var(--space-6);
   font-family: var(--font-display), serif;
   font-weight: 900;
-  letter-spacing: -0.035em;
-  line-height: 0.97;
+  letter-spacing: -0.04em;
+  line-height: 0.94;
 
-  font-size: clamp(42px, 6vw, 76px);
+  font-size: clamp(40px, 5.6vw, 72px);
   color: var(--text-primary);
 }
 
@@ -181,8 +181,8 @@
 .trustItem {
   padding: var(--space-4);
   border-radius: 14px;
-  border: 2px solid rgba(34, 33, 29, 0.35);
-  background: rgba(255, 252, 244, 0.55);
+  border: 2px solid rgba(34, 33, 29, 0.42);
+  background: rgba(255, 252, 244, 0.5);
 }
 
 .trustLabel {
@@ -212,7 +212,7 @@
   box-shadow: var(--ref-shadow-polaroid, 6px 6px 0 rgba(34, 33, 29, 0.92));
 
   overflow: hidden;
-  transform: rotate(1.2deg);
+  transform: rotate(1.55deg);
 }
 
 .heroCardInner {
