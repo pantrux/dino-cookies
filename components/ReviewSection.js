@@ -9,6 +9,7 @@ import Heading from './ui/Heading';
 import Section from './ui/Section';
 import Stack from './ui/Stack';
 import Text from './ui/Text';
+import FileInput from './ui/FileInput';
 import { Input, Textarea } from './ui/Input';
 
 const MOCK_REVIEWS = [
@@ -67,10 +68,9 @@ export default function ReviewSection() {
                             <Field label="Tu Reseña" htmlFor="reviewText">
                                 <Textarea id="reviewText" name="text" placeholder="Cuéntanos tu experiencia..." required />
                             </Field>
-                            <div className={styles.fileUpload}>
-                                <label>Subir Foto (Opcional)</label>
-                                <input type="file" accept="image/*" className={styles.fileInput} />
-                            </div>
+                            <Field label="Subir Foto (Opcional)">
+                                <FileInput accept="image/*" />
+                            </Field>
                             <Button type="submit" fullWidth>Publicar Reseña</Button>
                         </Stack>
                     </Card>
