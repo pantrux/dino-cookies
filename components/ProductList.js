@@ -14,7 +14,7 @@ const PRODUCTS = [
 
 export default function ProductList() {
   return (
-    <Section id="menu" surface="page" paddingY="sm" className={styles.section}>
+    <Section id="menu" surface="page" paddingY="md" className={styles.section}>
       <Container size="lg">
         <header className={styles.header}>
           <Heading level={2} size="3xl" tone="primary" className={styles.title}>
