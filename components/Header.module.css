@@ -1,40 +1,59 @@
 .header {
-  background-color: var(--surface-page);
-  padding: var(--space-4) 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow-sm);
-  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  padding: var(--space-10) 0 var(--space-6);
 }
 
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--space-6);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  display: grid;
+  justify-items: center;
   gap: var(--space-4);
 }
 
-.logo a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo {
+  display: grid;
+  place-items: center;
+}
+
+.logoSeal {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  background: var(--surface-elevated);
+  border: 2px solid var(--text-primary);
+  box-shadow: var(--ref-shadow-polaroid, var(--shadow-md));
+
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  transform: rotate(-1.2deg);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.logoSeal:hover {
+  transform: rotate(0.4deg);
+}
+
+.logoSeal img {
+  max-width: 86px;
+  height: auto;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
 .cta {
   text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
+  letter-spacing: 0.08em;
 }
 
 .cartBtn {
@@ -57,13 +76,13 @@
   font-weight: var(--font-weight-bold);
 }
 
-@media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-    justify-content: center;
+@media (max-width: 767px) {
+  .header {
+    padding: var(--space-8) 0 var(--space-4);
   }
 
-  .nav {
-    justify-content: center;
+  .logoSeal {
+    width: 96px;
+    height: 96px;
   }
 }
