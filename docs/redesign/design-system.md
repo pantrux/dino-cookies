@@ -4,7 +4,14 @@
 > 
 > Regla: si algo no está aquí (o en `docs/redesign/tokens.md`), **no se inventa** en un PR de UI.
 
-## 1) Dirección visual (DECISIÓN)
+## 1) Referencia visual PR-36 (spec de alta fidelidad)
+
+- Spec: `docs/redesign/reference-mock-01.md`
+- Nota: la referencia que estamos reverse-engineering tiene un lenguaje **vintage/artesanal (paper/ink) + jurásico premium** (oliva, serif editorial, polaroids). Esto puede convivir como **variante** o reemplazar la dirección actual, pero la **decisión final** debe cristalizarse en un PR de dirección (manteniendo el proceso).
+
+---
+
+## 2) Dirección visual (DECISIÓN)
 
 **Variante elegida:** **Playful Dino (Premium-lite)**
 
@@ -24,7 +31,7 @@
 
 ---
 
-## 2) Paleta (roles semánticos)
+## 3) Paleta (roles semánticos)
 
 > Nota: los valores exactos se consolidan en `docs/redesign/tokens.md` y `app/globals.css`. Aquí definimos **roles**.
 
@@ -52,7 +59,7 @@
 
 ---
 
-## 3) Tipografía
+## 4) Tipografía
 
 > Objetivo: que títulos de sección, labels y body se lean como un sistema.
 
@@ -85,7 +92,7 @@
 
 ---
 
-## 4) Layout landing (estructura recomendada)
+## 5) Layout landing (estructura recomendada)
 
 > Objetivo: narrativa clara “qué es / por qué confiar / cómo comprar”.
 
@@ -119,7 +126,7 @@ Orden recomendado:
 
 ---
 
-## 5) Reglas de componentes (mínimos)
+## 6) Reglas de componentes (mínimos)
 
 ### Botones
 - Altura >= **44px**
@@ -143,7 +150,7 @@ Orden recomendado:
 
 ---
 
-## 6) Anti-patterns (no hacer)
+## 7) Anti-patterns (no hacer)
 
 - **Overlays/modales** que tapan el hero o el CTA (especialmente en mobile).
 - **CTAs múltiples** compitiendo (misma jerarquía/estilo).
