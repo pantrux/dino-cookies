@@ -17,25 +17,30 @@ export default function AdminDashboard() {
     }, []);
 
     return (
-        <div className={styles.container}>
+        <main id="main-content" tabIndex={-1} className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.title}>Panel de Administración</h1>
                 <div className={styles.stats}>Total Pedidos: {orders.length}</div>
             </header>
 
             {loading ? (
-                <div className={styles.loading}>Cargando pedidos...</div>
+                <div className={styles.loading} role="status">
+                    Cargando pedidos...
+                </div>
             ) : (
                 <div className={styles.tableWrapper}>
                     <table className={styles.table}>
+                        <caption className="srOnly">
+                            Tabla de pedidos recibidos en el panel de administración.
+                        </caption>
                         <thead>
                             <tr>
-                                <th>Fecha</th>
-                                <th>Cliente</th>
-                                <th>Pedido</th>
-                                <th>Contacto</th>
-                                <th>Dirección</th>
-                                <th>Estado</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Pedido</th>
+                                <th scope="col">Contacto</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,6 +68,6 @@ export default function AdminDashboard() {
                     </table>
                 </div>
             )}
-        </div>
+        </main>
     );
 }
