@@ -13,6 +13,13 @@ import Text from './ui/Text';
 import { Input, Textarea } from './ui/Input';
 import { useCart } from './cart/cart-context';
 
+function formatPriceFromUnit(price) {
+    const n = Number(price);
+    if (!Number.isFinite(n)) return '$0';
+    if (Number.isInteger(n)) return `$${n}`;
+    return `$${n.toFixed(2)}`;
+}
+
 function formatPriceFromCents(cents) {
     const n = Number(cents);
     if (!Number.isFinite(n)) return '$0';
@@ -122,6 +129,9 @@ export default function OrderForm() {
                                                 <div key={it.id} className={styles.cartRow}>
                                                     <Text as="div" tone="primary" size="sm">
                                                         {it.qty}× {it.name}
+                                                    </Text>
+                                                    <Text as="div" tone="muted" size="sm">
+                                                        {formatPriceFromUnit(it.price)}
                                                     </Text>
                                                 </div>
                                             ))}
