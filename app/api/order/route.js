@@ -49,7 +49,11 @@ export async function POST(request) {
             await fetch(webhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newOrder)
+                body: JSON.stringify({
+                    ...newOrder,
+                    items: body.items || [],
+                    subtotalCents: body.subtotalCents || 0,
+                })
             });
         } catch (webhookError) {
             console.error("Webhook error:", webhookError.message);

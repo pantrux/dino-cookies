@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import styles from './OrderForm.module.css';
 import Button from './ui/Button';
 import Card from './ui/Card';
@@ -10,20 +10,29 @@ import Heading from './ui/Heading';
 import Section from './ui/Section';
 import Stack from './ui/Stack';
 import Text from './ui/Text';
-import { Input, Select, Textarea } from './ui/Input';
+import { Input, Textarea } from './ui/Input';
+import { useCart } from './cart/cart-context';
 
-const COOKIE_TYPES = [
-    "Trufa de Chocolate",
-    "Chispas de Chocolate",
-    "Almendra Crujiente",
-    "Caramelo (Butterscotch)",
-    "Caja Surtida"
-];
+function formatPriceFromCents(cents) {
+    const n = Number(cents);
+    if (!Number.isFinite(n)) return '$0';
+    if (n % 100 === 0) return `$${n / 100}`;
+    return `$${(n / 100).toFixed(2)}`;
+}
 
 export default function OrderForm() {
+    const cart = useCart();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
+
+    const cartSummary = useMemo(() => {
+        return {
+            totalQty: cart.totalQty,
+            subtotal: formatPriceFromCents(cart.subtotalCents),
+            items: cart.items,
+        };
+    }, [cart.items, cart.totalQty, cart.subtotalCents]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,18 +40,33 @@ export default function OrderForm() {
         setError('');
         setSuccess(false);
 
+        if (cart.totalQty === 0) {
+            setError('Tu carrito está vacío. Agrega productos antes de pedir.');
+            setLoading(false);
+            return;
+        }
+
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
+
+        const payload = {
+            ...data,
+            quantity: cart.totalQty,
+            type: 'Carrito',
+            items: cart.items,
+            subtotalCents: cart.subtotalCents,
+        };
 
         try {
             const res = await fetch('/api/order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
+                body: JSON.stringify(payload),
             });
 
             if (res.ok) {
                 setSuccess(true);
+                cart.clear();
                 e.target.reset();
             } else {
                 const errorData = await res.json();
@@ -87,29 +111,44 @@ export default function OrderForm() {
                             <Field label="Teléfono" htmlFor="phone" className={styles.group}>
                                 <Input type="tel" id="phone" name="phone" required placeholder="+56 9 1234 5678" />
                             </Field>
-                            <Field label="Cantidad (Docenas)" htmlFor="quantity" className={styles.group}>
-                                <Input type="number" id="quantity" name="quantity" min="1" defaultValue="1" required />
-                            </Field>
+                            <div className={styles.group}>
+                                <Text as="div" tone="muted" size="sm">Carrito</Text>
+                                <Card className={styles.cartSummary} padding="sm" shadow="none" radius="sm">
+                                    <Stack gap={2}>
+                                        {cartSummary.items.map((it) => (
+                                            <div key={it.id} className={styles.cartRow}>
+                                                <Text as="div" tone="primary" size="sm">
+                                                    {it.qty}× {it.name}
+                                                </Text>
+                                            </div>
+                                        ))}
+                                        <div className={styles.cartTotal}>
+                                            <Text as="div" tone="muted" size="sm">
+                                                Total ({cartSummary.totalQty})
+                                            </Text>
+                                            <Text as="div" tone="primary" weight="bold">
+                                                {cartSummary.subtotal}
+                                            </Text>
+                                        </div>
+                                    </Stack>
+                                </Card>
+                            </div>
                         </div>
-
-                        <Field label="Tipo de Galleta" htmlFor="type" className={styles.group}>
-                            <Select id="type" name="type">
-                                {COOKIE_TYPES.map(type => (
-                                    <option key={type} value={type}>{type}</option>
-                                ))}
-                            </Select>
-                        </Field>
 
                         <Field label="Dirección de Entrega" htmlFor="address" className={styles.group}>
                             <Textarea id="address" name="address" required rows="3" placeholder="Calle, Número, Comuna..." />
                         </Field>
+
+                        {cart.totalQty === 0 && !success ? (
+                            <Alert tone="warning">Tu carrito está vacío. Agrega productos desde el menú.</Alert>
+                        ) : null}
 
                         {error && <Alert tone="danger">{error}</Alert>}
                         {success && (
                             <Alert tone="success">¡Pedido realizado con éxito! Te contactaremos pronto.</Alert>
                         )}
 
-                        <Button type="submit" fullWidth disabled={loading} className={styles.submit}>
+                        <Button type="submit" fullWidth disabled={loading || cart.totalQty === 0} className={styles.submit}>
                             {loading ? 'Enviando...' : 'Realizar Pedido'}
                         </Button>
                     </Stack>
