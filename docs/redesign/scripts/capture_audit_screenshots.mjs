@@ -1,8 +1,27 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 
+/**
+ * Usage:
+ *   BASE_URL=https://dino-cookies.pages.dev npm run qa:visual:screenshots
+ *
+ * Optional:
+ *   OUT_DIR=docs/redesign/audits/2026-03-08/screenshots npm run qa:visual:screenshots
+ */
+
 const BASE = process.env.BASE_URL || 'https://dino-cookies.pages.dev';
-const OUT_DIR = process.env.OUT_DIR || 'docs/redesign/audits/2026-03-07-prod-admin/screenshots';
+
+function todayISO() {
+  // YYYY-MM-DD (UTC)
+  const d = new Date();
+  const yyyy = d.getUTCFullYear();
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+const OUT_DIR =
+  process.env.OUT_DIR || `docs/redesign/audits/${todayISO()}/screenshots`;
 
 const PAGES = [
   { key: 'home', path: '/' },

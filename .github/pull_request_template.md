@@ -4,9 +4,12 @@
 
 ## Checklist (Rediseño UI/UX)
 
+> Referencia (gates/release): `docs/redesign/VISUAL_QUALITY_GATES.md`
+
 ### Proceso / Persistencia
 - [ ] Se actualizó/consultó `docs/redesign/PROCESS.md`
 - [ ] Se adjunta link o archivo del reporte correspondiente en `docs/redesign/`
+- [ ] Se adjunta evidencia visual (screenshots) o link a carpeta `docs/redesign/audits/<YYYY-MM-DD>/`
 
 ### Skills usadas (deben quedar reflejadas en los entregables)
 - [ ] `ui-design-review` (auditoría / issues priorizados)

@@ -14,7 +14,8 @@
     "lint": "eslint",
     "preview": "wrangler pages dev .vercel/output/static",
     "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
-    "wrangler": "node scripts/wrangler-wrapper.js"
+    "wrangler": "node scripts/wrangler-wrapper.js",
+    "qa:visual:screenshots": "node docs/redesign/scripts/capture_audit_screenshots.mjs"
   },
   "bin": {
     "wrangler": "./scripts/wrangler-wrapper.js"
@@ -29,6 +30,7 @@
     "@eslint/eslintrc": "^3.3.5",
     "eslint": "9.39.2",
     "eslint-config-next": "15.5.0",
+    "playwright": "^1.54.2",
     "wrangler": "^3"
   }
 }

@@ -10,7 +10,6 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default defineConfig([
   {
-    // Avoid linting build outputs and deploy artifacts.
     ignores: [
       ".next/**",
       ".vercel/**",
