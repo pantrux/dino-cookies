@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './CartDrawer.module.css';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
@@ -18,14 +18,56 @@ function formatMoneyCLPFromCents(cents) {
 
 export default function CartDrawer({ open, onClose }) {
   const cart = useCart();
+  const panelRef = useRef(null);
+  const closeBtnRef = useRef(null);
+  const lastFocusedRef = useRef(null);
 
   useEffect(() => {
     if (!open) return;
+
+    lastFocusedRef.current = document.activeElement;
+    closeBtnRef.current?.focus();
+
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') onClose?.();
+      if (e.key === 'Escape') {
+        onClose?.();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const root = panelRef.current;
+        if (!root) return;
+
+        const focusable = root.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     };
+
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      // restore focus to previous element
+      const el = lastFocusedRef.current;
+      if (el && typeof el.focus === 'function') el.focus();
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -38,11 +80,22 @@ export default function CartDrawer({ open, onClose }) {
       aria-label="Carrito"
       onClick={() => onClose?.()}
     >
-      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.panel}
+        onClick={(e) => e.stopPropagation()}
+        ref={panelRef}
+      >
         <Card className={styles.card}>
           <Stack direction="row" justify="between" align="center" className={styles.header}>
             <Heading level={3} size="2xl">Carrito</Heading>
-            <Button variant="ghost" onClick={onClose} aria-label="Cerrar carrito">Cerrar</Button>
+            <Button
+              variant="ghost"
+              onClick={onClose}
+              aria-label="Cerrar carrito"
+              buttonRef={closeBtnRef}
+            >
+              Cerrar
+            </Button>
           </Stack>
 
           {cart.items.length === 0 ? (

@@ -15,6 +15,7 @@ export default function Button({
   fullWidth = false,
   disabled,
   className,
+  buttonRef,
   ...props
 }) {
   const classes = cx(
@@ -49,7 +50,7 @@ export default function Button({
   }
 
   return (
-    <button className={classes} disabled={disabled} {...props}>
+    <button ref={buttonRef} className={classes} disabled={disabled} {...props}>
       {children}
     </button>
   );

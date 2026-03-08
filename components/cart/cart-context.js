@@ -65,19 +65,23 @@ function cartReducer(state, action) {
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
   const hasHydratedRef = useRef(false);
+  const hadStoredCartRef = useRef(false);
 
   // hydrate once
   useEffect(() => {
     const stored = loadCartFromStorage();
-    if (stored) dispatch({ type: 'HYDRATE', items: stored });
+    if (stored && stored.length > 0) {
+      hadStoredCartRef.current = true;
+      dispatch({ type: 'HYDRATE', items: stored });
+    }
     hasHydratedRef.current = true;
   }, []);
 
   // persist (skip initial empty write before hydration completes)
   useEffect(() => {
     if (!hasHydratedRef.current) return;
-    // if nothing stored and cart empty, avoid unnecessary write
-    if (state.items.length === 0 && !loadCartFromStorage()) return;
+    // avoid writing an empty cart when there was no stored cart to begin with
+    if (state.items.length === 0 && !hadStoredCartRef.current) return;
     saveCartToStorage(state.items);
   }, [state.items]);
 
