@@ -88,7 +88,7 @@ export function CartProvider({ children }) {
     if (state.items.length === 0) return;
     hasHydratedRef.current = true;
     pendingHydrateRef.current = false;
-  }, [state.items.length]);
+  }, [state.items]);
 
   // persist (skip any writes until hydration is complete)
   useEffect(() => {

@@ -10,10 +10,14 @@ import Text from '../ui/Text';
 import { Input } from '../ui/Input';
 import { useCart } from './cart-context';
 
-function formatMoneyCLPFromCents(cents) {
-  // prices look like CLP-like integers; still format as number with $.
-  const n = Math.round(cents / 100);
-  return `$${n}`;
+function formatPriceFromUnit(price) {
+  const n = Number(price);
+  return `$${Number.isFinite(n) ? n : 0}`;
+}
+
+function formatPriceFromCents(cents) {
+  const n = Math.round(Number(cents) / 100);
+  return `$${Number.isFinite(n) ? n : 0}`;
 }
 
 export default function CartDrawer({ open, onClose }) {
@@ -124,7 +128,7 @@ export default function CartDrawer({ open, onClose }) {
                     <div key={item.id} className={styles.itemRow}>
                       <div className={styles.itemMeta}>
                         <Text as="div" tone="primary" weight="semibold">{item.name}</Text>
-                        <Text as="div" tone="muted" size="sm">${item.price} c/u</Text>
+                        <Text as="div" tone="muted" size="sm">{formatPriceFromUnit(item.price)} c/u</Text>
                       </div>
 
                       <div className={styles.itemControls}>
@@ -178,7 +182,9 @@ export default function CartDrawer({ open, onClose }) {
 
               <div className={styles.summary}>
                 <Text as="div" tone="muted" size="sm">Subtotal</Text>
-                <Text as="div" tone="primary" weight="bold">{formatMoneyCLPFromCents(cart.subtotalCents)}</Text>
+                <Text as="div" tone="primary" weight="bold">
+                  {formatPriceFromCents(cart.subtotalCents)}
+                </Text>
               </div>
 
               <Stack direction="row" gap={2}>

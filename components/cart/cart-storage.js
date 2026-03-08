@@ -4,8 +4,13 @@ function isValidItem(x) {
   if (!x || typeof x !== 'object') return false;
   if (x.id == null) return false;
   if (typeof x.name !== 'string') return false;
-  if (typeof x.price !== 'number' && typeof x.price !== 'string') return false;
-  if (typeof x.qty !== 'number' && typeof x.qty !== 'string') return false;
+
+  const price = Number(x.price);
+  const qty = Number(x.qty);
+
+  if (!Number.isFinite(price) || price < 0) return false;
+  if (!Number.isFinite(qty) || qty < 1 || qty > 99) return false;
+
   return true;
 }
 
