@@ -1,0 +1,27 @@
+.control {
+  width: 100%;
+  min-height: var(--input-height);
+  padding: var(--control-padding-y) var(--control-padding-x);
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-control);
+  background: var(--surface-page);
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+  font-family: inherit;
+}
+
+.control:hover {
+  border-color: var(--border-default);
+}
+
+.control:focus {
+  border-color: var(--interactive-primary);
+}
+
+.control:disabled {
+  background: var(--interactive-disabled-bg);
+  border-color: var(--interactive-disabled-border);
+  color: var(--interactive-disabled-text);
+  cursor: not-allowed;
+}
