@@ -13,7 +13,9 @@ import { useCart } from './cart-context';
 
 function formatPriceFromUnit(price) {
   const n = Number(price);
-  return `$${Number.isFinite(n) ? n : 0}`;
+  if (!Number.isFinite(n)) return '$0';
+  if (Number.isInteger(n)) return `$${n}`;
+  return `$${n.toFixed(2)}`;
 }
 
 function formatPriceFromCents(cents) {
@@ -97,6 +99,8 @@ export default function CartDrawer({ open, onClose }) {
   }, [open, onClose]);
 
   if (!open) return null;
+
+  if (typeof document === 'undefined') return null;
 
   const ui = (
     <div className={styles.overlay} onClick={() => onClose?.()}>
@@ -213,6 +217,5 @@ export default function CartDrawer({ open, onClose }) {
     </div>
   );
 
-  if (typeof document === 'undefined') return null;
   return createPortal(ui, document.body);
 }
