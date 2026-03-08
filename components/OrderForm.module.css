@@ -1,7 +1,7 @@
 .section {
   /* Layout handled by <Section /> */
-  background-image: radial-gradient(var(--color-neutral-200) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(var(--color-neutral-200) var(--bg-dot-radius), transparent var(--bg-dot-radius));
+  background-size: var(--bg-dot-size) var(--bg-dot-size);
 }
 
 

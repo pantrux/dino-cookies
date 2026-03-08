@@ -26,7 +26,7 @@
     background: var(--interactive-primary);
     color: var(--text-inverse);
     padding: var(--space-2) var(--space-4);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
 }
 
 .tableWrapper {
@@ -40,7 +40,7 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 800px;
+    min-width: var(--admin-table-min);
 }
 
 .table th {
@@ -74,7 +74,7 @@
 }
 
 .address {
-    max-width: 200px;
+    max-width: var(--admin-address-max);
     font-size: var(--font-size-sm);
     color: var(--text-muted);
 }
@@ -83,7 +83,7 @@
     background: var(--surface-page);
     color: var(--text-primary);
     padding: var(--space-1) var(--space-3);
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: var(--font-size-sm);
     font-weight: 600;
     border: 1px solid var(--border-subtle);
@@ -107,6 +107,7 @@
     }
 
     .table {
-        min-width: 640px;
+        min-width: var(--admin-table-min-mobile);
+        /* NOTE: still a fixed width, but tokenized for consistency */
     }
 }
