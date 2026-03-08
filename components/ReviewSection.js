@@ -13,9 +13,9 @@ import FileInput from './ui/FileInput';
 import { Input, Textarea } from './ui/Input';
 
 const MOCK_REVIEWS = [
-  { id: 1, user: 'Maria G.', text: '¡Las trufas de chocolate son para morirse! 😍', image: null },
-  { id: 2, user: 'Carlos R.', text: 'El mejor regalo de cumpleaños. Llegaron frescas.', image: null },
-  { id: 3, user: 'Sofia L.', text: 'Me encantó la presentación.', image: null },
+  { id: 1, user: 'Maria G.', text: '¡Las trufas de chocolate son para morirse! 😍', image: null, rating: 5 },
+  { id: 2, user: 'Carlos R.', text: 'El mejor regalo de cumpleaños. Llegaron frescas.', image: null, rating: 5 },
+  { id: 3, user: 'Sofia L.', text: 'Me encantó la presentación.', image: null, rating: 4.8 },
 ];
 
 export default function ReviewSection() {
@@ -29,8 +29,8 @@ export default function ReviewSection() {
     const text = e.target.text.value;
     const name = e.target.name.value;
 
-    setReviews((current) => [...current, { id: Date.now(), user: name, text, image: null }]);
-    setSuccessMessage('¡Gracias! Tu reseña fue enviada y será publicada muy pronto.');
+    setReviews((current) => [...current, { id: Date.now(), user: name, text, image: null, rating: 5 }]);
+    setSuccessMessage('¡Gracias! Tu reseña ya quedó publicada.');
     setShowForm(false);
     e.target.reset();
   };
@@ -53,7 +53,7 @@ export default function ReviewSection() {
               <div className={styles.avatar}>{review.user.charAt(0)}</div>
               <div className={styles.cardBody}>
                 <h4 className={styles.username}>{review.user}</h4>
-                <div className={styles.rating}>★★★★★</div>
+                <div className={styles.rating}>★ {Number(review.rating ?? 5).toFixed(1)}</div>
                 <Text className={styles.text} tone="muted" size="sm">
                   {review.text}
                 </Text>
@@ -63,7 +63,14 @@ export default function ReviewSection() {
         </div>
 
         <div className={styles.action}>
-          <Button onClick={() => setShowForm(!showForm)} variant="outline" className={styles.toggle}>
+          <Button
+            onClick={() => {
+              setShowForm((prev) => !prev);
+              setSuccessMessage('');
+            }}
+            variant="outline"
+            className={styles.toggle}
+          >
             {showForm ? 'Cancelar reseña' : 'Agregar reseña'}
           </Button>
         </div>
