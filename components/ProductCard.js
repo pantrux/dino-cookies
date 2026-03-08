@@ -1,8 +1,14 @@
+"use client";
+
 import Image from 'next/image';
 import styles from './ProductCard.module.css';
 import Card from './ui/Card';
+import Button from './ui/Button';
+import { useCart } from './cart/cart-context';
 
 export default function ProductCard({ product }) {
+    const cart = useCart();
+
     return (
         <Card className={styles.card} padding="none" surface="transparent" shadow="none" border="none">
             <div className={styles.imagePlaceholder}>
@@ -18,7 +24,13 @@ export default function ProductCard({ product }) {
                 <h3 className={styles.name}>{product.name}</h3>
                 <p className={styles.price}>${product.price}</p>
                 <div className={styles.rating}>★★★★★ 5.0</div>
-                <button className={styles.button}>Agregar</button>
+                <Button
+                    variant="outline"
+                    onClick={() => cart.addItem(product, 1)}
+                    className={styles.button}
+                >
+                    Agregar
+                </Button>
             </div>
         </Card>
     );
