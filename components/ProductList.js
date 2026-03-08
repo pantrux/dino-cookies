@@ -5,11 +5,11 @@ import Heading from './ui/Heading';
 import Section from './ui/Section';
 
 const PRODUCTS = [
-  { id: 1, name: 'Galletas de Chocolate Negro', price: 16, image: '/images/galletas-chocolate-negro.jpg', rating: 5 },
-  { id: 2, name: 'Trufa de Chocolate', price: 15, image: '/hero-bg.png', rating: 4.9 },
-  { id: 3, name: 'Chispas de Chocolate', price: 12, image: '/hero-bg.png', rating: 4.8 },
-  { id: 4, name: 'Almendra Crujiente', price: 18, image: '/hero-bg.png', rating: 5 },
-  { id: 5, name: 'Caramelo (Butterscotch)', price: 14, image: '/hero-bg.png', rating: 4.9 },
+  { id: 1, name: 'Galletas de Chocolate Negro', price: 16, image: '/images/galletas-chocolate-negro.webp', rating: 5 },
+  { id: 2, name: 'Trufa de Chocolate', price: 15, image: '/images/products/chocolate-truffles.webp', rating: 4.9 },
+  { id: 3, name: 'Chispas de Chocolate', price: 12, image: '/images/products/chocolate-chips.webp', rating: 4.8 },
+  { id: 4, name: 'Almendra Crujiente', price: 18, image: '/images/products/almond-crunch.webp', rating: 5 },
+  { id: 5, name: 'Caramelo (Butterscotch)', price: 14, image: '/images/products/caramel-butterscotch.webp', rating: 4.9 },
 ];
 
 export default function ProductList() {

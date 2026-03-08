@@ -17,7 +17,14 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.logo}>
-                    <Image src="/logo-v3.png" alt="Dino Cookies Logo" width={220} height={180} priority />
+                    <Image
+                        src="/logo-v3.png"
+                        alt="Dino Cookies Logo"
+                        width={220}
+                        height={180}
+                        sizes="220px"
+                        priority
+                    />
                 </div>
                 <nav className={styles.nav}>
                     <AppLink href="/" variant="nav">Inicio</AppLink>

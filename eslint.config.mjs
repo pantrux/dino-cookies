@@ -11,8 +11,8 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 export default defineConfig([
   ...compat.extends("next/core-web-vitals"),
   globalIgnores([
-    "**/.next/**",
-    "**/.vercel/**",
+    ".next/**",
+    ".vercel/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
