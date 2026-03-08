@@ -23,6 +23,18 @@ export default function CartDrawer({ open, onClose }) {
   const lastFocusedRef = useRef(null);
   const [draftQty, setDraftQty] = useState({});
 
+  // remove stale drafts when items change (remove/clear)
+  useEffect(() => {
+    setDraftQty((prev) => {
+      const ids = new Set(cart.items.map((x) => x.id));
+      const next = {};
+      for (const [k, v] of Object.entries(prev)) {
+        if (ids.has(k)) next[k] = v;
+      }
+      return next;
+    });
+  }, [cart.items]);
+
   useEffect(() => {
     if (!open) return;
 
@@ -138,7 +150,18 @@ export default function CartDrawer({ open, onClose }) {
                           aria-label={`Cantidad de ${item.name}`}
                           className={styles.qty}
                         />
-                        <Button variant="ghost" tone="danger" onClick={() => cart.removeItem(item.id)}>
+                        <Button
+                          variant="ghost"
+                          tone="danger"
+                          onClick={() => {
+                            setDraftQty((s) => {
+                              const next = { ...s };
+                              delete next[item.id];
+                              return next;
+                            });
+                            cart.removeItem(item.id);
+                          }}
+                        >
                           Quitar
                         </Button>
                       </div>
@@ -153,7 +176,15 @@ export default function CartDrawer({ open, onClose }) {
               </div>
 
               <Stack direction="row" gap={2}>
-                <Button variant="outline" fullWidth onClick={cart.clear} tone="danger">
+                <Button
+                  variant="outline"
+                  fullWidth
+                  onClick={() => {
+                    setDraftQty({});
+                    cart.clear();
+                  }}
+                  tone="danger"
+                >
                   Vaciar
                 </Button>
                 <Button fullWidth href="#order" onClick={onClose}>
