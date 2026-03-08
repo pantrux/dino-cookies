@@ -1,0 +1,12 @@
+.base {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.size_2xl { font-size: var(--font-size-2xl); }
+.size_3xl { font-size: var(--font-size-3xl); }
+.size_4xl { font-size: var(--font-size-4xl); }
+
+.tone_primary { color: var(--text-primary); }
+.tone_brand { color: var(--interactive-primary); }
