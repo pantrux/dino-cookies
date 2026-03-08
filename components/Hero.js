@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Hero.module.css';
 
 const highlights = [
@@ -10,6 +11,14 @@ const highlights = [
 export default function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
+      <Image
+        src="/hero-bg.webp"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className={styles.backgroundImage}
+      />
       <div className={styles.overlay} aria-hidden="true" />
 
       <div className={styles.container}>
