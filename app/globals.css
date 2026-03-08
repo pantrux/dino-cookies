@@ -172,6 +172,29 @@
   --container-md: 1000px;
   --container-max: 1200px;
 
+  /* Component sizing */
+  --avatar-size: 40px;
+  --review-form-max: 500px;
+  --review-grid-min: 300px;
+  --marquee-slide-width: 280px;
+  --product-image-height: 200px;
+  --hero-min-height: 500px;
+  --hero-container-max: var(--container-md);
+  --hero-card-max: 400px;
+
+  --admin-address-max: 200px;
+  --admin-table-min-mobile: 640px;
+
+  /* Decoration */
+  --bg-dot-size: 20px;
+  --bg-dot-radius: 1px;
+
+  /* Typography */
+  --tracking-wide: 1px;
+
+  /* Radius */
+  --radius-pill: 999px;
+
   /* =====================
    * Back-compat tokens (used in existing components)
    * ===================== */

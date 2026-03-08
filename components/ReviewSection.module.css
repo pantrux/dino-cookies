@@ -8,7 +8,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--review-grid-min), 1fr));
   gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
@@ -22,8 +22,8 @@
 .avatar {
   background: var(--text-primary);
   color: var(--text-inverse);
-  width: 40px;
-  height: 40px;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@
 }
 
 .form {
-  max-width: 500px;
+  max-width: var(--review-form-max);
   margin: var(--space-8) auto 0;
   display: flex;
   flex-direction: column;

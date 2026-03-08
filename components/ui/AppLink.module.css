@@ -25,7 +25,7 @@
   color: var(--text-muted);
 
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: var(--tracking-wide);
 
   border-radius: var(--radius-md);
   transition: color 150ms ease, background-color 150ms ease;

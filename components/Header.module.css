@@ -8,7 +8,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--space-6);
   display: flex;
@@ -33,5 +33,5 @@
 
 .cta {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: var(--tracking-wide);
 }
