@@ -1,6 +1,7 @@
 import styles from './ProductList.module.css';
 import ProductCard from './ProductCard';
 import Container from './ui/Container';
+import Heading from './ui/Heading';
 import Section from './ui/Section';
 
 const PRODUCTS = [
@@ -15,7 +16,7 @@ export default function ProductList() {
     return (
         <Section id="menu" surface="page" paddingY="md">
             <Container size="lg">
-                <h2 className={styles.title}>Favoritos del Horno</h2>
+                <Heading level={2} size="3xl" tone="brand" className={styles.title}>Favoritos del Horno</Heading>
                 <div className={styles.marqueeContainer}>
                     <div className={styles.marqueeTrack}>
                         {/* Duplicate products to create seamless loop */}

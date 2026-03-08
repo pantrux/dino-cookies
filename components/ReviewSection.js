@@ -5,8 +5,10 @@ import Button from './ui/Button';
 import Card from './ui/Card';
 import Container from './ui/Container';
 import Field from './ui/Field';
+import Heading from './ui/Heading';
 import Section from './ui/Section';
 import Stack from './ui/Stack';
+import Text from './ui/Text';
 import { Input, Textarea } from './ui/Input';
 
 const MOCK_REVIEWS = [
@@ -33,14 +35,14 @@ export default function ReviewSection() {
     return (
         <Section className={styles.section} surface="page" paddingY="md">
             <Container size="md">
-                <h2 className={styles.title}>Amor de Clientes</h2>
+                <Heading level={2} size="3xl" tone="brand" className={styles.title}>Amor de Clientes</Heading>
                 <div className={styles.grid}>
                     {reviews.map(review => (
                         <Card key={review.id} className={styles.card} padding="sm" radius="sm" shadow="none">
                             <div className={styles.avatar}>{review.user.charAt(0)}</div>
                             <div>
                                 <h4 className={styles.username}>{review.user}</h4>
-                                <p className={styles.text}>{review.text}</p>
+                                <Text className={styles.text} tone="muted" size="sm">{review.text}</Text>
                             </div>
                         </Card>
                     ))}

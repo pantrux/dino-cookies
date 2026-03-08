@@ -1,0 +1,19 @@
+.base {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+.size_sm { font-size: var(--font-size-sm); }
+.size_md { font-size: var(--font-size-md); }
+.size_lg { font-size: var(--font-size-lg); }
+
+.weight_normal { font-weight: var(--font-weight-normal); }
+.weight_semibold { font-weight: var(--font-weight-semibold); }
+.weight_bold { font-weight: var(--font-weight-bold); }
+
+.tone_primary { color: var(--text-primary); }
+.tone_secondary { color: var(--text-secondary); }
+.tone_muted { color: var(--text-muted); }
+.tone_danger { color: var(--text-danger); }
+.tone_success { color: var(--text-success); }
+.tone_warning { color: var(--text-warning); }

@@ -5,8 +5,10 @@ import Button from './ui/Button';
 import Card from './ui/Card';
 import Container from './ui/Container';
 import Field from './ui/Field';
+import Heading from './ui/Heading';
 import Section from './ui/Section';
 import Stack from './ui/Stack';
+import Text from './ui/Text';
 import { Input, Select, Textarea } from './ui/Input';
 
 const COOKIE_TYPES = [
@@ -58,8 +60,12 @@ export default function OrderForm() {
             <Container size="sm">
                 <Card padding="lg">
                     <div className={styles.header}>
-                        <h2 className={styles.title}>¿Listo para disfrutar?</h2>
-                        <p className={styles.subtitle}>Completa el formulario para realizar tu pedido.</p>
+                        <Heading level={2} size="4xl" tone="brand" className={styles.title}>
+                            ¿Listo para disfrutar?
+                        </Heading>
+                        <Text className={styles.subtitle} tone="muted">
+                            Completa el formulario para realizar tu pedido.
+                        </Text>
                     </div>
 
                     <Stack as="form" className={styles.form} gap={6} onSubmit={handleSubmit}>
