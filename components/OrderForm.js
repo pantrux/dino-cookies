@@ -5,6 +5,7 @@ import Button from './ui/Button';
 import Card from './ui/Card';
 import Container from './ui/Container';
 import Field from './ui/Field';
+import Alert from './ui/Alert';
 import Heading from './ui/Heading';
 import Section from './ui/Section';
 import Stack from './ui/Stack';
@@ -103,8 +104,10 @@ export default function OrderForm() {
                             <Textarea id="address" name="address" required rows="3" placeholder="Calle, Número, Comuna..." />
                         </Field>
 
-                        {error && <div className={styles.error}>{error}</div>}
-                        {success && <div className={styles.success}>¡Pedido realizado con éxito! Te contactaremos pronto.</div>}
+                        {error && <Alert tone="danger">{error}</Alert>}
+                        {success && (
+                            <Alert tone="success">¡Pedido realizado con éxito! Te contactaremos pronto.</Alert>
+                        )}
 
                         <Button type="submit" fullWidth disabled={loading} className={styles.submit}>
                             {loading ? 'Enviando...' : 'Realizar Pedido'}
