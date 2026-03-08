@@ -46,6 +46,10 @@
   background: var(--surface-muted);
 }
 
+.surface_transparent {
+  background: transparent;
+}
+
 .pad_none {
   padding: 0;
 }
