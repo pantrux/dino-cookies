@@ -24,6 +24,7 @@
 
 .card:focus-within .inner {
   box-shadow: 7px 7px 0 rgba(34, 33, 29, 0.92);
+  transform: rotate(var(--polaroid-tilt, -1deg)) translateY(calc(var(--polaroid-offset-y, 0px) - 2px));
 }
 
 .imageFrame {

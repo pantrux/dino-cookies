@@ -38,7 +38,7 @@ export default function ProductCard({ product, index = 0 }) {
                             alt={product.name}
                             fill
                             className={styles.image}
-                            sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                            sizes="(max-width: 768px) calc(100vw - 24px), (max-width: 1100px) calc(50vw - 28px), calc(25vw - 28px)"
                         />
                     </div>
                 </div>
