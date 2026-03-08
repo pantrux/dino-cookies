@@ -16,8 +16,9 @@ function formatPriceFromUnit(price) {
 }
 
 function formatPriceFromCents(cents) {
-  const n = Math.round(Number(cents) / 100);
-  return `$${Number.isFinite(n) ? n : 0}`;
+  const n = Number(cents) / 100;
+  if (!Number.isFinite(n)) return '$0.00';
+  return `$${n.toFixed(2)}`;
 }
 
 export default function CartDrawer({ open, onClose }) {
@@ -121,7 +122,7 @@ export default function CartDrawer({ open, onClose }) {
           {cart.items.length === 0 ? (
             <Text tone="muted">Tu carrito está vacío.</Text>
           ) : (
-            <Stack gap={4}>
+            <Stack gap={4} className={styles.content}>
               <div className={styles.items}>
                 <Stack gap={4}>
                   {cart.items.map((item) => (
