@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './CartDrawer.module.css';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
@@ -21,6 +21,7 @@ export default function CartDrawer({ open, onClose }) {
   const panelRef = useRef(null);
   const closeBtnRef = useRef(null);
   const lastFocusedRef = useRef(null);
+  const [draftQty, setDraftQty] = useState({});
 
   useEffect(() => {
     if (!open) return;
@@ -73,15 +74,12 @@ export default function CartDrawer({ open, onClose }) {
   if (!open) return null;
 
   return (
-    <div
-      className={styles.overlay}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Carrito"
-      onClick={() => onClose?.()}
-    >
+    <div className={styles.overlay} onClick={() => onClose?.()}>
       <div
         className={styles.panel}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Carrito"
         onClick={(e) => e.stopPropagation()}
         ref={panelRef}
       >
@@ -113,11 +111,30 @@ export default function CartDrawer({ open, onClose }) {
 
                       <div className={styles.itemControls}>
                         <Input
-                          type="number"
-                          min={1}
-                          max={99}
-                          value={item.qty}
-                          onChange={(e) => cart.setQty(item.id, e.target.value)}
+                          type="text"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          value={draftQty[item.id] ?? String(item.qty)}
+                          onChange={(e) => {
+                            const v = e.target.value;
+                            if (v === '' || /^[0-9]{0,2}$/.test(v)) {
+                              setDraftQty((s) => ({ ...s, [item.id]: v }));
+                            }
+                          }}
+                          onBlur={() => {
+                            const v = draftQty[item.id];
+                            if (v == null) return;
+                            const n = Number(v);
+                            cart.setQty(item.id, Number.isFinite(n) ? n : 1);
+                            setDraftQty((s) => {
+                              const next = { ...s };
+                              delete next[item.id];
+                              return next;
+                            });
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') e.currentTarget.blur();
+                          }}
                           aria-label={`Cantidad de ${item.name}`}
                           className={styles.qty}
                         />

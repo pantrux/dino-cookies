@@ -80,8 +80,13 @@ export function CartProvider({ children }) {
   // persist (skip initial empty write before hydration completes)
   useEffect(() => {
     if (!hasHydratedRef.current) return;
+
+    // once we have items, consider the cart "initialized" for future empty writes
+    if (state.items.length > 0) hadStoredCartRef.current = true;
+
     // avoid writing an empty cart when there was no stored cart to begin with
     if (state.items.length === 0 && !hadStoredCartRef.current) return;
+
     saveCartToStorage(state.items);
   }, [state.items]);
 
