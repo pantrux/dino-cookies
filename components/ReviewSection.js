@@ -31,7 +31,7 @@ export default function ReviewSection() {
 
     return (
         <section className={styles.section}>
-            <Container className={styles.container} size="md">
+            <Container size="md">
                 <h2 className={styles.title}>Amor de Clientes</h2>
                 <div className={styles.grid}>
                     {reviews.map(review => (

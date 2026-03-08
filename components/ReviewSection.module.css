@@ -3,10 +3,6 @@
   background-color: var(--surface-page);
 }
 
-.container {
-  /* Layout handled by <Container /> */
-}
-
 .title {
   text-align: center;
   font-size: var(--font-size-3xl);
