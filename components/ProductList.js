@@ -13,8 +13,8 @@ const PRODUCTS = [
 
 export default function ProductList() {
     return (
-        <Section className={styles.section} id="menu" surface="page" paddingY="md">
-            <Container className={styles.container} size="lg">
+        <Section id="menu" surface="page" paddingY="md">
+            <Container size="lg">
                 <h2 className={styles.title}>Favoritos del Horno</h2>
                 <div className={styles.marqueeContainer}>
                     <div className={styles.marqueeTrack}>

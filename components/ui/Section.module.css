@@ -3,15 +3,15 @@
 }
 
 .surface_page {
-  background: var(--surface-page);
+  background-color: var(--surface-page);
 }
 
 .surface_subtle {
-  background: var(--surface-subtle);
+  background-color: var(--surface-subtle);
 }
 
 .surface_muted {
-  background: var(--surface-muted);
+  background-color: var(--surface-muted);
 }
 
 .py_none {
