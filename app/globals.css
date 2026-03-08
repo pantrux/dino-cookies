@@ -183,7 +183,6 @@
   --marquee-slide-width: 280px;
   --product-image-height: 200px;
   --hero-min-height: 500px;
-  --hero-container-max: var(--container-md);
   --hero-card-max: 400px;
 
   --admin-address-max: 200px;
