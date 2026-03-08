@@ -83,6 +83,9 @@ Este documento es el **contrato de trabajo** para el rediseño del sitio. La ide
 3. `frontend-design` guía el acabado visual.
 
 ### Fase 5 — QA visual y criterios de aceptación
+
+Checklist consolidado (reusable): `docs/redesign/VISUAL_QUALITY_GATES.md`
+
 - Responsive: 375 / 768 / 1024 / 1440.
 - Accesibilidad base:
   - Contraste AA (mínimo 4.5:1 para texto normal)

@@ -1,4 +1,4 @@
-import { defineConfig } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 import { FlatCompat } from "@eslint/eslintrc";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -10,7 +10,6 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default defineConfig([
   {
-    // Avoid linting build outputs and deploy artifacts.
     ignores: [
       ".next/**",
       ".vercel/**",
