@@ -120,7 +120,7 @@ export default function OrderForm() {
                             </Field>
                             <div className={styles.group}>
                                 <Text as="div" tone="muted" size="sm" className={styles.cartLabel}>Resumen de carrito</Text>
-                                <Card className={styles.cartSummary} padding="sm" shadow="none" radius="sm">
+                                <Card className={styles.cartSummary} padding="sm" shadow="none" radius="sm" border="none">
                                     {cartSummary.items.length === 0 ? (
                                         <Text tone="muted" size="sm">Carrito vacío</Text>
                                     ) : (
