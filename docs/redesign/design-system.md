@@ -4,7 +4,14 @@
 > 
 > Regla: si algo no está aquí (o en `docs/redesign/tokens.md`), **no se inventa** en un PR de UI.
 
-## 1) Dirección visual (DECISIÓN)
+## 1) Referencia visual PR-36 (spec de alta fidelidad)
+
+- Spec: `docs/redesign/reference-mock-01.md`
+- Nota: la referencia que estamos reverse-engineering tiene un lenguaje **vintage/artesanal (paper/ink) + jurásico premium** (oliva, serif editorial, polaroids). Esto puede convivir como **variante** o reemplazar la dirección actual, pero la **decisión final** debe cristalizarse en un PR de dirección (manteniendo el proceso).
+
+---
+
+## 2) Dirección visual (DECISIÓN)
 
 **Variante elegida:** **Playful Dino (Premium-lite)**
 
