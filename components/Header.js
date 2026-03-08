@@ -23,6 +23,7 @@ export default function Header() {
                         width={220}
                         height={180}
                         sizes="220px"
+                        priority
                     />
                 </div>
                 <nav className={styles.nav}>
