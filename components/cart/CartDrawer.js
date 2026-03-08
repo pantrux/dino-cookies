@@ -1,0 +1,83 @@
+"use client";
+
+import styles from './CartDrawer.module.css';
+import Button from '../ui/Button';
+import Card from '../ui/Card';
+import Heading from '../ui/Heading';
+import Stack from '../ui/Stack';
+import Text from '../ui/Text';
+import { Input } from '../ui/Input';
+import { useCart } from './cart-context';
+
+function formatMoneyCLPFromCents(cents) {
+  // prices look like CLP-like integers; still format as number with $.
+  const n = Math.round(cents / 100);
+  return `$${n}`;
+}
+
+export default function CartDrawer({ open, onClose }) {
+  const cart = useCart();
+
+  if (!open) return null;
+
+  return (
+    <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Carrito">
+      <div className={styles.panel}>
+        <Card className={styles.card}>
+          <Stack direction="row" justify="between" align="center" className={styles.header}>
+            <Heading level={3} size="2xl">Carrito</Heading>
+            <Button variant="ghost" onClick={onClose} aria-label="Cerrar carrito">Cerrar</Button>
+          </Stack>
+
+          {cart.items.length === 0 ? (
+            <Text tone="muted">Tu carrito está vacío.</Text>
+          ) : (
+            <Stack gap={4}>
+              <div className={styles.items}>
+                <Stack gap={4}>
+                  {cart.items.map((item) => (
+                    <div key={item.id} className={styles.itemRow}>
+                      <div className={styles.itemMeta}>
+                        <Text as="div" tone="primary" weight="semibold">{item.name}</Text>
+                        <Text as="div" tone="muted" size="sm">${item.price} c/u</Text>
+                      </div>
+
+                      <div className={styles.itemControls}>
+                        <Input
+                          type="number"
+                          min={1}
+                          max={99}
+                          value={item.qty}
+                          onChange={(e) => cart.setQty(item.id, e.target.value)}
+                          aria-label={`Cantidad de ${item.name}`}
+                          className={styles.qty}
+                        />
+                        <Button variant="ghost" tone="danger" onClick={() => cart.removeItem(item.id)}>
+                          Quitar
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </Stack>
+              </div>
+
+              <div className={styles.summary}>
+                <Text as="div" tone="muted" size="sm">Subtotal</Text>
+                <Text as="div" tone="primary" weight="bold">{formatMoneyCLPFromCents(cart.subtotalCents)}</Text>
+              </div>
+
+              <Stack direction="row" gap={2}>
+                <Button variant="outline" fullWidth onClick={cart.clear} tone="danger">
+                  Vaciar
+                </Button>
+                <Button fullWidth href="#order" onClick={onClose}>
+                  Ir a pedir
+                </Button>
+              </Stack>
+            </Stack>
+          )}
+        </Card>
+      </div>
+    </div>
+  );
+}
