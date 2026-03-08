@@ -1,4 +1,79 @@
-/* File kept intentionally empty.
- * Next.js starter styles were removed; the app uses the redesign system tokens (globals.css)
- * and component-level CSS modules.
- */
+.referenceTheme {
+  /* =====================
+   * Reference mock theme (PR-36)
+   * Local-only overrides so Admin keeps existing DS.
+   * ===================== */
+
+  /* Palette primitives (local scope) */
+  --ref-paper-50: #fbf7ed;
+  --ref-paper-100: #f4eedc;
+  --ref-paper-200: #e9dfc8;
+
+  --ref-ink-900: #22211d;
+  --ref-ink-700: #3a382f;
+
+  --ref-olive-500: #6f7c44;
+  --ref-olive-600: #5e6b3a;
+  --ref-olive-700: #4f5b31;
+
+  --ref-surface-card: #fffcf4;
+
+  /* Shadow language */
+  --ref-shadow-polaroid: 6px 6px 0 rgba(34, 33, 29, 0.92);
+
+  /* Semantic overrides */
+  --surface-page: var(--ref-paper-50);
+  --surface-elevated: var(--ref-surface-card);
+  --surface-subtle: var(--ref-paper-100);
+  --surface-muted: var(--ref-paper-100);
+
+  --text-primary: var(--ref-ink-900);
+  --text-secondary: var(--ref-ink-700);
+  --text-muted: rgba(58, 56, 47, 0.82);
+  --text-inverse: var(--ref-paper-50);
+
+  --border-subtle: rgba(34, 33, 29, 0.18);
+  --border-default: rgba(34, 33, 29, 0.26);
+  --border-control: rgba(34, 33, 29, 0.55);
+
+  --interactive-primary: var(--ref-olive-600);
+  --interactive-primary-hover: var(--ref-olive-700);
+  --interactive-primary-active: var(--ref-olive-700);
+
+  --focus-ring: rgba(94, 107, 58, 0.9);
+
+  /* Container: keep max but slightly tighter feel */
+  --container-max: 1180px;
+
+  min-height: 100dvh;
+  background: var(--surface-page);
+  position: relative;
+  isolation: isolate;
+}
+
+.referenceTheme::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  /* paper atmosphere */
+  background:
+    radial-gradient(1200px 900px at 15% 10%, rgba(233, 223, 200, 0.85) 0%, rgba(233, 223, 200, 0) 60%),
+    radial-gradient(900px 740px at 85% 25%, rgba(233, 223, 200, 0.7) 0%, rgba(233, 223, 200, 0) 55%),
+    linear-gradient(180deg, rgba(251, 247, 237, 1) 0%, rgba(244, 238, 220, 0.85) 100%);
+}
+
+.referenceTheme::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.06;
+
+  /* subtle noise via SVG turbulence */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  mix-blend-mode: multiply;
+}

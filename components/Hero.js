@@ -2,34 +2,28 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Hero.module.css';
 
-const highlights = [
-  'Horneadas cada mañana',
-  'Ingredientes premium',
-  'Entrega en Santiago y retiro en tienda',
-];
-
 export default function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
-      <Image
-        src="/hero-bg.webp"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className={styles.backgroundImage}
-      />
-      <div className={styles.overlay} aria-hidden="true" />
-
       <div className={styles.container}>
+        <div className={styles.doodles} aria-hidden="true">
+          <span className={styles.cloudA} />
+          <span className={styles.cloudB} />
+          <span className={styles.sparkles} />
+          <span className={styles.dino} />
+        </div>
+
         <div className={styles.content}>
-          <p className={styles.eyebrow}>Dino Cookies · Repostería artesanal</p>
+          <p className={styles.eyebrow}>Repostería artesanal · Dino Cookies</p>
+
           <h1 id="hero-title" className={styles.title}>
-            Galletas jurásicamente buenas para alegrar cualquier día
+            Galletas de horno
+            <br />
+            con espíritu jurásico.
           </h1>
+
           <p className={styles.subtitle}>
-            Elige tus sabores favoritos, confirma tu pedido en minutos y recibe un box recién horneado.
-            Sin complicaciones, sin formularios eternos.
+            Sabores intensos, textura suave y un toque editorial. Elige tus favoritos y arma tu box en minutos.
           </p>
 
           <div className={styles.ctaGroup}>
@@ -41,32 +35,44 @@ export default function Hero() {
             </Link>
           </div>
 
-          <ul className={styles.highlightList}>
-            {highlights.map((item) => (
-              <li key={item} className={styles.highlightItem}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <aside className={styles.infoCard} aria-label="Información de despacho">
-          <p className={styles.cardOverline}>Entrega express</p>
-          <p className={styles.cardLead}>Tu pedido en menos de 2 horas*</p>
-          <p className={styles.cardBody}>
-            Cobertura en zonas habilitadas. También puedes retirar en tienda el mismo día.
-          </p>
-          <div className={styles.cardMeta}>
-            <div>
-              <span className={styles.metaLabel}>Horario</span>
-              <strong className={styles.metaValue}>09:00 - 20:00</strong>
+          <div className={styles.trustRow}>
+            <div className={styles.trustItem}>
+              <span className={styles.trustLabel}>Horneado</span>
+              <strong className={styles.trustValue}>Diario</strong>
             </div>
-            <div>
-              <span className={styles.metaLabel}>Pedidos activos</span>
-              <strong className={styles.metaValue}>Alta demanda</strong>
+            <div className={styles.trustItem}>
+              <span className={styles.trustLabel}>Ingredientes</span>
+              <strong className={styles.trustValue}>Premium</strong>
+            </div>
+            <div className={styles.trustItem}>
+              <span className={styles.trustLabel}>Entrega</span>
+              <strong className={styles.trustValue}>Santiago</strong>
             </div>
           </div>
-          <p className={styles.cardFootnote}>*Tiempo estimado según distancia y demanda.</p>
+        </div>
+
+        <aside className={styles.heroCard} aria-label="Dato destacado">
+          <div className={styles.heroCardInner}>
+            <p className={styles.cardKicker}>Edición de temporada</p>
+            <p className={styles.cardTitle}>Chocolate negro + sal de mar</p>
+            <p className={styles.cardBody}>
+              Un clásico con borde crujiente, centro suave y un final largo.
+            </p>
+            <div className={styles.cardMeta}>
+              <span className={styles.metaTag}>Best seller</span>
+              <span className={styles.metaTag}>Box mixto</span>
+            </div>
+          </div>
+          <div className={styles.heroCardMedia} aria-hidden="true">
+            <Image
+              src="/images/galletas-chocolate-negro.webp"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 420px"
+              className={styles.heroCardImage}
+              priority
+            />
+          </div>
         </aside>
       </div>
     </section>

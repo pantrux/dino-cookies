@@ -17,17 +17,18 @@ export default function ProductList() {
     <Section id="menu" surface="page" paddingY="sm" className={styles.section}>
       <Container size="lg">
         <header className={styles.header}>
-          <Heading level={2} size="3xl" tone="brand" className={styles.title}>
+          <Heading level={2} size="3xl" tone="primary" className={styles.title}>
             Favoritos del Horno
           </Heading>
           <p className={styles.subtitle}>
             Selección recomendada por nuestros clientes. Receta casera, textura suave y mucho chocolate.
           </p>
+          <div className={styles.divider} aria-hidden="true" />
         </header>
 
         <div className={styles.grid}>
-          {PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {PRODUCTS.map((product, index) => (
+            <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
       </Container>

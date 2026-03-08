@@ -1,0 +1,118 @@
+.section {
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.content {
+  max-width: 58ch;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-accent), var(--font-serif), serif;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ref-ink-700, #3a382f);
+}
+
+.kicker::before {
+  content: '';
+  width: 34px;
+  height: 2px;
+  background: var(--ref-ink-900, #22211d);
+  opacity: 0.75;
+}
+
+.title {
+  margin-top: var(--space-3);
+  font-family: var(--font-display), serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  color: var(--ref-ink-900, #22211d);
+  font-size: clamp(32px, 3.2vw, 44px);
+}
+
+.body {
+  margin-top: var(--space-4);
+  font-family: var(--font-serif), serif;
+  color: var(--ref-ink-700, #3a382f);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.bullets {
+  margin-top: var(--space-6);
+  padding-left: var(--space-6);
+  display: grid;
+  gap: var(--space-2);
+  color: var(--ref-ink-700, #3a382f);
+}
+
+.illustration {
+  width: 100%;
+  position: relative;
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: 14px;
+  background: var(--ref-surface-card, #fffcf4);
+  border: 2px solid var(--ref-ink-900, #22211d);
+  box-shadow: var(--ref-shadow-polaroid, 6px 6px 0 rgba(34, 33, 29, 0.92));
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  padding: var(--space-6);
+}
+
+.doodleTop,
+.doodleBottom {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 0 rgba(34, 33, 29, 0.15));
+}
+
+.doodleTop {
+  top: -18px;
+  right: -12px;
+  width: 120px;
+  height: 80px;
+  background: center / contain no-repeat url('/doodles/cloud-01.svg');
+}
+
+.doodleBottom {
+  bottom: -18px;
+  left: -14px;
+  width: 140px;
+  height: 90px;
+  background: center / contain no-repeat url('/doodles/sparkles-01.svg');
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+  }
+}
+
+@media (max-width: 767px) {
+  .body {
+    font-size: var(--font-size-md);
+  }
+
+  .frame {
+    box-shadow: 5px 5px 0 rgba(34, 33, 29, 0.95);
+  }
+}

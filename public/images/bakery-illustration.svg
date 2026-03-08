@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" fill="none">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFCF4"/>
+      <stop offset="1" stop-color="#F4EEDC"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="720" rx="24" fill="url(#paper)"/>
+
+  <!-- oven -->
+  <rect x="94" y="190" width="408" height="368" rx="22" stroke="#22211D" stroke-width="10"/>
+  <rect x="140" y="240" width="316" height="190" rx="16" stroke="#22211D" stroke-width="10"/>
+  <path d="M140 464h316" stroke="#22211D" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <circle cx="160" cy="214" r="10" fill="#22211D"/>
+  <circle cx="196" cy="214" r="10" fill="#22211D" opacity="0.7"/>
+  <circle cx="232" cy="214" r="10" fill="#22211D" opacity="0.5"/>
+
+  <!-- tray -->
+  <path d="M178 392c34 26 68 38 102 38 62 0 96-34 156-34" stroke="#22211D" stroke-width="10" stroke-linecap="round"/>
+  <path d="M214 360c14 0 22-10 22-22 0-14-10-24-24-24-12 0-22 10-22 22 0 14 10 24 24 24Z" fill="#C56A4B" stroke="#22211D" stroke-width="8"/>
+  <path d="M278 350c14 0 22-10 22-22 0-14-10-24-24-24-12 0-22 10-22 22 0 14 10 24 24 24Z" fill="#C56A4B" stroke="#22211D" stroke-width="8" opacity="0.95"/>
+  <path d="M342 350c14 0 22-10 22-22 0-14-10-24-24-24-12 0-22 10-22 22 0 14 10 24 24 24Z" fill="#C56A4B" stroke="#22211D" stroke-width="8" opacity="0.9"/>
+
+  <!-- dino baker -->
+  <path d="M646 540c-78 0-140-60-140-136 0-60 38-112 96-128 16-82 82-144 172-144 94 0 168 62 182 152 42 18 70 56 70 100 0 62-52 114-120 114H646Z" stroke="#22211D" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M616 396c40-44 88-66 146-66 64 0 114 24 156 70" stroke="#22211D" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="792" cy="248" r="10" fill="#22211D"/>
+  <path d="M800 282c-28 20-62 24-102 14" stroke="#22211D" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <path d="M722 190c14 10 30 16 48 18" stroke="#22211D" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- little clouds -->
+  <path d="M180 126c-18 0-32-12-32-28 0-15 12-27 28-28 6-18 22-30 41-30 21 0 38 13 44 32 3-1 7-2 11-2 18 0 32 14 32 30 0 17-15 30-34 30H180Z" stroke="#22211D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+  <path d="M540 132c-16 0-28-10-28-24 0-13 10-23 24-24 6-14 20-24 38-24 20 0 36 12 40 30 3-1 6-2 10-2 16 0 28 12 28 26 0 15-13 26-30 26H540Z" stroke="#22211D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+</svg>
