@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import styles from './Header.module.css';
 import Button from './ui/Button';
 import AppLink from './ui/AppLink';
@@ -10,6 +10,8 @@ import { useCart } from './cart/cart-context';
 export default function Header() {
     const [open, setOpen] = useState(false);
     const cart = useCart();
+
+    const handleClose = useCallback(() => setOpen(false), []);
 
     return (
         <header className={styles.header}>
@@ -28,7 +30,7 @@ export default function Header() {
                 </nav>
             </div>
 
-            <CartDrawer open={open} onClose={() => setOpen(false)} />
+            <CartDrawer open={open} onClose={handleClose} />
         </header>
     );
 }
