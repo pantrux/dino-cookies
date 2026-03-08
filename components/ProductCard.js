@@ -6,8 +6,14 @@ import Card from './ui/Card';
 import Button from './ui/Button';
 import { useCart } from './cart/cart-context';
 
+function getStars(rating = 5) {
+    const rounded = Math.round(Number(rating) || 5);
+    return '★'.repeat(Math.max(1, Math.min(5, rounded)));
+}
+
 export default function ProductCard({ product }) {
     const cart = useCart();
+    const rating = Number(product.rating ?? 5);
 
     return (
         <Card className={styles.card} padding="none" surface="elevated" shadow="sm" border="default">
@@ -23,7 +29,7 @@ export default function ProductCard({ product }) {
             <div className={styles.info}>
                 <h3 className={styles.name}>{product.name}</h3>
                 <p className={styles.price}>${product.price}</p>
-                <div className={styles.rating}>★★★★★ 5.0</div>
+                <div className={styles.rating}>{getStars(rating)} {rating.toFixed(1)}</div>
                 <Button
                     variant="outline"
                     onClick={() => cart.addItem(product, 1)}
