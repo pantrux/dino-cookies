@@ -23,13 +23,14 @@ export default function CartDrawer({ open, onClose }) {
   const lastFocusedRef = useRef(null);
   const [draftQty, setDraftQty] = useState({});
 
-  // discard drafts when closing, and remove stale drafts when items change (remove/clear)
+  // discard drafts when closing
   useEffect(() => {
-    if (!open) {
-      setDraftQty({});
-      return;
-    }
+    if (!open) setDraftQty({});
+  }, [open]);
 
+  // remove stale drafts when items change (remove/clear)
+  useEffect(() => {
+    if (!open) return;
     setDraftQty((prev) => {
       const ids = new Set(cart.items.map((x) => x.id));
       const next = {};
@@ -107,7 +108,7 @@ export default function CartDrawer({ open, onClose }) {
               variant="ghost"
               onClick={onClose}
               aria-label="Cerrar carrito"
-              buttonRef={closeBtnRef}
+              ref={closeBtnRef}
             >
               Cerrar
             </Button>

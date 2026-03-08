@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { forwardRef } from 'react';
 import styles from './Button.module.css';
 import { cx } from './utils';
 
@@ -7,17 +8,19 @@ import { cx } from './utils';
  * - If `href` is provided, renders a Next <Link> styled as a button.
  * - Otherwise renders a native <button>.
  */
-export default function Button({
-  href,
-  children,
-  variant = 'primary',
-  tone = 'brand',
-  fullWidth = false,
-  disabled,
-  className,
-  buttonRef,
-  ...props
-}) {
+const Button = forwardRef(function Button(
+  {
+    href,
+    children,
+    variant = 'primary',
+    tone = 'brand',
+    fullWidth = false,
+    disabled,
+    className,
+    ...props
+  },
+  ref
+) {
   const classes = cx(
     styles.base,
     styles[`variant_${variant}`],
@@ -31,6 +34,7 @@ export default function Button({
     return (
       <Link
         href={href}
+        ref={ref}
         className={classes}
         aria-disabled={disabled ? 'true' : undefined}
         tabIndex={disabled ? -1 : undefined}
@@ -50,8 +54,10 @@ export default function Button({
   }
 
   return (
-    <button ref={buttonRef} className={classes} disabled={disabled} {...props}>
+    <button ref={ref} className={classes} disabled={disabled} {...props}>
       {children}
     </button>
   );
-}
+});
+
+export default Button;
