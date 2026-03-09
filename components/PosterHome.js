@@ -17,14 +17,11 @@ const PRODUCT_HOTSPOTS = [
 
 const BOTTOM_LINKS = [
   { label: 'Inicio', href: '/', left: '11.2%', top: '91.4%', width: '3.5%', height: '3.6%' },
-  { label: 'Galletas', href: '#productos', left: '15.3%', top: '91.4%', width: '5.2%', height: '3.6%' },
-  { label: 'Nosotros', href: '#nosotros', left: '20.8%', top: '91.4%', width: '5.2%', height: '3.6%' },
   { label: 'Blog', href: 'https://www.instagram.com/dinocookies20252026/', left: '25.9%', top: '91.4%', width: '3.2%', height: '3.6%' },
   { label: 'Contacto', href: 'https://wa.me/56988136073', left: '29.6%', top: '91.4%', width: '5.3%', height: '3.6%' },
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'Facebook', href: 'https://www.facebook.com', left: '44.8%', top: '91.4%', width: '2.3%', height: '4.2%' },
   { label: 'Instagram', href: 'https://www.instagram.com/dinocookies20252026/', left: '47.8%', top: '91.4%', width: '2.3%', height: '4.2%' },
   { label: 'Email', href: 'mailto:skynetbot.pantrux@gmail.com', left: '50.9%', top: '91.4%', width: '2.3%', height: '4.2%' },
 ];
@@ -59,12 +56,6 @@ export default function PosterHome() {
           <h1 id="poster-title" className={styles.srOnly}>
             Dino Cookies — landing visual final
           </h1>
-          <p className={styles.srOnly} id="productos">
-            Colección destacada de productos.
-          </p>
-          <p className={styles.srOnly} id="nosotros">
-            Sección Nosotros.
-          </p>
 
           <button
             type="button"
