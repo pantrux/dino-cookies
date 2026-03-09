@@ -4,12 +4,16 @@
   justify-content: center;
   min-height: var(--button-height);
   padding: var(--control-padding-y) var(--control-padding-x);
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
+  border-radius: var(--button-radius);
+  border: var(--button-border-width) solid transparent;
 
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-snug);
+
+  font-family: var(--font-accent), var(--font-serif), serif;
+  font-variant-caps: var(--button-caps);
+  letter-spacing: var(--button-letter-spacing);
 
   text-decoration: none;
   user-select: none;
@@ -18,7 +22,8 @@
     background-color 150ms ease,
     border-color 150ms ease,
     color 150ms ease,
-    transform 50ms ease;
+    transform 50ms ease,
+    box-shadow 150ms ease;
 }
 
 .base:focus-visible {
@@ -34,32 +39,36 @@
 .variant_primary {
   background: var(--interactive-primary);
   color: var(--text-inverse);
+  box-shadow: var(--button-shadow);
 }
 
 .variant_primary:hover {
   background: var(--interactive-primary-hover);
+  box-shadow: 5px 5px 0 rgba(34, 33, 29, 0.92);
 }
 
 .variant_primary:active {
   background: var(--interactive-primary-active);
   transform: translateY(1px);
+  box-shadow: 3px 3px 0 rgba(34, 33, 29, 0.92);
 }
 
 .variant_outline {
-  background: transparent;
-  border-color: var(--border-control);
+  background: rgba(255, 252, 244, 0.85);
+  border-color: rgba(34, 33, 29, 0.75);
   color: var(--text-primary);
+  box-shadow: 3px 3px 0 rgba(34, 33, 29, 0.92);
 }
 
 .variant_outline:hover {
-  border-color: var(--interactive-primary);
-  color: var(--interactive-primary);
+  background: rgba(255, 252, 244, 1);
+  border-color: rgba(34, 33, 29, 0.92);
+  box-shadow: 4px 4px 0 rgba(34, 33, 29, 0.92);
 }
 
 .variant_outline:active {
-  border-color: var(--interactive-primary-active);
-  color: var(--interactive-primary-active);
   transform: translateY(1px);
+  box-shadow: 2px 2px 0 rgba(34, 33, 29, 0.92);
 }
 
 .variant_ghost {
@@ -126,6 +135,7 @@
   color: var(--interactive-disabled-text);
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .base[aria-disabled='true']:hover,
