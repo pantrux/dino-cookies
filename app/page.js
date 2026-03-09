@@ -1,25 +1,5 @@
-import styles from './page.module.css';
-
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import ProductList from '@/components/ProductList';
-import BakerySection from '@/components/BakerySection';
-import ReviewSection from '@/components/ReviewSection';
-import OrderForm from '@/components/OrderForm';
-import Footer from '@/components/Footer';
+import PosterHome from '@/components/PosterHome';
 
 export default function Home() {
-  return (
-    <div className={styles.referenceTheme}>
-      <Header />
-      <main id="main-content" tabIndex={-1}>
-        <Hero />
-        <ProductList />
-        <BakerySection />
-        <ReviewSection />
-        <OrderForm />
-      </main>
-      <Footer />
-    </div>
-  );
+  return <PosterHome />;
 }

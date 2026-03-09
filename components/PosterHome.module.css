@@ -1,0 +1,124 @@
+.page {
+  width: 100%;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: #ddd2bd;
+}
+
+.posterShell {
+  width: min(1280px, calc(100vw - 24px), calc((100dvh - 24px) * 1.750342));
+  margin: 0 auto;
+}
+
+.poster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1280 / 731;
+}
+
+.posterImage {
+  object-fit: contain;
+  object-position: center top;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.hotspot,
+.hotspotCircle {
+  position: absolute;
+  display: block;
+  background: transparent;
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+  appearance: none;
+  color: transparent;
+}
+
+.hotspotCircle {
+  border-radius: 999px;
+}
+
+.hotspot:hover,
+.hotspotCircle:hover {
+  background: rgba(151, 169, 88, 0.09);
+}
+
+.hotspot:focus-visible,
+.hotspotCircle:focus-visible,
+.assistControl:focus-visible {
+  outline: 3px solid rgba(112, 129, 57, 0.92);
+  outline-offset: 2px;
+}
+
+.a11yControls {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.assistControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(72, 51, 37, 0.86);
+  background: rgba(251, 244, 228, 0.96);
+  color: #3f261a;
+  font-family: var(--font-poster), var(--font-sans), sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cartBadge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #97a958;
+  color: #fffdf7;
+  font-size: 11px;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 0;
+    place-items: start center;
+    overflow: hidden;
+  }
+
+  .posterShell {
+    width: 180vw;
+    max-width: none;
+    margin-top: 14px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .posterImage {
+    object-position: 58% top;
+  }
+}

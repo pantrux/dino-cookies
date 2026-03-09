@@ -15,16 +15,14 @@ import { useCart } from './cart/cart-context';
 
 function formatPriceFromUnit(price) {
     const n = Number(price);
-    if (!Number.isFinite(n)) return '$0';
-    if (Number.isInteger(n)) return `$${n}`;
-    return `$${n.toFixed(2)}`;
+    if (!Number.isFinite(n)) return '0,00€';
+    return `${n.toFixed(2).replace('.', ',')}€`;
 }
 
 function formatPriceFromCents(cents) {
     const n = Number(cents);
-    if (!Number.isFinite(n)) return '$0';
-    if (n % 100 === 0) return `$${n / 100}`;
-    return `$${(n / 100).toFixed(2)}`;
+    if (!Number.isFinite(n)) return '0,00€';
+    return `${(n / 100).toFixed(2).replace('.', ',')}€`;
 }
 
 export default function OrderForm() {
@@ -131,7 +129,7 @@ export default function OrderForm() {
                                                         {it.qty}× {it.name}
                                                     </Text>
                                                     <Text as="div" tone="muted" size="sm">
-                                                        {formatPriceFromUnit(it.price)} c/u
+                                                        {it.priceLabel ?? formatPriceFromUnit(it.price)}
                                                     </Text>
                                                 </div>
                                             ))}

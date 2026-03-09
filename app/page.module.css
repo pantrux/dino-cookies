@@ -1,80 +1,120 @@
 .referenceTheme {
-  /* =====================
-   * Reference mock theme (PR-36)
-   * Local-only overrides so Admin keeps existing DS.
-   * ===================== */
+  --ref-paper-50: #f7efdc;
+  --ref-paper-100: #efe3ca;
+  --ref-paper-200: #e4d4b6;
 
-  /* Palette primitives (local scope) */
-  --ref-paper-50: #fbf7ed;
-  --ref-paper-100: #f4eedc;
-  --ref-paper-200: #e9dfc8;
+  --ref-ink-900: #3f261a;
+  --ref-ink-700: #5b4030;
+  --ref-olive-500: #97a958;
+  --ref-olive-600: #7d9047;
+  --ref-olive-700: #67773a;
+  --ref-surface-card: #fdf6e8;
+  --ref-shadow-polaroid: 4px 4px 0 rgba(69, 44, 30, 0.9);
 
-  --ref-ink-900: #22211d;
-  --ref-ink-700: #3a382f;
-
-  --ref-olive-500: #6f7c44;
-  --ref-olive-600: #5e6b3a;
-  --ref-olive-700: #4f5b31;
-
-  --ref-surface-card: #fffcf4;
-
-  /* Shadow language */
-  --ref-shadow-polaroid: 6px 6px 0 rgba(34, 33, 29, 0.92);
-
-  /* Semantic overrides */
   --surface-page: var(--ref-paper-50);
   --surface-elevated: var(--ref-surface-card);
-  --surface-subtle: var(--ref-paper-100);
-  --surface-muted: var(--ref-paper-100);
+  --surface-subtle: rgba(255, 248, 233, 0.82);
+  --surface-muted: rgba(255, 248, 233, 0.82);
 
   --text-primary: var(--ref-ink-900);
   --text-secondary: var(--ref-ink-700);
-  --text-muted: rgba(58, 56, 47, 0.82);
-  --text-inverse: var(--ref-paper-50);
+  --text-muted: rgba(91, 64, 48, 0.82);
+  --text-inverse: #fffdf7;
 
-  --border-subtle: rgba(34, 33, 29, 0.18);
-  --border-default: rgba(34, 33, 29, 0.26);
-  --border-control: rgba(34, 33, 29, 0.55);
-
-  --interactive-primary: var(--ref-olive-600);
-  --interactive-primary-hover: var(--ref-olive-700);
+  --interactive-primary: var(--ref-olive-500);
+  --interactive-primary-hover: var(--ref-olive-600);
   --interactive-primary-active: var(--ref-olive-700);
-
-  --focus-ring: rgba(94, 107, 58, 0.9);
-
-  /* Container: keep max but slightly tighter feel */
-  --container-max: 1180px;
+  --focus-ring: rgba(125, 144, 71, 0.88);
+  --container-max: 1060px;
 
   min-height: 100dvh;
-  background: var(--surface-page);
+  padding: clamp(16px, 2vw, 28px);
+  background:
+    radial-gradient(1200px 860px at 50% 12%, rgba(255, 248, 233, 0.5) 0%, rgba(255, 248, 233, 0) 62%),
+    linear-gradient(180deg, #f0e4cb 0%, #f7efdc 20%, #f4ead5 100%);
   position: relative;
-  isolation: isolate;
 }
 
 .referenceTheme::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: -2;
-
-  /* paper atmosphere */
-  background:
-    radial-gradient(1200px 900px at 15% 10%, rgba(233, 223, 200, 0.76) 0%, rgba(233, 223, 200, 0) 62%),
-    radial-gradient(900px 740px at 85% 25%, rgba(233, 223, 200, 0.62) 0%, rgba(233, 223, 200, 0) 58%),
-    radial-gradient(780px 620px at 50% 100%, rgba(34, 33, 29, 0.08) 0%, rgba(34, 33, 29, 0) 60%),
-    linear-gradient(180deg, rgba(251, 247, 237, 1) 0%, rgba(244, 238, 220, 0.84) 100%);
-}
-
-.referenceTheme::after {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  z-index: -1;
   pointer-events: none;
   opacity: 0.06;
-
-  /* subtle noise via SVG turbulence */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
+  background-image: url('/textures/paper-noise.svg');
+  background-size: 260px 260px;
   mix-blend-mode: multiply;
+}
+
+.poster {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: calc(100dvh - 32px);
+  padding: clamp(28px, 4vw, 44px) clamp(22px, 3vw, 38px) clamp(26px, 3vw, 34px);
+  border-radius: 24px;
+  background:
+    radial-gradient(1200px 500px at 50% 0%, rgba(255, 252, 244, 0.66) 0%, rgba(255, 252, 244, 0) 62%),
+    radial-gradient(1000px 700px at 14% 22%, rgba(191, 157, 118, 0.12) 0%, rgba(191, 157, 118, 0) 58%),
+    radial-gradient(1000px 700px at 88% 20%, rgba(191, 157, 118, 0.08) 0%, rgba(191, 157, 118, 0) 55%),
+    linear-gradient(180deg, rgba(249, 241, 223, 0.98) 0%, rgba(244, 234, 213, 0.98) 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(122, 90, 58, 0.12),
+    inset 0 0 120px rgba(122, 90, 58, 0.1),
+    0 10px 40px rgba(84, 59, 34, 0.08);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background:
+    top 26px left 240px / 170px 90px no-repeat url('/doodles/cloud-01.svg'),
+    top 40px right 250px / 174px 96px no-repeat url('/doodles/cloud-01.svg'),
+    left 140px top 200px / 110px 110px no-repeat url('/doodles/dino-01.svg'),
+    right 230px top 210px / 88px 88px no-repeat url('/doodles/dino-01.svg'),
+    left 120px center / 128px 128px no-repeat url('/doodles/dino-01.svg'),
+    right 170px calc(100% - 200px) / 92px 92px no-repeat url('/doodles/dino-01.svg'),
+    right 28px bottom 38px / 78px 78px no-repeat url('/doodles/sparkles-01.svg');
+  filter: sepia(0.35);
+}
+
+.poster::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(93, 63, 40, 0.06);
+  pointer-events: none;
+}
+
+.main {
+  width: min(var(--container-max), 100%);
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .referenceTheme {
+    padding: 10px;
+  }
+
+  .poster {
+    min-height: calc(100dvh - 20px);
+    padding: 22px 18px 26px;
+    border-radius: 18px;
+  }
+
+  .poster::before {
+    opacity: 0.15;
+    background:
+      top 38px left 34px / 96px 58px no-repeat url('/doodles/cloud-01.svg'),
+      top 44px right 36px / 96px 58px no-repeat url('/doodles/cloud-01.svg'),
+      left 12px top 220px / 64px 64px no-repeat url('/doodles/dino-01.svg'),
+      right 24px top 240px / 56px 56px no-repeat url('/doodles/dino-01.svg'),
+      right 12px bottom 22px / 54px 54px no-repeat url('/doodles/sparkles-01.svg');
+  }
 }
