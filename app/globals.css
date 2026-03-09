@@ -180,7 +180,6 @@
   --control-padding-x: var(--space-4);
   --control-padding-y: var(--space-2);
 
-  --button-height: var(--control-height);
   --input-height: var(--control-height);
 
   /* Cards / panels */
@@ -270,7 +269,7 @@ button {
 }
 
 /* Links: look like ink */
-a:hover {
+:where(a:not([role='button']):not(.button)):hover {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;

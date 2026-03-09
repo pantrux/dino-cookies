@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={[outfit.className, outfit.variable, bodoni.variable, sourceSerif.variable, fraunces.variable].join(' ')}>
+      <body className={[outfit.variable, bodoni.variable, sourceSerif.variable, fraunces.variable].join(' ')}>
         <a className="skipLink" href="#main-content">
           Saltar al contenido principal
         </a>

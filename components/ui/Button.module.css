@@ -135,6 +135,7 @@
   color: var(--interactive-disabled-text);
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .base[aria-disabled='true']:hover,
