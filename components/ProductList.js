@@ -1,6 +1,6 @@
 import styles from './ProductList.module.css';
 import ProductCard from './ProductCard';
-import { POSTER_PRODUCTS } from '@/lib/posterProducts';
+import { PRODUCTS } from '@/lib/products';
 
 export default function ProductList() {
   return (
@@ -10,7 +10,7 @@ export default function ProductList() {
       </h2>
 
       <div className={styles.row}>
-        {POSTER_PRODUCTS.map((product, index) => (
+        {PRODUCTS.map((product, index) => (
           <ProductCard key={product.id} product={product} index={index} />
         ))}
       </div>
