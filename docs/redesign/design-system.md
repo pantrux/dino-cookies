@@ -13,21 +13,23 @@
 
 ## 2) Dirección visual (DECISIÓN)
 
-**Variante elegida:** **Playful Dino (Premium-lite)**
+**Variante elegida:** **Vintage Bakery Stamp (Paper/Ink) + Jurassic Premium**
 
 **Intención:**
-- *Playful* por marca (dino/galletas) + *Premium-lite* para confianza (orden/checkout/admin sin vibe “juguete”).
+- Replicar **alta fidelidad** del layout final de referencia (no “inspirado por”).
+- Sensación: **pergamino + tinta + sello editorial**, con acento **oliva**.
 
 **Principios de estilo (no negociables):**
-1. **1 acento fuerte, el resto neutrales.** (El acento guía CTA y estados importantes.)
-2. **Tipografía con jerarquía clara.** (No “todo igual”.)
-3. **Spacing con escala.** (Nada de 13px/17px random.)
-4. **Componentes con estados completos.** (hover/focus/disabled/error.)
-5. **Densidad informativa razonable.** (Evitar “mucho blanco + poco contenido”.)
+1. **Composición centrada tipo “poster”.** (Logo seal arriba, hero centrado, bloques simétricos.)
+2. **Paper depth real.** (atmósfera pergamino perceptible: gradientes + noise + vignette.)
+3. **Tinta + print shadows.** (sombras duras offset, como impresión.)
+4. **Tipografía heritage.** (display serif con tracking controlado; body serif legible.)
+5. **Botones como sellos.** (pill + small-caps + sombra hard-print; estados sin layout shift.)
 
-**Referencias de vibe (conceptual):**
-- “DTC bakery moderno”: limpio, cálido, confiable.
-- Evitar look “Bootstrap template” (bordes/inputs sin intención).
+**Anti‑patterns:**
+- Hero “SaaS moderno” (2 columnas con card a la derecha).
+- Botones blandos sin sombra o con radios genéricos.
+- Fondo crema plano sin textura.
 
 ---
 
@@ -43,9 +45,9 @@
 - **Border:** gris claro
 
 ### Marca / interacción
-- **Accent / Primary CTA:** magenta/frambuesa (el color fuerte de la marca)
-- **Accent hover/active:** misma familia, más oscuro
-- **Focus ring:** acento con alpha (visible, consistente)
+- **Accent / Primary CTA:** **oliva** (papel + tinta + oliva)
+- **Accent hover/active:** oliva más profundo
+- **Focus ring:** oliva con alpha (visible, consistente)
 
 ### Estados
 - **Success:** verde (solo feedback)
@@ -53,9 +55,9 @@
 - **Danger:** rojo (errores)
 
 ### Reglas de uso
-- El **magenta** se usa para: CTA primario, highlights, focus/selected.
-- **No** usar magenta como decoración masiva (pierde “punch”).
-- Botones secundarios: outline/neutral (no competir con CTA).
+- El **oliva** se usa para: CTA primario, highlights, focus/selected.
+- **No** usar oliva como decoración masiva (pierde fuerza): reservarlo para acciones.
+- Botones secundarios: outline/neutral (tinta/paper) para no competir con CTA.
 
 ---
 
@@ -64,15 +66,16 @@
 > Objetivo: que títulos de sección, labels y body se lean como un sistema.
 
 ### Familias
-- **Headings:** *Sans display* (recomendado: `Poppins` o similar)
-- **Body/UI:** *Sans legible* (recomendado: `Inter` o system-ui si no se quiere cargar fuentes)
+- **Headings (display):** serif heritage (target: **Bodoni Moda** o **DM Serif Display**)
+- **Body/UI:** serif legible (target: **Source Serif 4** o **EB Garamond**)
+- **Accents/labels:** serif con personalidad para small-caps (target: **Fraunces**)
 
 ### Escala recomendada (desktop)
-- **H1:** 40–48 / LH 1.1–1.2
-- **H2:** 28–32 / LH 1.2
-- **H3:** 20–24 / LH 1.25
-- **Body:** 16 / LH 1.5–1.6
-- **Small:** 14 / LH 1.4
+- **H1 (poster):** 56–72 / LH 0.95–1.05
+- **H2:** 32–44 / LH 1.05–1.15
+- **H3:** 22–28 / LH 1.15–1.25
+- **Body:** 16–18 / LH 1.55–1.75
+- **Small:** 12–14 / LH 1.4
 
 **Regla de implementación (importante):**
 - Estos valores son la **escala objetivo**.
