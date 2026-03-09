@@ -1,84 +1,42 @@
 .hero {
   position: relative;
-  padding: var(--space-12) var(--space-6) var(--space-16);
+  padding: var(--space-16) var(--space-6) var(--space-20);
   overflow: hidden;
+
+  /* Local component tokens (avoid repeating magic numbers) */
+  --hero-frame-radius: 28px;
+  --hero-card-radius: 18px;
+  --hero-shadow: var(--ref-shadow-polaroid, 6px 6px 0 rgba(34, 33, 29, 0.92));
+  --hero-shadow-lg: var(--space-3) var(--space-3) 0 rgba(34, 33, 29, 0.9);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    radial-gradient(900px 520px at 20% 20%, rgba(233, 223, 200, 0.85) 0%, rgba(233, 223, 200, 0) 62%),
+    radial-gradient(680px 520px at 78% 26%, rgba(111, 124, 68, 0.18) 0%, rgba(111, 124, 68, 0) 60%),
+    linear-gradient(180deg, rgba(255, 252, 244, 0.6) 0%, rgba(244, 238, 220, 0) 100%);
+  pointer-events: none;
 }
 
 .container {
   position: relative;
+  z-index: 1;
+
   max-width: var(--container-max);
   margin: 0 auto;
 
   display: grid;
-  justify-items: center;
-  text-align: center;
-  gap: var(--space-10);
+  gap: var(--space-12);
   align-items: center;
 }
 
-.doodles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  color: var(--text-primary);
-  opacity: 0.9;
-}
-
-.cloudA,
-.cloudB,
-.sparkles,
-.dino {
-  position: absolute;
-  display: block;
-  background: center / contain no-repeat;
-  filter: drop-shadow(0 2px 0 rgba(34, 33, 29, 0.15));
-}
-
-.cloudA {
-  top: 10px;
-  left: -10px;
-  width: 160px;
-  height: 110px;
-  background-image: url('/doodles/cloud-01.svg');
-  opacity: 0.55;
-  transform: rotate(-6deg);
-}
-
-.cloudB {
-  top: 38px;
-  right: -30px;
-  width: 210px;
-  height: 132px;
-  background-image: url('/doodles/cloud-01.svg');
-  opacity: 0.45;
-  transform: scaleX(-1) rotate(8deg);
-}
-
-.sparkles {
-  bottom: 40px;
-  right: 40px;
-  width: 160px;
-  height: 110px;
-  background-image: url('/doodles/sparkles-01.svg');
-  opacity: 0.35;
-  transform: rotate(10deg);
-}
-
-.dino {
-  bottom: -28px;
-  left: 30px;
-  width: 220px;
-  height: 170px;
-  background-image: url('/doodles/dino-01.svg');
-  opacity: 0.18;
-  transform: rotate(-8deg);
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  max-width: 72ch;
+.copy {
+  max-width: 62ch;
 }
 
 .eyebrow {
@@ -103,28 +61,27 @@
   font-family: var(--font-display), serif;
   font-weight: 900;
   letter-spacing: -0.04em;
-  line-height: 0.94;
+  line-height: 0.92;
 
-  font-size: clamp(40px, 5.6vw, 72px);
+  font-size: clamp(44px, 5.4vw, 76px);
   color: var(--text-primary);
 }
 
 .subtitle {
-  margin-top: var(--space-5);
+  margin-top: var(--space-6);
   font-family: var(--font-serif), serif;
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   line-height: var(--line-height-relaxed);
   color: var(--text-secondary);
   max-width: 58ch;
 }
 
 .ctaGroup {
-  margin-top: var(--space-8);
+  margin-top: var(--space-10);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
-  justify-content: center;
 }
 
 .cta {
@@ -142,7 +99,11 @@
   letter-spacing: 0.12em;
 
   text-decoration: none;
-  transition: background-color 160ms ease, color 160ms ease, transform 50ms ease, box-shadow 160ms ease,
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 50ms ease,
+    box-shadow 160ms ease,
     border-color 160ms ease;
 }
 
@@ -162,7 +123,7 @@
 }
 
 .secondaryCta {
-  background: rgba(255, 252, 244, 0.85);
+  background: rgba(255, 252, 244, 0.88);
   border-color: rgba(34, 33, 29, 0.75);
   color: var(--text-primary);
 }
@@ -175,58 +136,163 @@
   transform: translateY(1px);
 }
 
-.trustRow {
-  margin-top: var(--space-8);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
+.metrics {
+  margin-top: var(--space-10);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
+  max-width: 520px;
 }
 
-.trustItem {
-  padding: var(--space-3) var(--space-5);
+.metric {
+  padding: var(--space-4) var(--space-5);
   border-radius: 999px;
   border: 2px solid rgba(34, 33, 29, 0.55);
-  background: rgba(255, 252, 244, 0.68);
+  background: rgba(255, 252, 244, 0.74);
   box-shadow: 3px 3px 0 rgba(34, 33, 29, 0.92);
+  text-align: center;
 }
 
-.trustLabel {
-  display: inline-block;
+.metricLabel {
   font-family: var(--font-accent), var(--font-serif), serif;
   font-variant-caps: all-small-caps;
   letter-spacing: 0.12em;
   color: rgba(58, 56, 47, 0.86);
 }
 
-.trustValue {
-  display: inline-block;
-  margin-left: var(--space-2);
+.metricValue {
+  margin-top: var(--space-1);
   font-family: var(--font-display), serif;
   font-weight: 900;
   letter-spacing: -0.02em;
   font-size: 18px;
 }
 
-/* Hero card removed in favor of centered composition (reference layout). */
+.visual {
+  position: relative;
+  width: min(560px, 100%);
+  justify-self: center;
+}
 
-.swirl {
+.imageFrame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--hero-frame-radius);
+  overflow: hidden;
+
+  background: rgba(255, 252, 244, 0.9);
+  border: 2px solid rgba(34, 33, 29, 0.55);
+  box-shadow: var(--hero-shadow-lg);
+}
+
+.heroImage {
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+.imageGlow {
   position: absolute;
-  left: 50%;
-  top: clamp(168px, 22vh, 230px);
-  width: 240px;
-  height: 70px;
-  transform: translateX(-50%) rotate(-2deg);
-  opacity: 0.26;
+  inset: 0;
+  background:
+    radial-gradient(520px 340px at 20% 25%, rgba(255, 193, 7, 0.25) 0%, rgba(255, 193, 7, 0) 60%),
+    radial-gradient(520px 340px at 80% 85%, rgba(111, 124, 68, 0.22) 0%, rgba(111, 124, 68, 0) 62%),
+    linear-gradient(180deg, rgba(34, 33, 29, 0) 0%, rgba(34, 33, 29, 0.18) 100%);
+  pointer-events: none;
+}
 
-  background: center / contain no-repeat url('/doodles/scribble-underline.svg');
-  filter: drop-shadow(0 2px 0 rgba(34, 33, 29, 0.12));
+.floatingCard {
+  position: absolute;
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+
+  border-radius: var(--hero-card-radius);
+  border: 2px solid rgba(34, 33, 29, 0.55);
+  background: rgba(255, 252, 244, 0.92);
+  box-shadow: var(--hero-shadow);
+}
+
+.cardTop {
+  top: var(--space-6);
+  left: calc(-1 * var(--space-6));
+}
+
+.cardBottom {
+  bottom: var(--space-6);
+  right: calc(-1 * var(--space-6));
+}
+
+.cardKicker {
+  font-family: var(--font-accent), var(--font-serif), serif;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: rgba(58, 56, 47, 0.86);
+}
+
+.cardTitle {
+  font-family: var(--font-display), serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.cardMeta {
+  font-family: var(--font-serif), serif;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+    gap: var(--space-16);
+  }
+
+  .visual {
+    justify-self: end;
+  }
+
+  .copy {
+    padding-right: var(--space-6);
+  }
+}
+
+@media (max-width: 899px) {
+  .container {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .ctaGroup {
+    justify-content: center;
+  }
+
+  .metrics {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .visual {
+    margin-top: var(--space-4);
+  }
+
+  .cardTop {
+    left: var(--space-3);
+  }
+
+  .cardBottom {
+    right: var(--space-3);
+  }
 }
 
 @media (max-width: 767px) {
   .hero {
-    padding: var(--space-8) var(--space-4) var(--space-12);
+    padding: var(--space-12) var(--space-4) var(--space-16);
+  }
+
+  .title {
+    font-size: clamp(38px, 10vw, 54px);
   }
 
   .subtitle {
@@ -242,24 +308,28 @@
     width: 100%;
   }
 
-
-  .cloudA {
-    top: -10px;
-    left: -44px;
+  .metrics {
+    grid-template-columns: 1fr;
+    max-width: 360px;
   }
 
-  .cloudB {
-    top: 14px;
-    right: -60px;
+  .hero {
+    --hero-frame-radius: 22px;
+    --hero-card-radius: 16px;
+    --hero-shadow-lg: var(--space-2) var(--space-2) 0 rgba(34, 33, 29, 0.9);
   }
 
-  .sparkles {
-    right: -10px;
-    bottom: 20px;
+  .imageFrame {
+    border-radius: var(--hero-frame-radius);
+    box-shadow: var(--hero-shadow-lg);
   }
 
-  .dino {
-    opacity: 0.14;
-    left: -24px;
+  .floatingCard {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--hero-card-radius);
+  }
+
+  .cardTitle {
+    font-size: 18px;
   }
 }
