@@ -1,4 +1,5 @@
 "use client";
+
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import styles from './Header.module.css';
@@ -28,15 +29,19 @@ export default function Header() {
                         />
                     </AppLink>
                 </div>
-                <nav className={styles.nav}>
-                    <AppLink href="/" variant="nav">Inicio</AppLink>
+
+                <nav className={styles.nav} aria-label="Navegación principal">
                     <AppLink href="#menu" variant="nav">Menú</AppLink>
-                    <Button href="#order" variant="outline" className={styles.cta}>Pedir Ahora</Button>
+                    <AppLink href="#order" variant="nav">Pedido</AppLink>
+                    <Button href="#order" variant="outline" className={styles.cta}>Pedir ahora</Button>
+                </nav>
+
+                <div className={styles.utility}>
                     <Button variant="outline" onClick={() => setOpen(true)} className={styles.cartBtn}>
                         Carrito
                         {cart.totalQty > 0 ? <span className={styles.badge}>{cart.totalQty}</span> : null}
                     </Button>
-                </nav>
+                </div>
             </div>
 
             <CartDrawer open={open} onClose={handleClose} />

@@ -12,6 +12,25 @@
   display: grid;
   justify-items: center;
   gap: var(--space-4);
+
+  position: relative;
+}
+
+.utility {
+  position: absolute;
+  right: var(--space-6);
+  top: var(--space-2);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .utility {
+    right: var(--space-4);
+    top: 0;
+  }
 }
 
 .logo {
@@ -35,6 +54,19 @@
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.cta {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 .logoSeal:hover {
   transform: rotate(0.4deg);
 }
@@ -44,21 +76,10 @@
   height: auto;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.cta {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 .cartBtn {
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .badge {
