@@ -1,7 +1,7 @@
 .header {
   /* Nota: intencionalmente NO sticky para mantener el mast/hero editorial de la referencia. */
   position: relative;
-  padding: var(--space-10) 0 var(--space-6);
+  padding: var(--space-8) 0 var(--space-5);
 }
 
 .container {
@@ -17,17 +17,17 @@
 }
 
 .tagline {
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
   font-family: var(--font-accent), var(--font-serif), serif;
   font-variant-caps: all-small-caps;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: rgba(58, 56, 47, 0.84);
 }
 
 .rule {
-  width: min(560px, 92%);
-  height: 14px;
-  margin-top: var(--space-6);
+  width: min(620px, 94%);
+  height: 16px;
+  margin-top: var(--space-5);
   background: center / contain no-repeat url('/doodles/scribble-underline.svg');
   opacity: 0.26;
 }
@@ -35,7 +35,7 @@
 .utility {
   position: absolute;
   right: var(--space-6);
-  top: var(--space-2);
+  top: var(--space-1);
 
   display: flex;
   align-items: center;

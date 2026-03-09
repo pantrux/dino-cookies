@@ -1,5 +1,31 @@
 .section {
   position: relative;
+  isolation: isolate;
+}
+
+.section::before,
+.section::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.22;
+  z-index: -1;
+}
+
+.section::before {
+  top: 0;
+  left: max(2%, var(--space-4));
+  width: 116px;
+  height: 74px;
+  background: center / contain no-repeat url('/doodles/cloud-01.svg');
+}
+
+.section::after {
+  right: max(3%, var(--space-4));
+  bottom: var(--space-10);
+  width: 110px;
+  height: 74px;
+  background: center / contain no-repeat url('/doodles/sparkles-01.svg');
 }
 
 .header {

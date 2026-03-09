@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: var(--space-16) var(--space-6) var(--space-20);
+  padding: var(--space-12) var(--space-6) var(--space-20);
   overflow: hidden;
 
   /* Local component tokens (avoid repeating magic numbers) */
@@ -17,10 +17,24 @@
   z-index: 0;
 
   background:
-    radial-gradient(900px 520px at 20% 20%, rgba(233, 223, 200, 0.85) 0%, rgba(233, 223, 200, 0) 62%),
-    radial-gradient(680px 520px at 78% 26%, rgba(111, 124, 68, 0.18) 0%, rgba(111, 124, 68, 0) 60%),
-    linear-gradient(180deg, rgba(255, 252, 244, 0.6) 0%, rgba(244, 238, 220, 0) 100%);
+    radial-gradient(940px 560px at 18% 18%, rgba(233, 223, 200, 0.92) 0%, rgba(233, 223, 200, 0) 62%),
+    radial-gradient(720px 540px at 80% 22%, rgba(111, 124, 68, 0.22) 0%, rgba(111, 124, 68, 0) 58%),
+    radial-gradient(820px 420px at 50% 0%, rgba(255, 252, 244, 0.68) 0%, rgba(255, 252, 244, 0) 72%),
+    linear-gradient(180deg, rgba(255, 252, 244, 0.72) 0%, rgba(244, 238, 220, 0) 100%);
   pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.34;
+  background:
+    top 2% left 6% / 132px 88px no-repeat url('/doodles/cloud-01.svg'),
+    top 14% right 7% / 112px 78px no-repeat url('/doodles/sparkles-01.svg'),
+    bottom 10% left 12% / 120px 74px no-repeat url('/doodles/scribble-underline.svg');
 }
 
 .container {
@@ -36,7 +50,8 @@
 }
 
 .copy {
-  max-width: 62ch;
+  max-width: 60ch;
+  position: relative;
 }
 
 .eyebrow {
@@ -60,20 +75,22 @@
   margin-top: var(--space-6);
   font-family: var(--font-display), serif;
   font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 0.92;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  text-wrap: balance;
 
-  font-size: clamp(44px, 5.4vw, 76px);
+  font-size: clamp(48px, 5.8vw, 84px);
   color: var(--text-primary);
 }
 
 .subtitle {
   margin-top: var(--space-6);
   font-family: var(--font-serif), serif;
-  font-size: var(--font-size-xl);
-  line-height: var(--line-height-relaxed);
+  font-size: clamp(18px, 1.65vw, 22px);
+  line-height: 1.68;
   color: var(--text-secondary);
-  max-width: 58ch;
+  max-width: 52ch;
+  text-wrap: pretty;
 }
 
 .ctaGroup {
@@ -141,7 +158,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
-  max-width: 520px;
+  max-width: 540px;
 }
 
 .metric {
@@ -245,23 +262,36 @@
 
 @media (min-width: 900px) {
   .container {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-    gap: var(--space-16);
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 500px);
+    gap: var(--space-12);
   }
 
   .visual {
     justify-self: end;
+    margin-top: var(--space-4);
   }
 
   .copy {
-    padding-right: var(--space-6);
+    padding-right: var(--space-8);
   }
 }
 
 @media (max-width: 899px) {
+  .hero::after {
+    opacity: 0.24;
+    background:
+      top 2% left 4% / 104px 70px no-repeat url('/doodles/cloud-01.svg'),
+      top 14% right 6% / 92px 64px no-repeat url('/doodles/sparkles-01.svg'),
+      bottom 12% center / 104px 64px no-repeat url('/doodles/scribble-underline.svg');
+  }
+
   .container {
     justify-items: center;
     text-align: center;
+  }
+
+  .copy {
+    max-width: 44rem;
   }
 
   .ctaGroup {
@@ -288,11 +318,11 @@
 
 @media (max-width: 767px) {
   .hero {
-    padding: var(--space-12) var(--space-4) var(--space-16);
+    padding: var(--space-10) var(--space-4) var(--space-16);
   }
 
   .title {
-    font-size: clamp(38px, 10vw, 54px);
+    font-size: clamp(40px, 10.4vw, 56px);
   }
 
   .subtitle {
