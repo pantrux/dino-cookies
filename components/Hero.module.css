@@ -214,7 +214,7 @@
 .swirl {
   position: absolute;
   left: 50%;
-  top: 210px;
+  top: clamp(168px, 22vh, 230px);
   width: 240px;
   height: 70px;
   transform: translateX(-50%) rotate(-2deg);
@@ -242,9 +242,6 @@
     width: 100%;
   }
 
-  .trustRow {
-    grid-template-columns: 1fr;
-  }
 
   .cloudA {
     top: -10px;
