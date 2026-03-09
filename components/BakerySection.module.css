@@ -1,118 +1,65 @@
 .section {
-  position: relative;
+  width: min(var(--container-max), 100%);
+  margin: 0 auto;
+  padding: 28px 0 18px;
 }
 
 .grid {
   display: grid;
-  gap: var(--space-10);
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 28px;
   align-items: center;
-}
-
-.content {
-  max-width: 58ch;
-}
-
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-accent), var(--font-serif), serif;
-  font-variant-caps: all-small-caps;
-  letter-spacing: 0.08em;
-  color: var(--ref-ink-700, #3a382f);
-}
-
-.kicker::before {
-  content: '';
-  width: 34px;
-  height: 2px;
-  background: var(--ref-ink-900, #22211d);
-  opacity: 0.75;
-}
-
-.title {
-  margin-top: var(--space-3);
-  font-family: var(--font-display), serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.02;
-  color: var(--ref-ink-900, #22211d);
-  font-size: clamp(32px, 3.2vw, 44px);
-}
-
-.body {
-  margin-top: var(--space-4);
-  font-family: var(--font-serif), serif;
-  color: var(--ref-ink-700, #3a382f);
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-}
-
-.bullets {
-  margin-top: var(--space-6);
-  padding-left: var(--space-6);
-  display: grid;
-  gap: var(--space-2);
-  color: var(--ref-ink-700, #3a382f);
 }
 
 .illustration {
-  width: 100%;
   position: relative;
-}
-
-.frame {
-  position: relative;
-  aspect-ratio: 5 / 4;
-  border-radius: 14px;
-  background: var(--ref-surface-card, #fffcf4);
-  border: 2px solid var(--ref-ink-900, #22211d);
-  box-shadow: var(--ref-shadow-polaroid, 6px 6px 0 rgba(34, 33, 29, 0.92));
-  overflow: hidden;
+  min-height: 220px;
+  filter: sepia(0.18);
 }
 
 .image {
-  object-fit: cover;
-  object-position: center;
-  padding: var(--space-6);
+  object-fit: contain;
+  object-position: left center;
 }
 
-.doodleTop,
-.doodleBottom {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.85;
-  filter: drop-shadow(0 2px 0 rgba(34, 33, 29, 0.15));
+.copy {
+  max-width: 560px;
 }
 
-.doodleTop {
-  top: -18px;
-  right: -12px;
-  width: 120px;
-  height: 80px;
-  background: center / contain no-repeat url('/doodles/cloud-01.svg');
+.title {
+  font-family: var(--font-poster), var(--font-sans), sans-serif;
+  font-size: clamp(34px, 3vw, 52px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
 }
 
-.doodleBottom {
-  bottom: -18px;
-  left: -14px;
-  width: 140px;
-  height: 90px;
-  background: center / contain no-repeat url('/doodles/sparkles-01.svg');
+.body {
+  margin-top: 10px;
+  font-family: var(--font-sans), var(--font-serif), sans-serif;
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.42;
+  color: rgba(79, 56, 40, 0.94);
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 900px) {
+  .section {
+    padding-top: 18px;
+  }
+
   .grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
-  }
-}
-
-@media (max-width: 767px) {
-  .body {
-    font-size: var(--font-size-md);
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: center;
+    text-align: center;
   }
 
-  .frame {
-    box-shadow: 5px 5px 0 rgba(34, 33, 29, 0.95);
+  .illustration {
+    width: min(340px, 100%);
+    min-height: 180px;
+  }
+
+  .image {
+    object-position: center;
   }
 }

@@ -1,45 +1,86 @@
+"use client";
+
+import { useState } from 'react';
 import styles from './Footer.module.css';
-import Container from './ui/Container';
+
+const NAV_LINKS = [
+  { href: '/', label: 'Inicio' },
+  { href: '#menu', label: 'Galletas' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: 'https://www.instagram.com/dinocookies20252026/', label: 'Blog' },
+  { href: 'https://wa.me/56988136073', label: 'Contacto' },
+];
+
+const SOCIAL_LINKS = [
+  { href: 'https://www.instagram.com/dinocookies20252026/', label: '◎', title: 'Instagram' },
+  { href: 'mailto:skynetbot.pantrux@gmail.com', label: '✉', title: 'Email' },
+];
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+
   return (
-    <footer className={styles.footer} aria-label="Pie de página">
-      <Container size="lg">
-        <div className={styles.grid}>
-          <div className={styles.brand}>
-            <p className={styles.kicker}>Dino Cookies</p>
-            <p className={styles.tagline}>Repostería artesanal, horneada en pequeños lotes.</p>
-          </div>
+    <footer className={styles.footer} id="contacto" aria-label="Pie de página">
+      <div className={styles.rule} aria-hidden="true" />
 
-          <div className={styles.col}>
-            <p className={styles.colTitle}>Explorar</p>
-            <a className={styles.footerLink} href="#menu">Menú</a>
-            <a className={styles.footerLink} href="#order">Pedido</a>
-          </div>
+      <div className={styles.grid}>
+        <nav className={styles.nav} aria-label="Navegación del sitio">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              className={styles.navLink}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
-          <div className={styles.col}>
-            <p className={styles.colTitle}>Contacto</p>
-            <a
-              className={styles.footerLink}
-              href="https://www.instagram.com/dinocookies20252026/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-            <a
-              className={styles.footerLink}
-              href="https://wa.me/56988136073"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
+        <div className={styles.socialBlock}>
+          <p className={styles.label}>Social media</p>
+          <div className={styles.socialRow}>
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.title}
+                className={styles.socialLink}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={link.title}
+                title={link.title}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
 
-        <p className={styles.copy}>© 2026 Dino Cookies · Hecho en Santiago.</p>
-      </Container>
+        <div className={styles.newsletterBlock}>
+          <p className={styles.label}>Newsletter</p>
+          <form
+            className={styles.newsletterForm}
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!email.trim()) return;
+              window.open('https://www.instagram.com/dinocookies20252026/', '_blank', 'noopener,noreferrer');
+            }}
+          >
+            <input
+              type="email"
+              className={styles.input}
+              placeholder="Tu correo"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-label="Correo para newsletter"
+            />
+            <button type="submit" className={styles.submit} aria-label="Enviar correo">
+              ↗
+            </button>
+          </form>
+        </div>
+      </div>
     </footer>
   );
 }
