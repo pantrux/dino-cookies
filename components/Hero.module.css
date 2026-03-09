@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  padding: var(--space-2) var(--space-7);
+  padding: var(--space-2) var(--space-6);
 
   border-radius: 999px;
   border: 2px solid transparent;
