@@ -9,45 +9,34 @@ import CartDrawer from './cart/CartDrawer';
 import { useCart } from './cart/cart-context';
 
 export default function Header() {
-    const [open, setOpen] = useState(false);
-    const cart = useCart();
+  const [open, setOpen] = useState(false);
+  const cart = useCart();
 
-    const handleClose = useCallback(() => setOpen(false), []);
+  const handleClose = useCallback(() => setOpen(false), []);
 
-    return (
-        <header className={styles.header}>
-            <div className={styles.container}>
-                <div className={styles.logo}>
-                    <AppLink href="/" className={styles.logoSeal} aria-label="Dino Cookies">
-                        <Image
-                            src="/brand/seal-dino-cookies.svg"
-                            alt=""
-                            width={220}
-                            height={220}
-                            sizes="112px"
-                            priority
-                        />
-                    </AppLink>
-                    <p className={styles.tagline}>Horneado diario · Hecho a mano</p>
-                </div>
+  return (
+    <header className={styles.header}>
+      <div className={styles.utility}>
+        <Button variant="outline" onClick={() => setOpen(true)} className={styles.cartBtn}>
+          Carrito
+          {cart.totalQty > 0 ? <span className={styles.badge}>{cart.totalQty}</span> : null}
+        </Button>
+      </div>
 
-                <nav className={styles.nav} aria-label="Navegación principal">
-                    <AppLink href="#menu" variant="nav">Menú</AppLink>
-                    <AppLink href="#order" variant="nav">Pedido</AppLink>
-                    <Button href="#order" variant="outline" className={styles.cta}>Pedir ahora</Button>
-                </nav>
+      <div className={styles.mast}>
+        <AppLink href="/" className={styles.logoSeal} aria-label="Dino Cookies">
+          <Image
+            src="/brand/seal-dino-cookies.svg"
+            alt=""
+            width={188}
+            height={188}
+            sizes="188px"
+            priority
+          />
+        </AppLink>
+      </div>
 
-                <div className={styles.utility}>
-                    <Button variant="outline" onClick={() => setOpen(true)} className={styles.cartBtn}>
-                        Carrito
-                        {cart.totalQty > 0 ? <span className={styles.badge}>{cart.totalQty}</span> : null}
-                    </Button>
-                </div>
-
-                <div className={styles.rule} aria-hidden="true" />
-            </div>
-
-            <CartDrawer open={open} onClose={handleClose} />
-        </header>
-    );
+      <CartDrawer open={open} onClose={handleClose} />
+    </header>
+  );
 }

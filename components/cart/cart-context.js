@@ -10,7 +10,6 @@ function clampQty(n) {
 }
 
 function toCents(price) {
-  // current app prices are integers (e.g. 16). Keep safe.
   const n = Number(price);
   if (!Number.isFinite(n)) return 0;
   return Math.round(n * 100);
@@ -40,6 +39,7 @@ function cartReducer(state, action) {
             id: item.id,
             name: item.name,
             price: item.price,
+            priceLabel: item.priceLabel,
             image: item.image,
             qty: quantity,
           },
@@ -68,7 +68,6 @@ export function CartProvider({ children }) {
   const hadStoredCartRef = useRef(false);
   const pendingHydrateRef = useRef(false);
 
-  // hydrate once
   useEffect(() => {
     const stored = loadCartFromStorage();
     if (stored && stored.length > 0) {
@@ -78,11 +77,9 @@ export function CartProvider({ children }) {
       return;
     }
 
-    // no stored cart -> safe to persist immediately
     hasHydratedRef.current = true;
   }, []);
 
-  // mark hydration complete only after HYDRATE has been applied
   useEffect(() => {
     if (!pendingHydrateRef.current) return;
     if (state.items.length === 0) return;
@@ -90,14 +87,11 @@ export function CartProvider({ children }) {
     pendingHydrateRef.current = false;
   }, [state.items]);
 
-  // persist (skip any writes until hydration is complete)
   useEffect(() => {
     if (!hasHydratedRef.current) return;
 
-    // once we have items, consider the cart "initialized" for future empty writes
     if (state.items.length > 0) hadStoredCartRef.current = true;
 
-    // avoid writing an empty cart when there was no stored cart to begin with
     if (state.items.length === 0 && !hadStoredCartRef.current) return;
 
     saveCartToStorage(state.items);

@@ -13,16 +13,14 @@ import { useCart } from './cart-context';
 
 function formatPriceFromUnit(price) {
   const n = Number(price);
-  if (!Number.isFinite(n)) return '$0';
-  if (Number.isInteger(n)) return `$${n}`;
-  return `$${n.toFixed(2)}`;
+  if (!Number.isFinite(n)) return '0,00€';
+  return `${n.toFixed(2).replace('.', ',')}€`;
 }
 
 function formatPriceFromCents(cents) {
   const n = Number(cents);
-  if (!Number.isFinite(n)) return '$0';
-  if (n % 100 === 0) return `$${n / 100}`;
-  return `$${(n / 100).toFixed(2)}`;
+  if (!Number.isFinite(n)) return '0,00€';
+  return `${(n / 100).toFixed(2).replace('.', ',')}€`;
 }
 
 export default function CartDrawer({ open, onClose }) {
@@ -32,19 +30,17 @@ export default function CartDrawer({ open, onClose }) {
   const lastFocusedRef = useRef(null);
   const [draftQty, setDraftQty] = useState({});
 
-  // discard drafts when closing
   useEffect(() => {
     if (!open) setDraftQty({});
   }, [open]);
 
-  // remove stale drafts when items change (remove/clear)
   useEffect(() => {
     if (!open) return;
     setDraftQty((prev) => {
       const ids = new Set(cart.items.map((x) => x.id));
       const next = {};
       for (const [k, v] of Object.entries(prev)) {
-        if (ids.has(k)) next[k] = v;
+        if (ids.has(Number(k)) || ids.has(k)) next[k] = v;
       }
       return next;
     });
@@ -80,11 +76,9 @@ export default function CartDrawer({ open, onClose }) {
             e.preventDefault();
             last.focus();
           }
-        } else {
-          if (document.activeElement === last) {
-            e.preventDefault();
-            first.focus();
-          }
+        } else if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
         }
       }
     };
@@ -92,15 +86,12 @@ export default function CartDrawer({ open, onClose }) {
     window.addEventListener('keydown', onKeyDown);
     return () => {
       window.removeEventListener('keydown', onKeyDown);
-      // restore focus to previous element
       const el = lastFocusedRef.current;
       if (el && typeof el.focus === 'function') el.focus();
     };
   }, [open, onClose]);
 
-  if (!open) return null;
-
-  if (typeof document === 'undefined') return null;
+  if (!open || typeof document === 'undefined') return null;
 
   const ui = (
     <div className={styles.overlay} onClick={() => onClose?.()}>
@@ -115,12 +106,7 @@ export default function CartDrawer({ open, onClose }) {
         <Card className={styles.card}>
           <Stack direction="row" justify="between" align="center" className={styles.header}>
             <Heading level={3} size="2xl">Carrito</Heading>
-            <Button
-              variant="ghost"
-              onClick={onClose}
-              aria-label="Cerrar carrito"
-              ref={closeBtnRef}
-            >
+            <Button variant="ghost" onClick={onClose} aria-label="Cerrar carrito" ref={closeBtnRef}>
               Cerrar
             </Button>
           </Stack>
@@ -135,7 +121,7 @@ export default function CartDrawer({ open, onClose }) {
                     <div key={item.id} className={styles.itemRow}>
                       <div className={styles.itemMeta}>
                         <Text as="div" tone="primary" weight="semibold">{item.name}</Text>
-                        <Text as="div" tone="muted" size="sm">{formatPriceFromUnit(item.price)} c/u</Text>
+                        <Text as="div" tone="muted" size="sm">{item.priceLabel ?? formatPriceFromUnit(item.price)}</Text>
                       </div>
 
                       <div className={styles.itemControls}>
@@ -189,9 +175,7 @@ export default function CartDrawer({ open, onClose }) {
 
               <div className={styles.summary}>
                 <Text as="div" tone="muted" size="sm">Subtotal</Text>
-                <Text as="div" tone="primary" weight="bold">
-                  {formatPriceFromCents(cart.subtotalCents)}
-                </Text>
+                <Text as="div" tone="primary" weight="bold">{formatPriceFromCents(cart.subtotalCents)}</Text>
               </div>
 
               <Stack direction="row" gap={2}>
@@ -206,8 +190,8 @@ export default function CartDrawer({ open, onClose }) {
                 >
                   Vaciar
                 </Button>
-                <Button fullWidth href="#order" onClick={onClose}>
-                  Ir a pedir
+                <Button fullWidth href="/pedido" onClick={onClose}>
+                  Finalizar pedido
                 </Button>
               </Stack>
             </Stack>
