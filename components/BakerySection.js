@@ -7,7 +7,7 @@ export default function BakerySection() {
       <div className={styles.grid}>
         <div className={styles.illustration} aria-hidden="true">
           <Image
-            src="/images/reference/bakery-illustration-ref.jpg"
+            src="/images/bakery-illustration.jpg"
             alt=""
             fill
             sizes="(max-width: 900px) 280px, 360px"

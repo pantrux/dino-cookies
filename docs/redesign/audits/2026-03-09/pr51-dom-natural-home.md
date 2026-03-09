@@ -16,7 +16,7 @@ Pantrux reportó correctamente que el home se sentía como una imagen pegada de 
   - `Footer`
 - Se conservaron los assets útiles extraídos de la referencia:
   - 4 crops de productos
-  - ilustración bakery
+  - ilustración bakery publicada como asset de producción (`/images/bakery-illustration.jpg`)
 - Se mantuvo `/pedido` como ruta separada para no sobrecargar el home.
 - Se reutilizó la atmósfera parchment / ink / olive del rediseño, pero con composición natural y enlaces reales.
 
