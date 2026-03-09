@@ -26,6 +26,13 @@
   justify-content: flex-end;
 }
 
+@media (max-width: 767px) {
+  .utility {
+    right: var(--space-4);
+    top: 0;
+  }
+}
+
 .logo {
   display: grid;
   place-items: center;
@@ -45,6 +52,19 @@
 
   transform: rotate(-1.2deg);
   transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.cta {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .logoSeal:hover {

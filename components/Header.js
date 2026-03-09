@@ -30,6 +30,12 @@ export default function Header() {
                     </AppLink>
                 </div>
 
+                <nav className={styles.nav} aria-label="Navegación principal">
+                    <AppLink href="#menu" variant="nav">Menú</AppLink>
+                    <AppLink href="#order" variant="nav">Pedido</AppLink>
+                    <Button href="#order" variant="outline" className={styles.cta}>Pedir ahora</Button>
+                </nav>
+
                 <div className={styles.utility}>
                     <Button variant="outline" onClick={() => setOpen(true)} className={styles.cartBtn}>
                         Carrito
