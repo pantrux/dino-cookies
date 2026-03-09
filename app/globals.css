@@ -5,10 +5,10 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Brand */
-  --color-brand-500: #e91e63;
-  --color-brand-600: #c2185b;
-  --color-brand-700: #ad1457;
+  /* Brand (oliva, referencia paper/ink) */
+  --color-brand-500: #6f7c44;
+  --color-brand-600: #5e6b3a;
+  --color-brand-700: #4f5b31;
 
   /* Neutrals */
   --color-neutral-50: #fafafa;
@@ -43,10 +43,10 @@
   /* =====================
    * Color tokens (semantic roles)
    * ===================== */
-  --surface-page: var(--color-white);
-  --surface-elevated: var(--color-white);
-  --surface-subtle: var(--color-neutral-50);
-  --surface-muted: var(--color-neutral-100);
+  --surface-page: var(--paper-surface);
+  --surface-elevated: #fffcf4;
+  --surface-subtle: var(--paper-surface-2);
+  --surface-muted: var(--paper-surface-2);
 
   --surface-danger: var(--color-error-50);
   --surface-error: var(--surface-danger); /* alias (back-compat) */
@@ -118,11 +118,11 @@
    * Component tokens
    * ===================== */
   --button-height: var(--control-height);
-  --button-radius: var(--radius-md);
-  --button-border-width: 1px;
-  --button-shadow: none;
-  --button-letter-spacing: 0.02em;
-  --button-caps: normal;
+  --button-radius: 999px;
+  --button-border-width: 2px;
+  --button-shadow: 4px 4px 0 rgba(34, 33, 29, 0.92);
+  --button-letter-spacing: 0.12em;
+  --button-caps: all-small-caps;
 
   /* Paper / Ink atmosphere (optional; can be overridden per page theme) */
   --paper-ink: #22211d;
@@ -234,9 +234,18 @@
 body {
   background-color: var(--surface-page);
   color: var(--text-primary);
-  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, Arial,
-    sans-serif;
+  font-family: var(--font-serif), ui-serif, Georgia, "Times New Roman", serif;
   line-height: var(--line-height-body);
+
+  /* Paper atmosphere */
+  background-image:
+    radial-gradient(1200px 900px at 15% 10%, rgba(233, 223, 200, 0.78) 0%, rgba(233, 223, 200, 0) 62%),
+    radial-gradient(900px 740px at 85% 25%, rgba(233, 223, 200, 0.62) 0%, rgba(233, 223, 200, 0) 58%),
+    radial-gradient(900px 700px at 45% 85%, rgba(34, 33, 29, 0.08) 0%, rgba(34, 33, 29, 0) 55%),
+    linear-gradient(180deg, rgba(251, 247, 237, 1) 0%, rgba(244, 238, 220, 0.86) 100%),
+    url('/textures/paper-noise.svg');
+  background-size: auto, auto, auto, auto, 240px 240px;
+  background-blend-mode: normal, normal, normal, normal, multiply;
 }
 
 a {
@@ -250,6 +259,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
@@ -257,6 +267,13 @@ h6 {
 button {
   cursor: pointer;
   font-family: inherit;
+}
+
+/* Links: look like ink */
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 /* =====================
