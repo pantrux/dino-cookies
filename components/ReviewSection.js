@@ -48,12 +48,22 @@ export default function ReviewSection() {
         </header>
 
         <div className={styles.grid}>
-          {reviews.map((review) => (
-            <Card key={review.id} className={styles.card} padding="md" radius="md" shadow="sm" border="default">
-              <div className={styles.avatar}>{review.user.charAt(0)}</div>
+          {reviews.map((review, index) => (
+            <Card
+              key={review.id}
+              className={styles.card}
+              padding="md"
+              radius="md"
+              shadow="none"
+              border="none"
+              style={{ '--review-tilt': index % 2 === 0 ? '-1.2deg' : '1.2deg' }}
+            >
+              <div className={styles.avatar} aria-hidden="true">{review.user.charAt(0)}</div>
               <div className={styles.cardBody}>
                 <h4 className={styles.username}>{review.user}</h4>
-                <div className={styles.rating}>★ {Number(review.rating ?? 5).toFixed(1)}</div>
+                <div className={styles.rating} aria-label={`Rating ${Number(review.rating ?? 5).toFixed(1)} de 5`}>
+                  ★ {Number(review.rating ?? 5).toFixed(1)}
+                </div>
                 <Text className={styles.text} tone="muted" size="sm">
                   {review.text}
                 </Text>

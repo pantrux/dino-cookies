@@ -1,9 +1,43 @@
 .section {
   /* Layout handled by <Section /> */
-  background-image: radial-gradient(var(--color-neutral-200) var(--bg-dot-radius), transparent var(--bg-dot-radius));
-  background-size: var(--bg-dot-size) var(--bg-dot-size);
+  position: relative;
 }
 
+.card {
+  position: relative;
+  background: var(--surface-elevated);
+  border: 2px solid rgba(34, 33, 29, 0.92);
+  box-shadow: var(--ref-shadow-polaroid, 6px 6px 0 rgba(34, 33, 29, 0.92));
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 0 rgba(34, 33, 29, 0.15));
+}
+
+.card::before {
+  top: -22px;
+  left: -18px;
+  width: 140px;
+  height: 90px;
+  background: center / contain no-repeat url('/doodles/cloud-01.svg');
+  transform: rotate(-8deg);
+  opacity: 0.35;
+}
+
+.card::after {
+  bottom: -20px;
+  right: -18px;
+  width: 150px;
+  height: 94px;
+  background: center / contain no-repeat url('/doodles/sparkles-01.svg');
+  transform: rotate(12deg);
+  opacity: 0.26;
+}
 
 .header {
   text-align: center;
@@ -11,16 +45,21 @@
 }
 
 .title {
-  font-size: var(--font-size-4xl);
-  color: var(--interactive-primary);
+  font-family: var(--font-display), serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--text-primary);
   margin-bottom: var(--space-2);
+  font-size: clamp(34px, 3.4vw, 52px);
 }
 
 .subtitle {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: var(--line-height-relaxed);
   max-width: 56ch;
   margin: 0 auto;
+  font-family: var(--font-serif), serif;
 }
 
 .form {
@@ -45,15 +84,16 @@
 
 .cartLabel {
   margin-bottom: var(--space-2);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-accent), var(--font-serif), serif;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: rgba(58, 56, 47, 0.86);
 }
 
 .cartSummary {
   width: 100%;
-  border: 1px solid var(--border-subtle);
-  background: var(--surface-elevated);
+  border: 2px solid rgba(34, 33, 29, 0.38);
+  background: rgba(251, 247, 237, 0.55);
 }
 
 .cartRow {
@@ -72,7 +112,7 @@
   align-items: baseline;
   justify-content: space-between;
   padding-top: var(--space-2);
-  border-top: 1px solid var(--border-subtle);
+  border-top: 2px solid rgba(34, 33, 29, 0.2);
 }
 
 .submit {
