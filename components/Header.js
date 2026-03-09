@@ -27,7 +27,7 @@ export default function Header() {
         <AppLink href="/" className={styles.logoSeal} aria-label="Dino Cookies">
           <Image
             src="/brand/seal-dino-cookies.svg"
-            alt="Dino Cookies"
+            alt=""
             width={188}
             height={188}
             sizes="188px"
