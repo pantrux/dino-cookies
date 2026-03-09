@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
@@ -20,17 +21,27 @@ export default function Footer() {
 
       <div className={styles.grid}>
         <nav className={styles.nav} aria-label="Navegación del sitio">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              className={styles.navLink}
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            if (link.href.startsWith('/')) {
+              return (
+                <Link key={link.label} className={styles.navLink} href={link.href}>
+                  {link.label}
+                </Link>
+              );
+            }
+
+            return (
+              <a
+                key={link.label}
+                className={styles.navLink}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className={styles.socialBlock}>
