@@ -12,6 +12,18 @@
   display: grid;
   justify-items: center;
   gap: var(--space-4);
+
+  position: relative;
+}
+
+.utility {
+  position: absolute;
+  right: var(--space-6);
+  top: var(--space-2);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -44,21 +56,10 @@
   height: auto;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.cta {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 .cartBtn {
   position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .badge {
