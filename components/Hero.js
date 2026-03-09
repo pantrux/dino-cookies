@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -11,6 +10,7 @@ export default function Hero() {
           <span className={styles.cloudB} />
           <span className={styles.sparkles} />
           <span className={styles.dino} />
+          <span className={styles.swirl} />
         </div>
 
         <div className={styles.content}>
@@ -23,7 +23,7 @@ export default function Hero() {
           </h1>
 
           <p className={styles.subtitle}>
-            Sabores intensos, textura suave y un toque editorial. Elige tus favoritos y arma tu box en minutos.
+            Hechas a mano, horneadas a diario y pensadas para regalar (o devorar). Elige tus favoritas y arma tu box.
           </p>
 
           <div className={styles.ctaGroup}>
@@ -35,7 +35,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className={styles.trustRow}>
+          <div className={styles.trustRow} aria-label="Atributos principales">
             <div className={styles.trustItem}>
               <span className={styles.trustLabel}>Horneado</span>
               <strong className={styles.trustValue}>Diario</strong>
@@ -50,30 +50,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        <aside className={styles.heroCard} aria-label="Dato destacado">
-          <div className={styles.heroCardInner}>
-            <p className={styles.cardKicker}>Edición de temporada</p>
-            <p className={styles.cardTitle}>Chocolate negro + sal de mar</p>
-            <p className={styles.cardBody}>
-              Un clásico con borde crujiente, centro suave y un final largo.
-            </p>
-            <div className={styles.cardMeta}>
-              <span className={styles.metaTag}>Best seller</span>
-              <span className={styles.metaTag}>Box mixto</span>
-            </div>
-          </div>
-          <div className={styles.heroCardMedia} aria-hidden="true">
-            <Image
-              src="/images/galletas-chocolate-negro.webp"
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 420px"
-              className={styles.heroCardImage}
-              priority
-            />
-          </div>
-        </aside>
       </div>
     </section>
   );
