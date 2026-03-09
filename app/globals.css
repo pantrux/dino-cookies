@@ -115,6 +115,23 @@
   --space-24: 96px;
 
   /* =====================
+   * Component tokens
+   * ===================== */
+  --button-height: var(--control-height);
+  --button-radius: var(--radius-md);
+  --button-border-width: 1px;
+  --button-shadow: none;
+  --button-letter-spacing: 0.02em;
+  --button-caps: normal;
+
+  /* Paper / Ink atmosphere (optional; can be overridden per page theme) */
+  --paper-ink: #22211d;
+  --paper-surface: #fbf7ed;
+  --paper-surface-2: #f4eedc;
+  --paper-vignette: rgba(34, 33, 29, 0.12);
+  --paper-noise-opacity: 0.05;
+
+  /* =====================
    * Typography scale
    * ===================== */
   --font-size-xs: 12px;

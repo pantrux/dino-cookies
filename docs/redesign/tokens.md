@@ -42,7 +42,7 @@ Nota de naming (consistencia):
 - Se mantienen aliases `*-error` por compatibilidad/búsqueda (ej. `surface-error` apunta a `surface-danger`, `text-error` apunta a `text-danger`, y `interactive-error-*` apunta a `interactive-danger-*`).
 
 Reglas:
-- El **magenta** (brand) se usa para CTA primario y estados importantes, no como decoración masiva.
+- El **oliva** (brand/accent) se usa para CTA primario y estados importantes, no como decoración masiva.
 - Evitar hex directos en módulos (salvo casos excepcionales justificados).
 
 ---
@@ -118,6 +118,24 @@ Reglas:
 ### Controles (inputs / selects / buttons)
 - `--control-height: 44px` (mínimo táctil)
 - `--control-padding-x`, `--control-padding-y`
+
+### Botones (componente)
+> Objetivo: poder clavar el look “seal/print” **sin** hardcode en módulos.
+
+- `--button-height` (default: `--control-height`)
+- `--button-radius` (default: `--radius-md`; variante final: pill)
+- `--button-border-width` (1–2px)
+- `--button-shadow` (default suave; final: **hard print offset**)
+- `--button-font-family` (accent)
+- `--button-letter-spacing` (final: 0.10–0.14em)
+- `--button-caps` (final: all-small-caps)
+
+### Paper / Ink (atmósfera)
+- `--paper-ink` (tinta)
+- `--paper-surface` (paper base)
+- `--paper-surface-2` (paper sombra)
+- `--paper-vignette` (vignette)
+- `--paper-noise-opacity` (0.03–0.07)
 - `--button-height`, `--input-height` (alias por claridad)
 
 Reglas:
