@@ -61,7 +61,7 @@ export default function ReviewSection() {
               <div className={styles.avatar} aria-hidden="true">{review.user.charAt(0)}</div>
               <div className={styles.cardBody}>
                 <h4 className={styles.username}>{review.user}</h4>
-                <div className={styles.rating} aria-label={`Rating ${Number(review.rating ?? 5).toFixed(1)} de 5`}>
+                <div className={styles.rating} aria-label={`Calificación ${Number(review.rating ?? 5).toFixed(1)} de 5`}>
                   ★ {Number(review.rating ?? 5).toFixed(1)}
                 </div>
                 <Text className={styles.text} tone="muted" size="sm">
