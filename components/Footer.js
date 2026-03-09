@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from 'react';
 import styles from './Footer.module.css';
 
 const NAV_LINKS = [
   { href: '/', label: 'Inicio' },
   { href: '#menu', label: 'Galletas' },
   { href: '#nosotros', label: 'Nosotros' },
-  { href: 'https://www.instagram.com/dinocookies20252026/', label: 'Blog' },
+  { href: 'https://www.instagram.com/dinocookies20252026/', label: 'Instagram' },
   { href: 'https://wa.me/56988136073', label: 'Contacto' },
 ];
 
@@ -17,8 +16,6 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-
   return (
     <footer className={styles.footer} id="contacto" aria-label="Pie de página">
       <div className={styles.rule} aria-hidden="true" />
@@ -57,28 +54,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className={styles.newsletterBlock}>
-          <p className={styles.label}>Newsletter</p>
-          <form
-            className={styles.newsletterForm}
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (!email.trim()) return;
-              window.open('https://www.instagram.com/dinocookies20252026/', '_blank', 'noopener,noreferrer');
-            }}
+        <div className={styles.followBlock}>
+          <p className={styles.label}>Síguenos</p>
+          <a
+            className={styles.followLink}
+            href="https://www.instagram.com/dinocookies20252026/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <input
-              type="email"
-              className={styles.input}
-              placeholder="Tu correo"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-label="Correo para newsletter"
-            />
-            <button type="submit" className={styles.submit} aria-label="Enviar correo">
-              ↗
-            </button>
-          </form>
+            @dinocookies20252026
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </footer>
