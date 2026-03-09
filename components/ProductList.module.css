@@ -1,5 +1,6 @@
 .section {
   position: relative;
+  isolation: isolate;
 }
 
 .section::before,
@@ -8,6 +9,7 @@
   position: absolute;
   pointer-events: none;
   opacity: 0.22;
+  z-index: -1;
 }
 
 .section::before {

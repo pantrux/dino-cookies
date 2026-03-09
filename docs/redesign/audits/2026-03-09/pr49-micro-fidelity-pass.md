@@ -17,6 +17,7 @@
 ### 3) Composición con ornamentos
 - Se integraron doodles/ornamentos sutiles en el hero y en la sección de productos.
 - La intención es que se sientan como parte del layout, no como stickers aislados.
+- Fix post-review: los ornamentos de `ProductList` quedaron explícitamente detrás del contenido usando `isolation: isolate` + `z-index: -1`.
 
 ### 4) Masthead refinado
 - Se compactó levemente el header.
