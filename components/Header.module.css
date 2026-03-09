@@ -16,6 +16,22 @@
   position: relative;
 }
 
+.tagline {
+  margin-top: var(--space-3);
+  font-family: var(--font-accent), var(--font-serif), serif;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: rgba(58, 56, 47, 0.84);
+}
+
+.rule {
+  width: min(560px, 92%);
+  height: 14px;
+  margin-top: var(--space-6);
+  background: center / contain no-repeat url('/doodles/scribble-underline.svg');
+  opacity: 0.26;
+}
+
 .utility {
   position: absolute;
   right: var(--space-6);
@@ -106,5 +122,15 @@
   .logoSeal {
     width: 96px;
     height: 96px;
+  }
+
+  .tagline {
+    font-size: var(--font-size-sm);
+    text-align: center;
+  }
+
+  .rule {
+    margin-top: var(--space-5);
+    opacity: 0.22;
   }
 }

@@ -28,6 +28,7 @@ export default function Header() {
                             priority
                         />
                     </AppLink>
+                    <p className={styles.tagline}>Horneado diario · Hecho a mano</p>
                 </div>
 
                 <nav className={styles.nav} aria-label="Navegación principal">
@@ -42,6 +43,8 @@ export default function Header() {
                         {cart.totalQty > 0 ? <span className={styles.badge}>{cart.totalQty}</span> : null}
                     </Button>
                 </div>
+
+                <div className={styles.rule} aria-hidden="true" />
             </div>
 
             <CartDrawer open={open} onClose={handleClose} />

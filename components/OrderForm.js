@@ -90,7 +90,7 @@ export default function OrderForm() {
     return (
         <Section id="order" className={styles.section} surface="subtle" paddingY="lg">
             <Container size="sm">
-                <Card padding="lg">
+                <Card padding="lg" className={styles.card}>
                     <div className={styles.header}>
                         <Heading level={2} size="4xl" tone="brand" className={styles.title}>
                             ¿Listo para disfrutar?
