@@ -53,11 +53,11 @@ export default function ProductCard({ product, index = 0 }) {
                     </div>
 
                     <Button
-                        variant="outline"
+                        variant="primary"
                         onClick={() => cart.addItem(product, 1)}
                         className={styles.button}
                     >
-                        Agregar
+                        Añadir al carrito
                     </Button>
                 </div>
             </div>
